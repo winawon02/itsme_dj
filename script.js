@@ -15249,12 +15249,13 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   if (location.hostname !== 'joychoi890243962.imweb.me') return;
   const root = document.getElementById('itsme-content');
   if (!root) return;
-  const routes = {"index.html":"/index","doctor.html":"/doctor","filler.html":"/filler","community-community02.html":"/15","community-community03.html":"/15"};
+  const routes = {"index.html":"/index","doctor.html":"/doctor","filler.html":"/filler","blem.html":"/29","pico.html":"/30","scar.html":"/31","acne.html":"/32","juvederm.html":"/24","restylane.html":"/25","botox.html":"/26","xeomin.html":"/27","threadlifting.html":"/28","premium.html":"/39","gouri.html":"/40","ulthera.html":"/41","onda_lifting.html":"/42","density.html":"/43","oligio.html":"/44","shurink.html":"/45","mirajet.html":"/46","inmode.html":"/47","rejuran.html":"/48","booster.html":"/49","byryzn.html":"/50","sculptra.html":"/51","homme_hair_removal.html":"/33","coresculpt.html":"/34","triple_body.html":"/35","body_slim.html":"/36","gold-ptt.html":"/37","mdcosmetic.html":"/38","community-community02.html":"/15","community-community03.html":"/15"};
   function update(scope) {
     const links = scope.matches?.('a[href]') ? [scope] : [];
     links.push(...scope.querySelectorAll('a[href]'));
     for (const link of links) {
-      if (link.classList.contains('btn_cart')) {
+      const legacyCardAction = link.getAttribute('href') === '#' && link.textContent.trim() === '장바구니 담기';
+      if (link.classList.contains('btn_cart') || legacyCardAction) {
         link.setAttribute('href', '/15');
         link.textContent = '상담 신청';
         link.setAttribute('aria-label', '희망 시술 상담 신청');
