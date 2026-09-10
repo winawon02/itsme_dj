@@ -7763,3 +7763,16 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 #migration-copy button { border:0;border-radius:6px;background:#165b4e;color:white;padding:12px 20px;font:inherit;cursor:pointer; }
 #migration-copy button:disabled { opacity:.4;cursor:not-allowed; }
 #migration-copy [role=status] { padding:16px;background:#e0ede7;border-radius:8px;overflow-wrap:anywhere; }
+
+/* Imweb integration only. The platform adds 15px to every extended section.
+   Original clinic bodies already own their full-width spacing. */
+.doz_sys .section_wrap.extend_section main:has(#itsme-content) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* The code widget itself must not reintroduce grid gutters around the body. */
+.doz_sys .section_wrap:has(#itsme-content) .col-dz:has(#itsme-content) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
