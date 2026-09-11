@@ -15157,48 +15157,6 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   }
 })();
 
-(() => {
-  function mountFooter() {
-    const host = document.querySelector('#doz_footer .foot-custom');
-    if (!host || host.querySelector('.itsme-native-footer')) return;
-    const footer = document.createElement('div');
-    footer.className = 'itsme-native-footer';
-    footer.innerHTML = `
-      <div class="itsme-native-footer__top">
-        <img class="itsme-native-footer__logo" src="https://winawon02.github.io/itsme_dj/assets/a7a8e8c1-b_logo.png" alt="IT'S ME CLINIC">
-      </div>
-      <div class="itsme-native-footer__meta">
-        <ul class="itsme-native-footer__links">
-          <li><a href="/?mode=policy">사이트 이용약관</a></li>
-          <li><a href="/?mode=privacy">개인정보처리방침</a></li>
-          <li><a href="/doctor">대표원장 소개</a></li>
-          <li><a href="/consultation">상담 신청</a></li>
-          <li><a href="mailto:content.itsme.clinic@gmail.com">제휴문의 : content.itsme.clinic@gmail.com</a></li>
-        </ul>
-        <p class="itsme-native-footer__copyright">Copyright 2026. 잇츠미클리닉 all rights reserved.</p>
-        <nav class="itsme-native-footer__sns" aria-label="SNS 바로가기">
-          <a href="https://www.instagram.com/itsme_clinic_official/" target="_blank" rel="noopener noreferrer"><img src="https://winawon02.github.io/itsme_dj/assets/a3807fe5-icon_sns04.png" alt="인스타그램"></a>
-          <a href="https://www.youtube.com/channel/UCmP907OimDzU6yJZdIuL4Kg" target="_blank" rel="noopener noreferrer"><img src="https://winawon02.github.io/itsme_dj/assets/7d2be25e-icon_sns05.png" alt="유튜브"></a>
-        </nav>
-      </div>
-      <ul class="itsme-native-footer__branches">
-        <li><strong>잇츠미의원 동탄</strong><span>경기 화성시 동탄오산로 86-3 · 대표자 이지환 · 726-21-01130</span></li>
-        <li><strong>잇츠미의원 안산</strong><span>경기 안산시 단원구 고잔1길 7 · 대표자 국지수 · 884-18-01305</span></li>
-        <li><strong>잇츠미의원 세종</strong><span>세종특별자치시 한누리대로 253 · 대표자 배경태 · 328-28-01497</span></li>
-        <li><strong>잇츠미의원 대전</strong><span>대전 서구 대덕대로 223, 6층 601호 · 대표자 최승진 · 475-60-00566</span></li>
-        <li><strong>청주잇츠미의원</strong><span>충북 청주시 흥덕구 풍산로 26 · 대표자 김동욱 · 511-38-00411</span></li>
-        <li><strong>잇츠미의원 신부</strong><span>충남 천안시 동남구 만남로 50 · 대표자 손종일 · 366-40-00527</span></li>
-        <li><strong>잇츠미의원 불당</strong><span>충남 천안시 서북구 불당21로 71 · 대표자 최종필 · 278-41-00440</span></li>
-        <li><strong>잇츠미의원 계룡</strong><span>충남 계룡시 장안로 43 · 대표자 이정석 · 308-08-32886</span></li>
-        <li><strong>잇츠미의원 평택</strong><span>경기 평택시 고덕국제대로 94 · 대표자 임인재 · 665-15-02565</span></li>
-      </ul>`;
-    host.prepend(footer);
-  }
-
-  mountFooter();
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountFooter, {once: true});
-})();
-
 /* Local handoff utility; bundled into the shared script.js, never a production section. */
 (function () {
   const tool = document.getElementById('migration-copy');
