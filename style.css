@@ -7793,8 +7793,8 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #itsme-content.page-xeomin,
   #itsme-content.page-threadlifting
 ) .prod {
-  width: 1320px;
-  max-width: 100%;
+  width: 1080px;
+  max-width: calc(100% - 40px);
   justify-content: center;
 }
 
@@ -7811,6 +7811,78 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   max-width: 100%;
   margin-right: auto;
   margin-left: auto;
+}
+
+:where(
+  #itsme-content.page-filler,
+  #itsme-content.page-juvederm,
+  #itsme-content.page-restylane,
+  #itsme-content.page-botox,
+  #itsme-content.page-xeomin,
+  #itsme-content.page-threadlifting
+) .prod .img_cont,
+:where(
+  #itsme-content.page-filler,
+  #itsme-content.page-juvederm,
+  #itsme-content.page-restylane,
+  #itsme-content.page-botox,
+  #itsme-content.page-xeomin,
+  #itsme-content.page-threadlifting
+) .prod .img_cont img,
+:where(
+  #itsme-content.page-filler,
+  #itsme-content.page-juvederm,
+  #itsme-content.page-restylane,
+  #itsme-content.page-botox,
+  #itsme-content.page-xeomin,
+  #itsme-content.page-threadlifting
+) .prod .img_cont iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+:where(
+  #itsme-content.page-filler,
+  #itsme-content.page-juvederm,
+  #itsme-content.page-restylane,
+  #itsme-content.page-botox,
+  #itsme-content.page-xeomin,
+  #itsme-content.page-threadlifting
+) .prod .img_cont img {
+  height: auto !important;
+}
+
+:where(
+  #itsme-content.page-filler,
+  #itsme-content.page-juvederm,
+  #itsme-content.page-restylane,
+  #itsme-content.page-botox,
+  #itsme-content.page-xeomin,
+  #itsme-content.page-threadlifting
+) .prod .img_cont iframe {
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+}
+
+/* Search is not migrated. Preserve each original banner background and use it
+   as a single brand statement instead. */
+:where(#itsme-content) .top_search .inwrap,
+:where(#itsme-content) #main_search .inwrap {
+  display: flex;
+  min-height: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+:where(#itsme-content) .migration-brand-slogan {
+  margin: 0;
+  color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -0.06em;
+  text-align: center;
 }
 
 #itsme-content.page-consultation{min-width:0;background:#fff;color:#151515;font-family:'Noto Sans KR',sans-serif;letter-spacing:-.03em}

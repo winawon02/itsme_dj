@@ -15142,6 +15142,21 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   root.querySelectorAll('.btn_share').forEach(button=>button.addEventListener('click',()=>navigator.clipboard?.writeText(location.href)));
 })();
 
+(() => {
+  const root = document.getElementById('itsme-content');
+  if (!root) return;
+  for (const banner of root.querySelectorAll('.top_search, #main_search')) {
+    if (banner.dataset.sloganReady) continue;
+    const content = banner.querySelector('.inwrap') || banner;
+    const slogan = document.createElement('p');
+    slogan.className = 'migration-brand-slogan';
+    slogan.textContent = '아름다움도 나답게 잇츠미의원';
+    content.replaceChildren(slogan);
+    banner.dataset.sloganReady = 'true';
+    banner.setAttribute('aria-label', slogan.textContent);
+  }
+})();
+
 /* Local handoff utility; bundled into the shared script.js, never a production section. */
 (function () {
   const tool = document.getElementById('migration-copy');
