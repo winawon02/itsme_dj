@@ -7782,3 +7782,107 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+/* Price/checkout data is replaced by the native consultation flow. Keep the
+   remaining original treatment column centered instead of reserving 460px. */
+:where(
+  #itsme-content.page-filler,
+  #itsme-content.page-juvederm,
+  #itsme-content.page-restylane,
+  #itsme-content.page-botox,
+  #itsme-content.page-xeomin,
+  #itsme-content.page-threadlifting
+) .prod {
+  width: 1320px;
+  max-width: 100%;
+  justify-content: center;
+}
+
+:where(
+  #itsme-content.page-filler,
+  #itsme-content.page-juvederm,
+  #itsme-content.page-restylane,
+  #itsme-content.page-botox,
+  #itsme-content.page-xeomin,
+  #itsme-content.page-threadlifting
+) .prod .prod_detail {
+  flex: 1 1 100%;
+  width: 100%;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#itsme-content.page-consultation{min-width:0;background:#fff;color:#151515;font-family:'Noto Sans KR',sans-serif;letter-spacing:-.03em}
+.page-consultation *{box-sizing:border-box}
+.page-consultation .consultation-frame{width:min(1180px,calc(100% - 80px));margin:0 auto}
+.page-consultation .consultation-hero{position:relative;height:340px;overflow:hidden;background:url('assets/7d5bad6f-community02_visual.jpg') no-repeat center/cover}
+.page-consultation .consultation-hero>img{position:absolute;top:0;left:50%;width:1920px;max-width:none;height:340px;transform:translateX(-50%)}
+.page-consultation .consultation-intro{padding:76px 0 55px;background:#fff;text-align:center}
+.page-consultation .consultation-eyebrow{margin:0 0 14px;color:#e5602d;font-family:'Lato',sans-serif;font-size:13px;letter-spacing:.16em}
+.page-consultation .consultation-intro h2{margin:0;color:#151515;font-size:38px;font-weight:500;letter-spacing:-.06em;line-height:1.2}
+.page-consultation .consultation-lead{max-width:700px;margin:22px auto 0;color:#777;font-size:16px;font-weight:300;line-height:1.8}
+.page-consultation .consultation-notice{display:flex;max-width:760px;gap:15px;align-items:center;justify-content:center;margin:25px auto 0;padding-top:22px;border-top:1px solid #e5e5e5;color:#868686;font-size:13px}
+.page-consultation .consultation-notice strong{color:#e5602d;font-weight:500}
+.page-consultation .consultation-content{padding:55px 0 130px;background:#f8f8f8}
+.page-consultation .consultation-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:90px;align-items:start}
+.page-consultation .consultation-form{display:grid;gap:78px}
+.page-consultation .consultation-step{margin:0;padding:0;border:0}
+.page-consultation .consultation-step__head{display:flex;gap:23px;align-items:flex-start;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #cbc8c1}
+.page-consultation .consultation-step__head>span{display:grid;width:42px;height:42px;place-items:center;border:1px solid #e5602d;border-radius:50%;color:#e5602d;font-family:'Lato',sans-serif;font-size:12px;letter-spacing:.04em}
+.page-consultation .consultation-step__head p{margin:1px 0 4px;color:#e5602d;font-family:'Lato',sans-serif;font-size:14px;letter-spacing:.12em}
+.page-consultation .consultation-step__head h2{margin:0;font-size:25px;font-weight:500;letter-spacing:-.05em}
+.page-consultation .consultation-fields{display:grid;gap:24px 18px}
+.page-consultation .consultation-fields--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.page-consultation .consultation-field{display:grid;gap:10px}
+.page-consultation .consultation-field--wide{grid-column:1/-1}
+.page-consultation .consultation-field>span{font-size:13px;font-weight:500}
+.page-consultation .consultation-field b,.page-consultation .consultation-consent b{color:#e5602d;font-weight:500}
+.page-consultation .consultation-field input,.page-consultation .consultation-field select,.page-consultation .consultation-field textarea{width:100%;min-height:56px;margin:0;padding:0 17px;border:1px solid #d3d0ca;border-radius:0;outline:0;background:#fff;color:#181818;font:400 15px/1.5 'Noto Sans KR',sans-serif;transition:border-color .2s,box-shadow .2s}
+.page-consultation .consultation-field textarea{min-height:145px;padding-top:16px;resize:vertical}
+.page-consultation .consultation-field input:focus,.page-consultation .consultation-field select:focus,.page-consultation .consultation-field textarea:focus{border-color:#e5602d;box-shadow:0 0 0 3px rgba(229,96,45,.1)}
+.page-consultation .consultation-field [aria-invalid="true"]{border-color:#c5574d;background:#fffafa}
+.page-consultation .consultation-field small{color:#85817b;font-size:11px;line-height:1.6}
+.page-consultation .consultation-helper{margin:17px 0 0;color:#77736e;font-size:12px}
+.page-consultation .consultation-helper a{color:#e5602d;font-weight:600}
+.page-consultation .consultation-consent{display:flex;gap:10px;align-items:flex-start;margin-top:26px;color:#55514d;font-size:12px;line-height:1.6}
+.page-consultation .consultation-consent input{width:17px;height:17px;margin:1px 0 0;accent-color:#e5602d}
+.page-consultation .consultation-submit{display:flex;width:100%;min-height:68px;align-items:center;justify-content:space-between;margin-top:22px;padding:0 32px;border:0;background:#282828;color:#fff;font:500 17px 'Noto Sans KR',sans-serif;cursor:pointer;transition:background .2s}
+.page-consultation .consultation-submit:hover{background:#e5602d}
+.page-consultation .consultation-submit i{font-size:23px;font-style:normal;font-weight:300}
+.page-consultation .consultation-status{margin:14px 0 0;padding:16px 18px;background:#fff0ea;color:#b8431e;font-size:13px;line-height:1.6}
+.page-consultation .consultation-summary{position:sticky;top:40px;padding:38px 34px;background:#fff;border-top:3px solid #e5602d;box-shadow:0 18px 55px rgba(29,38,34,.08)}
+.page-consultation .consultation-summary__eyebrow{margin:0 0 5px;color:#e5602d;font:500 12px 'Lato',sans-serif;letter-spacing:.12em}
+.page-consultation .consultation-summary h2{margin:0 0 28px;font:400 31px 'Noto Serif KR',serif;letter-spacing:-.06em}
+.page-consultation .consultation-summary dl{margin:0;border-top:1px solid #dedbd5}
+.page-consultation .consultation-summary dl>div{display:grid;gap:7px;padding:18px 0;border-bottom:1px solid #dedbd5}
+.page-consultation .consultation-summary dt{color:#8a857f;font-size:11px}
+.page-consultation .consultation-summary dd{margin:0;font-size:14px;line-height:1.5;word-break:keep-all}
+.page-consultation .consultation-clinic{margin-top:30px;padding:23px;background:#151515;color:#fff}
+.page-consultation .consultation-clinic strong{font-size:14px;font-weight:500}
+.page-consultation .consultation-clinic p{margin:9px 0;color:#afb5b2;font-size:11px;line-height:1.6}
+.page-consultation .consultation-clinic a{color:#e5602d;font:600 19px 'Lato',sans-serif;letter-spacing:.02em}
+.page-consultation .consultation-summary__caption{margin:22px 0 0;color:#89847e;font-size:11px;line-height:1.7}
+:where(#itsme-content) a[data-consultation-cta]{display:inline-flex;align-items:center;justify-content:center}
+@media(max-width:900px){
+  .page-consultation .consultation-frame{width:min(100% - 40px,720px)}
+  .page-consultation .consultation-content{padding:55px 0 90px}
+  .page-consultation .consultation-layout{grid-template-columns:1fr;gap:55px}
+  .page-consultation .consultation-summary{position:static;order:-1}
+}
+@media(max-width:560px){
+  .page-consultation .consultation-frame{width:calc(100% - 32px)}
+  .page-consultation .consultation-hero,.page-consultation .consultation-hero>img{height:260px}
+  .page-consultation .consultation-hero>img{width:1468px}
+  .page-consultation .consultation-intro{padding:50px 0 35px}
+  .page-consultation .consultation-intro h2{font-size:31px}
+  .page-consultation .consultation-lead{font-size:15px}
+  .page-consultation .consultation-notice{align-items:flex-start;line-height:1.6}
+  .page-consultation .consultation-content{padding:48px 0 72px}
+  .page-consultation .consultation-form{gap:58px}
+  .page-consultation .consultation-fields--two{grid-template-columns:1fr}
+  .page-consultation .consultation-field--wide{grid-column:auto}
+  .page-consultation .consultation-step__head{gap:15px}
+  .page-consultation .consultation-step__head h2{font-size:22px}
+  .page-consultation .consultation-summary{padding:30px 24px}
+}

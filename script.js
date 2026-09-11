@@ -15244,6 +15244,83 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   }));
 })();
 
+(() => {
+  const root = document.getElementById('itsme-content');
+  if (!root) return;
+
+  const imwebHost = location.hostname === 'joychoi890243962.imweb.me';
+  const consultationPath = imwebHost ? '/consultation' : 'consultation.html';
+  const cleanText = value => (value || '').replace(/\s+/g, ' ').trim();
+
+  function treatmentFrom(link) {
+    const item = link.closest('li, article, .item, .prod_item');
+    if (!item) return '';
+    const subject = item.querySelector('[data-name="subject"]')?.value;
+    const content = item.querySelector('[data-name="content"]')?.value;
+    if (subject || content) return cleanText([subject, content].filter(Boolean).join(' · '));
+    return cleanText(item.querySelector('.tit, .title, h3, strong')?.textContent).slice(0, 90);
+  }
+
+  function upgradeConsultationLinks(scope) {
+    const links = scope.matches?.('a') ? [scope] : [];
+    links.push(...scope.querySelectorAll('a'));
+    for (const link of links) {
+      const label = cleanText(link.textContent);
+      if (!link.classList.contains('btn_cart') && label !== '장바구니 담기' && label !== '장바구니') continue;
+      const url = new URL(consultationPath, location.href);
+      const treatment = treatmentFrom(link);
+      if (treatment) url.searchParams.set('treatment', treatment);
+      link.href = imwebHost ? url.pathname + url.search : url.href;
+      link.textContent = '상담 신청';
+      link.dataset.consultationCta = 'true';
+      link.setAttribute('aria-label', treatment ? `${treatment} 상담 신청` : '희망 시술 상담 신청');
+    }
+  }
+
+  upgradeConsultationLinks(root);
+  new MutationObserver(records => {
+    for (const record of records) for (const node of record.addedNodes) {
+      if (node.nodeType === 1) upgradeConsultationLinks(node);
+    }
+  }).observe(root, {childList: true, subtree: true});
+
+  const form = root.querySelector('#itsme-consultation-form');
+  if (!form) return;
+  const field = name => form.elements.namedItem(name);
+  const status = form.querySelector('.consultation-status');
+  const summary = name => root.querySelector(`[data-consult-summary="${name}"]`);
+  const params = new URLSearchParams(location.search);
+  const treatment = cleanText(params.get('treatment')).slice(0, 120);
+  if (treatment) field('treatment').value = treatment;
+
+  const date = field('preferred_date');
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  date.min = tomorrow.toISOString().slice(0, 10);
+
+  function renderSummary() {
+    summary('consult_area').textContent = field('consult_area').value || '선택 전';
+    summary('treatment').textContent = field('treatment').value || '입력 전';
+    const schedule = [date.value, field('preferred_time').value].filter(Boolean).join(' · ');
+    summary('schedule').textContent = schedule || '선택 전';
+  }
+  form.addEventListener('input', renderSummary);
+  form.addEventListener('change', renderSummary);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    for (const control of form.querySelectorAll('[required]')) control.setAttribute('aria-invalid', String(!control.checkValidity()));
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      status.hidden = false;
+      status.textContent = '필수 항목을 확인해주세요.';
+      return;
+    }
+    status.hidden = false;
+    status.textContent = '로컬 화면 검증이 완료됐습니다. 아임웹 이관 시 동일한 필드를 입력폼 DB에 연결합니다.';
+  });
+  renderSummary();
+})();
+
 /* Deployment-only adapter. The source markup and local preview remain intact. */
 (function () {
   if (location.hostname !== 'joychoi890243962.imweb.me') return;
@@ -15256,7 +15333,7 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
     for (const link of links) {
       const legacyCardAction = link.getAttribute('href') === '#' && link.textContent.trim() === '장바구니 담기';
       if (link.classList.contains('btn_cart') || legacyCardAction) {
-        link.setAttribute('href', '/consultation');
+        if (!link.getAttribute('href')?.startsWith('/consultation')) link.setAttribute('href', '/consultation');
         link.textContent = '상담 신청';
         link.setAttribute('aria-label', '희망 시술 상담 신청');
         continue;
