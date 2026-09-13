@@ -7764,48 +7764,23 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 #migration-copy button:disabled { opacity:.4;cursor:not-allowed; }
 #migration-copy [role=status] { padding:16px;background:#e0ede7;border-radius:8px;overflow-wrap:anywhere; }
 
-/* Imweb integration only. The platform adds 15px to every extended section.
-   Original clinic bodies already own their full-width spacing. */
-.doz_sys .section_wrap.extend_section main:has(#itsme-content) {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* The code widget itself must not reintroduce grid gutters around the body. */
-.doz_sys .section_wrap:has(#itsme-content) .col-dz:has(#itsme-content) {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Keep every migrated page's original #main flush, regardless of page markup. */
+/* Original bodies own their spacing; Imweb's extended section adds gutters. */
+.doz_sys .section_wrap.extend_section main:has(#itsme-content),
+.doz_sys .section_wrap:has(#itsme-content) .col-dz:has(#itsme-content),
 .doz_sys #itsme-content #main {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-/* Price/checkout data is replaced by the native consultation flow. Keep the
-   remaining original treatment column centered instead of reserving 460px. */
-:where(
-  #itsme-content.page-filler,
-  #itsme-content.page-juvederm,
-  #itsme-content.page-restylane,
-  #itsme-content.page-botox,
-  #itsme-content.page-xeomin,
-  #itsme-content.page-threadlifting
-) .prod {
+/* Every original treatment article uses .prod. The PHP price/cart rail is
+   removed at packaging time, so center the remaining article at 1080px. */
+:where(#itsme-content) .prod {
   width: 1080px;
   max-width: calc(100% - 40px);
   justify-content: center;
 }
 
-:where(
-  #itsme-content.page-filler,
-  #itsme-content.page-juvederm,
-  #itsme-content.page-restylane,
-  #itsme-content.page-botox,
-  #itsme-content.page-xeomin,
-  #itsme-content.page-threadlifting
-) .prod .prod_detail {
+:where(#itsme-content) .prod .prod_detail {
   flex: 1 1 100%;
   width: 100%;
   max-width: 100%;
@@ -7813,59 +7788,23 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   margin-left: auto;
 }
 
-:where(
-  #itsme-content.page-filler,
-  #itsme-content.page-juvederm,
-  #itsme-content.page-restylane,
-  #itsme-content.page-botox,
-  #itsme-content.page-xeomin,
-  #itsme-content.page-threadlifting
-) .prod .img_cont,
-:where(
-  #itsme-content.page-filler,
-  #itsme-content.page-juvederm,
-  #itsme-content.page-restylane,
-  #itsme-content.page-botox,
-  #itsme-content.page-xeomin,
-  #itsme-content.page-threadlifting
-) .prod .img_cont img,
-:where(
-  #itsme-content.page-filler,
-  #itsme-content.page-juvederm,
-  #itsme-content.page-restylane,
-  #itsme-content.page-botox,
-  #itsme-content.page-xeomin,
-  #itsme-content.page-threadlifting
-) .prod .img_cont iframe {
+:where(#itsme-content) .prod .img_cont,
+:where(#itsme-content) .prod .img_cont img,
+:where(#itsme-content) .prod .img_cont iframe {
   width: 100% !important;
   max-width: 100% !important;
 }
 
-:where(
-  #itsme-content.page-filler,
-  #itsme-content.page-juvederm,
-  #itsme-content.page-restylane,
-  #itsme-content.page-botox,
-  #itsme-content.page-xeomin,
-  #itsme-content.page-threadlifting
-) .prod .img_cont img {
+:where(#itsme-content) .prod .img_cont img {
   height: auto !important;
 }
 
-:where(
-  #itsme-content.page-filler,
-  #itsme-content.page-juvederm,
-  #itsme-content.page-restylane,
-  #itsme-content.page-botox,
-  #itsme-content.page-xeomin,
-  #itsme-content.page-threadlifting
-) .prod .img_cont iframe {
+:where(#itsme-content) .prod .img_cont iframe {
   height: auto !important;
   aspect-ratio: 16 / 9;
 }
 
-/* Search is not migrated. Preserve each original banner background and use it
-   as a single brand statement instead. */
+/* Preserve each original search banner background as a brand statement. */
 :where(#itsme-content) .top_search .inwrap,
 :where(#itsme-content) #main_search .inwrap {
   display: flex;
