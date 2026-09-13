@@ -15157,6 +15157,129 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   }
 })();
 
+(() => {
+  const root = document.getElementById('itsme-content');
+  if (!root || !/^page-community-laser(?:-115dff)?$/.test([...root.classList].find(name => name.startsWith('page-community-laser')) || '')) return;
+
+  const list = root.querySelector('.eq-list');
+  if (!list) return;
+  const isSkinPage = root.classList.contains('page-community-laser-115dff');
+  const links = [...root.querySelectorAll('#cate-list .category a')];
+  const categories = ['skin', 'lifting', 'acne', 'body'];
+  const equipment = [...list.children].filter(item => item.querySelector('.ls-btn'));
+  const groups = {
+    lifting: new Set(['ls-4', 'ls-65', 'ls-67', 'ls-62', 'ls-6', 'ls-63', 'ls-61']),
+    acne: new Set(['ls-54', 'ls-53', 'ls-52', 'ls-51', 'ls-50', 'ls-48']),
+    body: new Set(['ls-58', 'ls-66', 'ls-64', 'ls-57', 'ls-56', 'ls-55'])
+  };
+
+  const mainPath = location.hostname === 'joychoi890243962.imweb.me' ? '/laser-equipment' : 'community-laser.html';
+  const skinPath = location.hostname === 'joychoi890243962.imweb.me' ? '/skin-lasers' : 'community-laser-115dff.html';
+  links.forEach((link, index) => {
+    const category = categories[index];
+    if (!category) return;
+    link.dataset.equipmentCategory = category;
+    link.href = category === 'skin' ? skinPath : `${mainPath}?equipment=${category}`;
+  });
+
+  function showCategory(category) {
+    links.forEach(link => {
+      const selected = link.dataset.equipmentCategory === category;
+      link.parentElement?.classList.toggle('select', selected);
+      if (selected) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    if (isSkinPage) return;
+    equipment.forEach(item => {
+      const id = item.querySelector('.ls-layer')?.id;
+      item.hidden = category !== 'all' && !groups[category]?.has(id);
+    });
+  }
+
+  const initial = new URLSearchParams(location.search).get('equipment');
+  showCategory(isSkinPage ? 'skin' : groups[initial] ? initial : 'all');
+
+  let activeLayer = null;
+  let openingButton = null;
+  let previousOverflow = '';
+  for (const layer of root.querySelectorAll('.eq-list .ls-layer')) {
+    layer.setAttribute('role', 'dialog');
+    layer.setAttribute('aria-modal', 'true');
+    layer.setAttribute('aria-hidden', 'true');
+    layer.querySelector('.x')?.setAttribute('aria-label', '상세정보 닫기');
+  }
+
+  function closeLayer() {
+    if (!activeLayer) return;
+    activeLayer.classList.remove('active');
+    activeLayer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = previousOverflow;
+    const button = openingButton;
+    activeLayer = null;
+    openingButton = null;
+    button?.focus();
+  }
+
+  function openLayer(button) {
+    const id = button.getAttribute('value')?.slice(1);
+    const layer = id && root.querySelector(`#${id}.ls-layer`);
+    if (!layer) return;
+    closeLayer();
+    activeLayer = layer;
+    openingButton = button;
+    previousOverflow = document.body.style.overflow;
+    layer.classList.add('active');
+    layer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    (layer.querySelector('.x') || layer).focus();
+  }
+
+  root.addEventListener('click', event => {
+    const button = event.target.closest('.eq-list .ls-btn');
+    if (button && root.contains(button)) {
+      event.preventDefault();
+      openLayer(button);
+      return;
+    }
+    const layer = event.target.closest('.eq-list .ls-layer');
+    if (layer === activeLayer && (event.target === layer || event.target.closest('.x'))) {
+      event.preventDefault();
+      closeLayer();
+      return;
+    }
+    const link = event.target.closest('#cate-list .category a');
+    if (!link || !root.contains(link)) return;
+    const category = link.dataset.equipmentCategory;
+    if (isSkinPage || category === 'skin' || !groups[category]) return;
+    event.preventDefault();
+    showCategory(category);
+    const url = new URL(location.href);
+    url.searchParams.set('equipment', category);
+    history.replaceState(history.state, '', url);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (!activeLayer) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeLayer();
+    } else if (event.key === 'Tab') {
+      const focusable = [...activeLayer.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+        .filter(el => !el.disabled && el.getClientRects().length);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+})();
+
 /* Local handoff utility; bundled into the shared script.js, never a production section. */
 (function () {
   const tool = document.getElementById('migration-copy');
@@ -15341,7 +15464,7 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   if (location.hostname !== 'joychoi890243962.imweb.me') return;
   const root = document.getElementById('itsme-content');
   if (!root) return;
-  const routes = {"index.html":"/index","doctor.html":"/doctor","filler.html":"/filler","blem.html":"/blem","pico.html":"/pico","scar.html":"/scar","acne.html":"/acne","juvederm.html":"/juvederm","restylane.html":"/restylane","botox.html":"/botox","xeomin.html":"/xeomin","threadlifting.html":"/threadlifting","premium.html":"/premium","gouri.html":"/gouri","ulthera.html":"/ulthera","onda_lifting.html":"/onda-lifting","density.html":"/density","oligio.html":"/oligio","shurink.html":"/shurink","mirajet.html":"/mirajet","inmode.html":"/inmode","rejuran.html":"/rejuran","booster.html":"/booster","byryzn.html":"/byryzn","sculptra.html":"/sculptra","homme_hair_removal.html":"/homme-hair-removal","coresculpt.html":"/coresculpt","triple_body.html":"/triple-body","body_slim.html":"/body-slim","gold-ptt.html":"/gold-ptt","mdcosmetic.html":"/mdcosmetic","community-community02.html":"/consultation","community-community03.html":"/consultation"};
+  const routes = {"index.html":"/index","doctor.html":"/doctor","network-network03.html":"/doctor","network-network06.html":"/reviews","community-community01.html":"/event","community-community01-2f44e3.html":"/event","community-community01-2acd8c.html":"/event","community-community01-840e26.html":"/event","equip.html":"/equip","careguide.html":"/careguide","community-laser.html":"/laser-equipment","community-laser-115dff.html":"/skin-lasers","filler.html":"/filler","blem.html":"/blem","pico.html":"/pico","scar.html":"/scar","acne.html":"/acne","juvederm.html":"/juvederm","restylane.html":"/restylane","botox.html":"/botox","xeomin.html":"/xeomin","threadlifting.html":"/threadlifting","premium.html":"/premium","gouri.html":"/gouri","ulthera.html":"/ulthera","onda_lifting.html":"/onda-lifting","density.html":"/density","oligio.html":"/oligio","shurink.html":"/shurink","mirajet.html":"/mirajet","inmode.html":"/inmode","rejuran.html":"/rejuran","booster.html":"/booster","byryzn.html":"/byryzn","sculptra.html":"/sculptra","homme_hair_removal.html":"/homme-hair-removal","coresculpt.html":"/coresculpt","triple_body.html":"/triple-body","body_slim.html":"/body-slim","gold-ptt.html":"/gold-ptt","mdcosmetic.html":"/mdcosmetic","community-community02.html":"/consultation","community-community03.html":"/consultation"};
   function update(scope) {
     const links = scope.matches?.('a[href]') ? [scope] : [];
     links.push(...scope.querySelectorAll('a[href]'));

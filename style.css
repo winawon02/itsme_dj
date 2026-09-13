@@ -8189,3 +8189,80 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
     padding: 13px 0;
   }
 }
+
+/* Laser equipment list: retain the original design while keeping closed layers inert. */
+#itsme-content.page-community-laser .ls-layer,
+#itsme-content.page-community-laser-115dff .ls-layer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#itsme-content.page-community-laser .ls-layer.active,
+#itsme-content.page-community-laser-115dff .ls-layer.active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#itsme-content.page-community-laser .eq-list > li[hidden],
+#itsme-content.page-community-laser-115dff .eq-list > li[hidden] {
+  display: none !important;
+}
+
+#itsme-content .eq-list .ls-btn,
+#itsme-content .eq-list .ls-layer .x {
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  #itsme-content.page-community-laser .ls-layer,
+  #itsme-content.page-community-laser-115dff .ls-layer {
+    box-sizing: border-box;
+    padding: 65px 16px 20px;
+    overflow-y: auto;
+  }
+
+  #itsme-content.page-community-laser .ls-layer .inner,
+  #itsme-content.page-community-laser-115dff .ls-layer .inner {
+    width: min(100%, 600px);
+    flex-direction: column-reverse;
+  }
+
+  #itsme-content.page-community-laser .ls-layer .txt,
+  #itsme-content.page-community-laser-115dff .ls-layer .txt,
+  #itsme-content.page-community-laser .ls-layer .img,
+  #itsme-content.page-community-laser-115dff .ls-layer .img {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  #itsme-content.page-community-laser .ls-layer .txt,
+  #itsme-content.page-community-laser-115dff .ls-layer .txt {
+    padding: 28px 24px 36px;
+  }
+
+  #itsme-content.page-community-laser .ls-layer img,
+  #itsme-content.page-community-laser-115dff .ls-layer img {
+    width: 100%;
+    height: auto;
+    max-height: 45vh;
+    object-fit: contain;
+  }
+
+  #itsme-content.page-community-laser .board_list_gallery.laser .img_wrap,
+  #itsme-content.page-community-laser-115dff .board_list_gallery.laser .img_wrap {
+    max-width: 100%;
+  }
+
+  #itsme-content.page-community-laser #cate-list ul,
+  #itsme-content.page-community-laser-115dff #cate-list ul {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #itsme-content.page-community-laser #cate-list ul li,
+  #itsme-content.page-community-laser-115dff #cate-list ul li {
+    width: auto !important;
+    flex: 1 1 130px;
+    margin-left: 0;
+  }
+}
