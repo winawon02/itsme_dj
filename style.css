@@ -8267,9 +8267,9 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   }
 }
 
-:where(#itsme-content.page-branch-native) { min-width: 0; }
-:where(#itsme-content.page-branch-native) #sub_visual { overflow: hidden; }
-:where(#itsme-content.page-branch-native) #sub_visual img { display: block; width: 100%; height: auto; }
+#itsme-content.page-branch-native { min-width: 0; }
+:where(#itsme-content.page-branch-native) #sub_visual { overflow: hidden; background: #222 url(assets/b284fd30-branch_visual.jpg) center / cover no-repeat; }
+:where(#itsme-content.page-branch-native) #sub_visual img { display: block; width: 1920px; max-width: none; height: 340px; margin-left: calc(50% - 960px); }
 :where(#itsme-content.page-branch-native) .branch-native-content { width: min(1080px, calc(100% - 40px)); margin: 0 auto; padding: 74px 0 86px; color: #252525; }
 :where(#itsme-content.page-branch-native) .branch-native-eyebrow { margin: 0 0 11px; color: #e5602d; font-size: 14px; letter-spacing: .14em; }
 :where(#itsme-content.page-branch-native) h1 { margin: 0; font-size: clamp(30px, 3vw, 42px); font-weight: 600; line-height: 1.25; }
@@ -8282,6 +8282,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 :where(#itsme-content.page-branch-native) .branch-native-details a:hover { color: #e5602d; }
 :where(#itsme-content.page-branch-native) .branch-native-note { margin: 21px 0 0; color: #777; font-size: 14px; }
 @media (max-width: 640px) {
+  :where(#itsme-content.page-branch-native) #sub_visual img { height: 260px; width: 1468px; margin-left: calc(50% - 734px); }
   :where(#itsme-content.page-branch-native) .branch-native-content { padding: 46px 0 60px; }
   :where(#itsme-content.page-branch-native) .branch-native-details > div { display: block; padding: 18px 3px; font-size: 15px; }
   :where(#itsme-content.page-branch-native) .branch-native-details strong { display: block; margin-bottom: 6px; }
