@@ -7387,6 +7387,23 @@ h2:nth-of-type(1)::after{
 
 :where(#itsme-content.page-filler) .price_list li.empty{ padding:50px 0; text-align:center; border-top:none; }
 
+:where(#itsme-content.page-pico) #main .flex-col{ max-width: 825px; margin: 0 auto; }
+:where(#itsme-content.page-pico) #main .swiper-wr{ background: #1D1D1D; overflow: hidden; }
+:where(#itsme-content.page-pico) #main .swiper{ width: 674px; margin: 0 auto; overflow: hidden; }
+:where(#itsme-content.page-pico) #main .swiper-paging{
+	display: flex;
+	justify-content: center;
+	padding: 40px 0 110px;
+}
+:where(#itsme-content.page-pico) #main .swiper-pagination-bullet{
+	width: 14px;
+	height: 14px;
+	background: #fff;
+	opacity: 1;
+	margin: 0 5px;
+}
+:where(#itsme-content.page-pico) #main .swiper-pagination-bullet-active{ background: #f65c5c; }
+
 :where(#itsme-content.page-xeomin) .price_list li.empty{ padding:50px 0; text-align:center; border-top:none; }
 
 :where(#itsme-content.page-xeomin) p{margin: 0;}
@@ -7823,6 +7840,48 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   letter-spacing: -0.06em;
   text-align: center;
 }
+
+/* Pico stores its page-specific layout in the original document head. Keep
+   the 825px artwork centered while allowing Imweb and mobile viewports to fit. */
+#itsme-content.page-pico {
+  min-width: 0;
+  overflow: hidden;
+}
+:where(#itsme-content.page-pico) #main.pico,
+:where(#itsme-content.page-pico) #main.pico > .flex,
+:where(#itsme-content.page-pico) #main.pico .flex-col {
+  width: 100%;
+  min-width: 0;
+}
+:where(#itsme-content.page-pico) #main.pico .flex-col {
+  max-width: 825px;
+  margin: 0 auto;
+}
+:where(#itsme-content.page-pico) #main.pico .flex-col > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+:where(#itsme-content.page-pico) #main.pico .swiper-wr {
+  width: 100%;
+  overflow: hidden;
+  background: #1d1d1d;
+}
+:where(#itsme-content.page-pico) #main.pico .swiper {
+  width: min(674px, 81.7%);
+  margin: 0 auto;
+  overflow: hidden;
+}
+:where(#itsme-content.page-pico) #main.pico .swiper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+:where(#itsme-content.page-pico) #main.pico .swiper-paging {
+  display: flex;
+  padding: 40px 0 110px;
+  justify-content: center;
+}
 :where(#itsme-content.page-index) #main_event.fixed_bottom .title {
   position: absolute;
   top: auto;
@@ -7991,6 +8050,22 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
     font-weight: 500 !important;
   }
 
+  #doz_header_wrap ._inline_menu_container > .viewport-nav > li > a:hover,
+  #doz_header_wrap ._inline_menu_container > .viewport-nav > li > a:focus {
+    color: inherit !important;
+  }
+
+  #doz_header_wrap ._inline_menu_container .dropdown-menu > li > a,
+  #doz_header_wrap ._inline_menu_container .dropdown-menu > li > a .plain_name {
+    color: #212121 !important;
+  }
+
+  #doz_header_wrap ._inline_menu_container .dropdown-menu > li > a:hover,
+  #doz_header_wrap ._inline_menu_container .dropdown-menu > li > a:focus {
+    color: #151515 !important;
+    background: #f5f5f5 !important;
+  }
+
   #doz_header_wrap ._inline_menu_container > .viewport-nav > li > a .plain_name {
     position: relative;
     display: inline-block;
@@ -8036,6 +8111,30 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 
   body:has(#itsme-content.page-index) #doz_header_wrap ._inline_menu_container > .viewport-nav > li:not(:first-child) > a {
     color: #fff !important;
+  }
+
+  body:has(#itsme-content.page-index).itsme-header-scrolled #inline_header_normal {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.97) !important;
+    box-shadow: 0 6px 24px rgba(0,0,0,.08);
+    backdrop-filter: blur(12px);
+  }
+
+  body:has(#itsme-content.page-index).itsme-header-scrolled #doz_header_wrap .inline-section-wrap,
+  body:has(#itsme-content.page-index).itsme-header-scrolled #doz_header_wrap .section_bg_color {
+    background: rgba(255,255,255,.97) !important;
+  }
+
+  body:has(#itsme-content.page-index).itsme-header-scrolled #doz_header_wrap .inline_widget.logo .normal_logo {
+    filter: none;
+  }
+
+  body:has(#itsme-content.page-index).itsme-header-scrolled #doz_header_wrap ._inline_menu_container > .viewport-nav > li:not(:first-child) > a {
+    color: #212121 !important;
   }
 
   @media (max-width: 1399px) {

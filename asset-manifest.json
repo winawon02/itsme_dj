@@ -2655,14 +2655,14 @@
     },
     {
       "file": "style.css",
-      "bytes": 531948,
-      "sha256": "698356befced2a7c441419e4c1ae6d288d3e47c59bdb6ce350ad2f4ffa5a6059"
+      "bytes": 535157,
+      "sha256": "eaddbb2584991c3b85b5667c5c02c4b155232b66a40b8bf2d288d367535aa07d"
     },
     {
       "file": "script.js",
-      "bytes": 738209,
-      "sha256": "82d0b31470d7ffe7b9fdad1db8f8a4e59a21fdff072b545700809cc04b75f005",
-      "sourceSha256": "c6ba4f8388a98e8f65c53d11ae10f77b1ecd498352174142d65ac6d915c6d063"
+      "bytes": 738780,
+      "sha256": "203fa18b01b8d3dc85efea1b01aacfa98fbcd0c35d6b63bb7a2c4775848b22e0",
+      "sourceSha256": "b7ed0590b1f5565e3834765f249bddccfb05ba49e81e43af9a94594dcca04970"
     }
   ],
   "oversized": [

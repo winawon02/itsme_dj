@@ -15184,6 +15184,15 @@ const itsmeMainEquipmentDetails = Object.freeze({
     target.style.display='block';root.querySelectorAll('.swiper-container').forEach(el=>el.swiper?.update());
   }));
   root.querySelectorAll('.prod_top .btn_toggle').forEach(button=>button.addEventListener('click',e=>{e.preventDefault();const target=button.closest('.toggle_wrap')?.querySelector('.toggle_cont');if(target)$(target).stop().slideToggle();button.classList.toggle('on');}));
+  root.querySelectorAll('#sub_ban .sbox').forEach((box,index)=>{
+    const activate=()=>{
+      const banner=box.closest('#sub_ban');
+      banner.dataset.num=String(index);
+      banner.querySelectorAll('.sbox').forEach(item=>item.classList.toggle('on',item===box));
+    };
+    box.addEventListener('mouseenter',activate);
+    box.addEventListener('focusin',activate);
+  });
   const price=root.querySelector('.price_wrap');
   if(price){const update=()=>price.classList.toggle('fixed_top',root.querySelector('.prod')?.getBoundingClientRect().top<0);window.addEventListener('scroll',update,{passive:true});update();}
   root.querySelectorAll('form').forEach(form=>form.addEventListener('submit',event=>{
@@ -15406,6 +15415,12 @@ const itsmeMainEquipmentDetails = Object.freeze({
     const observer = new MutationObserver(() => { if (mount()) observer.disconnect(); });
     observer.observe(document.documentElement, {childList: true, subtree: true});
   }
+})();
+
+(() => {
+  const updateHeader = () => document.body.classList.toggle('itsme-header-scrolled', scrollY > 30);
+  addEventListener('scroll', updateHeader, {passive: true});
+  updateHeader();
 })();
 
 /* Local handoff utility; bundled into the shared script.js, never a production section. */
