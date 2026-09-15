@@ -8333,6 +8333,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 .itsme-native-hero { width: 100%; height: 340px; overflow: hidden; background: #222 var(--itsme-native-hero-bg) center / cover no-repeat; }
+.itsme-native-db-page { overflow-x: hidden; }
 .itsme-native-hero__inner { position: relative; width: 100%; height: 100%; overflow: hidden; }
 .itsme-native-hero__inner img { display: block; width: 1920px; max-width: none; height: 340px; margin-left: calc(50% - 960px); }
 .itsme-native-db-content { background: #fff; }
@@ -8350,19 +8351,21 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 .itsme-native-db-content .reviewSearch { box-sizing: border-box; display: flex; width: 100%; margin: 0 0 38px; padding: 25px 30px; align-items: center; justify-content: center; background: #f7f7f7; }
 .itsme-native-db-content .reviewSearch input { width: min(510px, calc(100% - 70px)) !important; height: 48px !important; padding: 0 4px !important; border: 0 !important; border-bottom: 1px solid #222 !important; background: transparent !important; font-size: 15px !important; }
 .itsme-native-db-content .reviewSearch a, .itsme-native-db-content .reviewSearch button { min-width: 48px; height: 48px; border: 0 !important; border-bottom: 1px solid #222 !important; background: transparent !important; color: #222 !important; }
-.itsme-native-db-content .itsme-native-empty { box-sizing: border-box; display: flex !important; min-height: 300px; padding: 70px 30px !important; align-items: center; justify-content: center; flex-direction: column; gap: 12px; background: #faf8f6; color: #777; text-align: center; }
+.itsme-native-db-content .itsme-native-empty { box-sizing: border-box; display: flex !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; min-height: 300px; padding: 70px 30px !important; align-items: center; justify-content: center; flex-direction: column; gap: 12px; overflow: hidden; background: #faf8f6; color: #777; text-align: center; }
 .itsme-native-empty strong { color: #222; font-size: 24px; font-weight: 500; }
+.itsme-native-empty strong, .itsme-native-empty span { max-width: 100%; white-space: normal !important; overflow-wrap: anywhere; }
 .itsme-native-empty span { font-size: 15px; font-weight: 300; }
 .itsme-native-empty a { display: inline-block; margin-top: 12px; padding: 13px 30px; background: #e5602d; color: #fff !important; text-decoration: none; }
 .itsme-native-event .widget.board .card_wrapper, .itsme-native-event .widget.board .list-style-card { transition: transform .25s ease, box-shadow .25s ease; }
 .itsme-native-event .widget.board .card_wrapper:hover, .itsme-native-event .widget.board .list-style-card:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(21,21,21,.08); }
 @media (max-width: 767px) {
   .itsme-native-hero { height: 240px; }
-  .itsme-native-hero__inner img { width: 1356px; height: 240px; margin-left: calc(50% - 678px); }
+  .itsme-native-hero__inner img { width: 960px; height: 170px; margin: 35px 0 0 calc(50% - 480px); }
   .itsme-native-db-content > main { width: calc(100% - 30px) !important; padding: 45px 0 70px !important; }
   .itsme-native-intro { margin-bottom: 30px; }
   .itsme-native-intro h1 { font-size: 30px; }
   .itsme-native-intro > p:last-child { font-size: 14px; }
   .itsme-native-db-content .reviewSearch { padding: 18px 15px; }
-  .itsme-native-empty strong { font-size: 20px; }
+  .itsme-native-empty strong { display: block; width: 100%; font-size: 20px; }
+  .itsme-native-empty span { display: block; width: auto; max-width: 270px; font-size: 14px; line-height: 1.7; word-break: keep-all; }
 }
