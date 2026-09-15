@@ -7927,6 +7927,11 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   :where(#itsme-content.page-index) #laser_pop .category { right: 16px; bottom: 16px; font-size: 13px; line-height: 30px; }
 }
 
+/* Preserve the full doctor biography artwork at narrower widths. */
+#itsme-content.page-doctor { min-width: 0 !important; width: 100%; }
+#itsme-content.page-doctor #main, #itsme-content.page-doctor .flex { min-width: 0 !important; width: 100%; }
+#itsme-content.page-doctor img { display: block; width: 100%; max-width: 1920px; height: auto; margin: 0 auto; }
+
 #itsme-content.page-consultation{min-width:0;background:#fff;color:#151515;font-family:'Noto Sans KR',sans-serif;letter-spacing:-.03em}
 .page-consultation *{box-sizing:border-box}
 .page-consultation .consultation-frame{width:min(1180px,calc(100% - 80px));margin:0 auto}
