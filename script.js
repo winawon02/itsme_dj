@@ -14999,6 +14999,29 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
 			disableOnInteraction: false,
 		},
 	});}}};
+const itsmeMainEquipmentDetails = Object.freeze({
+  '67': {
+    title: 'ONDA', category: '리프팅', image: 'https://winawon02.github.io/itsme_dj/assets/78e18ec4-0225313213700.png',
+    description: '<p>이탈리아 DEKA사의&nbsp; ONDA 리프팅은 고주파(RF), 초음파(HIFU)를 대신하는, 극초단파(Microwave)를 사용하는 신기술입니다.</p><p><br></p><p>에너지 손실이 거의 없이 피부를 투과하며, 필요한 부위에만 에너지를 전달해 즉각적인 리프팅과 타이트닝 효과를 가져오고</p><p><br></p><p>지속적인 쿨링(Coolwaves 시스템)과 온도 센서를 통해 피부를 안전하게 보호하여, 마취 없이도 통증 없는 편안한 시술입니다.</p>'
+  },
+  '65': {
+    title: '덴서티', category: '리프팅', image: 'https://winawon02.github.io/itsme_dj/assets/85a189e3-0915238399900.png',
+    description: '<p><span style="font-size: 11pt;">듀얼 고주파를 사용하여 피부 깊은 곳까지 열 에너지를 전달하는 리프팅 시술입니다. 모노폴라와 바이폴라 방식의 고주파 에너지가 피부 밀도를 높여 콜라겐과 엘라스틴 생성을 촉진하고, 이를 통해 피부 탄력 개선, 주름 완화, 피부결 개선 등에 효과를 기대할 수 있습니다.</span></p>'
+  },
+  '37': {
+    title: '트리플바디', category: '제모/비만/무좀/관리', image: 'https://winawon02.github.io/itsme_dj/assets/original-triple-body-detail.png',
+    description: '<p>트리플바디는 중저주파(MLF), 저출력레이저(LLLD), 고주파(RF)를 이용한 3가지 기전의 복합적 시너지로 지방 및 셀룰라이트 관리에 도움을 줍니다. 트리플바디로 가장 큰 효과를 얻을 수 있는 것은 셀룰라이트 염증 완화와 근육의 활성화를 통한 피부결, 피부톤, 바디라인의 개선이며, 지방세포 개체 수 및 사이즈 감소, 콜라겐 섬유 재배열(지방 재배열)및 탄력증진입니다.</p>'
+  },
+  '9': {
+    title: '피코웨이', category: '피부레이저', image: 'https://winawon02.github.io/itsme_dj/assets/debdf662-0813917130600.png',
+    description: "<div>다 같은 피코레이저가 아니다! 세계 최고의 레이저 제조사 CANDELA의 최상급 피코레이저입니다.</div><div>기존의 '나노초' 레이저토닝보다 1000배 빨라진 '피코초' (pico, 1조분의 1초) 속도의 레이저토닝 입니다.</div><div>현존하는 색소제거 레이저 중 조사속도가 가장 빠르고 멜라닌 색소 입자를 가장 작게 부술 수 있는 유일한 기기로 정상 조직의 손상을 줄이고 짧은 시간동안 높은 에너지를 전달하여 원하는 시술부위의 색소만 선택적으로 제거할 수 있습니다.</div>"
+  },
+  '4': {
+    title: '울쎄라', category: '리프팅', image: 'https://winawon02.github.io/itsme_dj/assets/d3246d3e-0221467540100.png',
+    description: '<div>울쎄라는 세계 최초 초음파 리프팅 장비로 눈썹 리프팅을 포함한 총 4건의 FDA승인과 40건 이상의 논문이 발표되었고 2017년 글로벌 1백만 시술을 돌파하였습니다.</div><div>초음파로 시술을 진행하기때문에 흉터가 남지 않고 회복기간이 거의 필요하지 않다는 장점을 갖고 있습니다. 또한 피부 표면아래 SMAS(근막층)까지 초음파 에너지를 전달하여 리프팅과 재생 효과를 보실 수 있습니다.</div><div><br></div>'
+  }
+});
+
 /* Original main.js / inline Swiper settings, limited to the exported content. */
 (function () {
   'use strict';
@@ -15046,10 +15069,16 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   });
 
   const eventRoot = select('#main_event');
+  const eventTitle = select('#main_event .title');
   const eventList = select('#main_event .list_wrap ul');
   const eventTabs = all('#main_event .title a[data-code]');
   function updatePosition() {
-    eventRoot.classList.toggle('fixed_top', eventRoot.getBoundingClientRect().top < 0);
+    const rect = eventRoot.getBoundingClientRect();
+    const pinned = rect.top < 0 && rect.bottom > innerHeight;
+    const atBottom = rect.top < 0 && rect.bottom <= innerHeight;
+    eventRoot.classList.toggle('fixed_top', pinned);
+    eventRoot.classList.toggle('fixed_bottom', atBottom);
+    if (eventTitle) eventTitle.setAttribute('aria-hidden', 'false');
   }
   window.addEventListener('scroll', updatePosition, {passive:true});
   updatePosition();
@@ -15060,6 +15089,12 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   }
   eventTabs.forEach(tab => tab.addEventListener('click', e => {e.preventDefault();showEvents(tab);}));
   showEvents(eventTabs[0]);
+  if (/^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get('scrollEvent') === 'bottom') {
+    requestAnimationFrame(() => {
+      scrollTo(0, eventRoot.offsetTop + eventRoot.offsetHeight - innerHeight + 120);
+      updatePosition();
+    });
+  }
 
   all('#main_yt .tv-btn').forEach(button => button.addEventListener('click', () => {
     select('#main_yt iframe').src = 'https://www.youtube.com/embed/' + button.value;
@@ -15073,23 +15108,41 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
   const firstMedia = select('#media_swiper a');
   if (firstMedia) firstMedia.click();
 
-  // Original device popup populated from the card, until Imweb detail URLs exist.
+  // Rebuild the exact HTML contract returned by the original laser AJAX endpoint.
   all('#laser_swiper a').forEach(link => link.addEventListener('click', e => {
     e.preventDefault();
+    const detailData = itsmeMainEquipmentDetails[String(link.dataset.idx)];
+    if (!detailData) return;
     const box = select('#laser_pop .cbox');
     box.replaceChildren();
-    const detail = document.createElement('div');
     const picture = document.createElement('div');
-    picture.className='img';picture.append(link.querySelector('img').cloneNode(true));
+    picture.className='img';
+    const image = document.createElement('img');
+    image.src = detailData.image; image.alt = detailData.title;
+    const category = document.createElement('span');
+    category.className = 'category'; category.textContent = detailData.category;
+    picture.append(image, category);
     const text = document.createElement('div');text.className='tcont';
-    const heading = document.createElement('h2');heading.textContent=link.querySelector('strong').textContent;
-    const description = document.createElement('p');description.textContent=link.querySelector('.txt p').textContent;
-    text.append(heading,description);detail.append(text,picture);box.append(detail);
+    const heading = document.createElement('h2');heading.textContent=detailData.title;
+    const description = document.createElement('div');description.className='equipment-description';description.innerHTML=detailData.description;
+    text.append(heading,description);box.append(picture,text);
+    select('#laser_pop').setAttribute('role','dialog');
+    select('#laser_pop').setAttribute('aria-modal','true');
+    select('#laser_pop').setAttribute('aria-label',detailData.title+' 장비 상세');
     $(select('#laser_pop')).fadeIn();$(select('.laser_pop_dimmed_bg')).fadeIn();
   }));
+  if (/^(?:localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+    const previewEquipment = new URLSearchParams(location.search).get('equipmentPopup');
+    if (previewEquipment) select(`#laser_swiper a[data-idx="${previewEquipment}"]`)?.click();
+  }
   all('#laser_pop .btn_pop_close, .laser_pop_dimmed_bg').forEach(button => button.addEventListener('click', () => {
     $(select('#laser_pop')).fadeOut();$(select('.laser_pop_dimmed_bg')).fadeOut();
   }));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && getComputedStyle(select('#laser_pop')).display !== 'none') {
+      $(select('#laser_pop')).fadeOut();$(select('.laser_pop_dimmed_bg')).fadeOut();
+    }
+  });
   if (location.protocol === 'file:') {
     // YouTube requires a HTTP Referer. Keep an actionable fallback for file preview.
     all('iframe[src*="youtube.com"]').forEach(frame => {
@@ -15278,6 +15331,81 @@ const itsmeOriginalSliders={"page-juvederm":function(root){{const el=root.queryS
       }
     }
   });
+})();
+
+(() => {
+  const pages = {
+    '/event': {
+      kind: 'event', title: '진행 중인 이벤트',
+      description: '잇츠미 대전점의 새로운 소식과 혜택을 확인해 보세요.',
+      background: 'https://winawon02.github.io/itsme_dj/assets/596165c2-community01_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/6a7aa200-community01_title.png',
+      empty: '새로운 이벤트를 준비하고 있습니다.', emptyNote: '궁금한 시술은 상담 신청을 통해 먼저 안내받으실 수 있습니다.', action: '/consultation', actionText: '상담 신청'
+    },
+    '/reviews': {
+      kind: 'reviews', title: '시술 후기',
+      description: '잇츠미 대전점을 경험한 고객의 이야기를 확인해 보세요.',
+      background: 'https://winawon02.github.io/itsme_dj/assets/c61b620f-network06_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/f3d8f312-network06_title.png',
+      empty: '등록된 시술 후기가 없습니다.', emptyNote: '새로운 후기가 등록되면 이곳에서 확인할 수 있습니다.'
+    },
+    '/notices': {
+      kind: 'notices', title: '공지 & 이슈',
+      description: '진료와 이용에 필요한 소식을 빠르게 안내합니다.',
+      background: 'https://winawon02.github.io/itsme_dj/assets/ff4391c7-network04_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/2f53a80b-network04_title.png',
+      empty: '등록된 공지가 없습니다.', emptyNote: '새로운 소식은 이곳에서 안내해 드립니다.'
+    },
+    '/voice': {
+      kind: 'voice', title: '고객의 소리',
+      description: '남겨주신 의견을 세심하게 확인하겠습니다.',
+      background: 'https://winawon02.github.io/itsme_dj/assets/3e4dba0e-network05_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/32fd0149-network05_title.png'
+    },
+    '/consultation': {
+      kind: 'consultation', title: '온라인 상담',
+      description: '희망 시술과 상담 일정을 남겨주시면 순차적으로 안내합니다.',
+      background: 'https://winawon02.github.io/itsme_dj/assets/cfc0b5fe-community03_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/1ebb5e96-community03_title.png'
+    }
+  };
+  const previewKind = /^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get('page') : '';
+  const path = previewKind && pages['/'+previewKind] ? '/'+previewKind : (location.pathname.replace(/\/$/, '') || '/');
+  const page = pages[path];
+  if (!page || document.querySelector('.itsme-native-hero')) return;
+
+  const findWidget = () => document.querySelector('[data-widget-type="board"], [data-widget-name="입력폼"], [data-widget-type="form"], [id^="addForm"]');
+  const mount = () => {
+    const widget = findWidget();
+    if (!widget) return false;
+    const section = widget.closest('[doz_type="section"], .section_wrap');
+    if (!section) return false;
+    document.body.classList.add('itsme-native-db-page', `itsme-native-${page.kind}`);
+    section.classList.add('itsme-native-db-content');
+
+    const hero = document.createElement('section');
+    hero.className = 'itsme-native-hero';
+    hero.style.setProperty('--itsme-native-hero-bg', `url("${page.background}")`);
+    hero.innerHTML = `<div class="itsme-native-hero__inner"><img src="${page.titleImage}" alt="${page.title}"></div>`;
+    section.before(hero);
+
+    const intro = document.createElement('div');
+    intro.className = 'itsme-native-intro';
+    intro.innerHTML = `<p class="itsme-native-intro__eyebrow">IT'S ME DAEJEON</p><h1>${page.title}</h1><p>${page.description}</p>`;
+    const main = section.querySelector('main') || section;
+    main.prepend(intro);
+
+    const enhanceEmpty = scope => {
+      if (!page.empty || scope.querySelector('.itsme-native-empty')) return;
+      const candidates = [...scope.querySelectorAll('p, div, td, li')];
+      const target = candidates.find(el => !el.children.length && /게시물이 없습니다\.?/.test(el.textContent.trim()));
+      if (!target) return;
+      target.classList.add('itsme-native-empty');
+      target.innerHTML = `<strong>${page.empty}</strong><span>${page.emptyNote}</span>${page.action ? `<a href="${page.action}">${page.actionText}</a>` : ''}`;
+    };
+    enhanceEmpty(section);
+    new MutationObserver(() => enhanceEmpty(section)).observe(section, {childList: true, subtree: true});
+    return true;
+  };
+  if (!mount()) {
+    const observer = new MutationObserver(() => { if (mount()) observer.disconnect(); });
+    observer.observe(document.documentElement, {childList: true, subtree: true});
+  }
 })();
 
 /* Local handoff utility; bundled into the shared script.js, never a production section. */

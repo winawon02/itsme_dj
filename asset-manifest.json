@@ -2649,15 +2649,20 @@
       "sha256": "f7f686d998fcfa5ddd44c20396bbe36893787287574955e3ddc6278122069ba5"
     },
     {
+      "file": "assets/original-triple-body-detail.png",
+      "bytes": 168111,
+      "sha256": "10d7852f4f52f99f3070bb7b80d1faebf3d08800e0d447f2b6dcdc29a5bf7408"
+    },
+    {
       "file": "style.css",
-      "bytes": 525265,
-      "sha256": "d5392091ea7cb496fa4d0cd4ac59f4beabda55a77d29d5c3e45ff8c1eb2e6602"
+      "bytes": 531509,
+      "sha256": "131d53a574688f90f9593c10afd4f419379bda391d3102ee338d11f5aa894ae8"
     },
     {
       "file": "script.js",
-      "bytes": 728492,
-      "sha256": "2c1ff181d7ffdc3642cddb42e70b0242cf81a034301c714c8f0e73b35506064b",
-      "sourceSha256": "97539dbc55bc618adb3a969ee6102a679c2d0b7c7f6266821a04436b2454254f"
+      "bytes": 738209,
+      "sha256": "82d0b31470d7ffe7b9fdad1db8f8a4e59a21fdff072b545700809cc04b75f005",
+      "sourceSha256": "c6ba4f8388a98e8f65c53d11ae10f77b1ecd498352174142d65ac6d915c6d063"
     }
   ],
   "oversized": [
