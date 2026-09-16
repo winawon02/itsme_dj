@@ -8793,6 +8793,27 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #itsme-content .sub_branch .map_box { max-width: 100%; }
 }
 
+@media (max-width: 1199px) {
+  #itsme-content.page-signature .welcome .wrapper > .welcome_photo01 { box-sizing: border-box; flex: 0 1 40%; width: 40%; min-width: 0; }
+  #itsme-content.page-signature .welcome .wrapper > .welcome_photo02 { box-sizing: border-box; flex: 1 1 60%; width: 60%; min-width: 0; }
+  #itsme-content.page-signature .welcome_photo02,
+  #itsme-content.page-signature .welcome_photo03,
+  #itsme-content.page-signature .works_left,
+  #itsme-content.page-signature .works_right { max-width: 100%; min-width: 0 !important; }
+  #itsme-content.page-signature .works_right p,
+  #itsme-content.page-signature .works_right p span { overflow-wrap: anywhere; }
+  #itsme-content.page-signature :is(#our, #journey, #Portfolio01, #Portfolio02, #Portfolio03, #PortfolioLast, #EquipmentTitle, #PersonalTitle) {
+    max-width: 100%;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #itsme-content.page-signature .welcome .wrapper { display: block; }
+  #itsme-content.page-signature .welcome .wrapper > .welcome_photo01,
+  #itsme-content.page-signature .welcome .wrapper > .welcome_photo02 { width: 100%; }
+}
+
 @media (max-width: 767px) {
   #itsme-content.page-careguide #sub_visual img,
   #itsme-content.page-community-laser #sub_visual img,
