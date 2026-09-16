@@ -7931,6 +7931,13 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 #itsme-content.page-doctor { min-width: 0 !important; width: 100%; }
 #itsme-content.page-doctor #main, #itsme-content.page-doctor .flex { min-width: 0 !important; width: 100%; }
 #itsme-content.page-doctor img { display: block; width: 100%; max-width: 1920px; height: auto; margin: 0 auto; }
+.doz_sys .section_wrap:has(#itsme-content.page-doctor),
+.doz_sys .section_wrap:has(#itsme-content.page-doctor) :is(.inside, .col-dz, .widget),
+.doz_sys .section_wrap:has(#itsme-content.page-doctor) .widget_html {
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
 
 /* The source careguide page declares its page CSS before the document head,
    so it cannot be collected by the normal head-style packager. */
@@ -8672,19 +8679,15 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 /* Shared board controls: auxiliary actions remain neutral. */
-.itsme-native-db-content .widget.board .comment_num.btn,
-.itsme-native-db-content .widget.board .comment_section .tools button.comment_num,
-.itsme-native-db-content .widget.board .btn-group-comment .comment_num {
+.itsme-native-db-content .widget.board :is(.comment_num.btn, .comment_section .tools .btn, .btn-group-comment .btn, .board_view .btn-icon) {
   background: #fff !important;
-  border: 1px solid #e6e6e6 !important;
+  border: 0 !important;
   color: #555 !important;
   box-shadow: none !important;
 }
-.itsme-native-db-content .widget.board .comment_num.btn:hover,
-.itsme-native-db-content .widget.board .comment_section .tools button.comment_num:hover,
-.itsme-native-db-content .widget.board .btn-group-comment .comment_num:hover {
+.itsme-native-db-content .widget.board :is(.comment_num.btn, .comment_section .tools .btn, .btn-group-comment .btn, .board_view .btn-icon):hover {
   background: #fafafa !important;
-  border-color: #d8d8d8 !important;
+  border: 0 !important;
   color: #222 !important;
 }
 .itsme-native-db-content .widget.board .board-head { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; padding: 0 0 26px; }

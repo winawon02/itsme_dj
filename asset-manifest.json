@@ -29,11 +29,6 @@
       "sha256": "ce77741c12a39bd6c87307d270936d787b2db7dceaff86b8e27bb554be5ad797"
     },
     {
-      "file": "assets/dd53c82f-icon_search.png",
-      "bytes": 1318,
-      "sha256": "6f5b9589d35b090e73603e76ed27b98dab26ee43c460dc2a83a742b96be46d74"
-    },
-    {
       "file": "assets/6edb375d-title.jpg",
       "bytes": 23436,
       "sha256": "ae57cadc4d9460db920baf96ea3ee68640f303caa2871db69951cdc9b976b759"
@@ -2660,8 +2655,8 @@
     },
     {
       "file": "style.css",
-      "bytes": 544559,
-      "sha256": "225d1ebb64012a1f980d6143150ce90005bf8feb148d33dfb8904b20c0da21e1"
+      "bytes": 544681,
+      "sha256": "3a42899f2b323665b882b6b7344f236d4185e3d1aed27cb6d3d6ff64b145dfac"
     },
     {
       "file": "script.js",
