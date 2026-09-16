@@ -8239,8 +8239,64 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   line-height: 1.7 !important;
 }
 
+#doz_footer_wrap .custom-text-info > p:nth-child(2),
+#doz_footer_wrap .custom-text-info .fr-element > p:nth-child(2) {
+  display: none !important;
+}
+
 #doz_footer_wrap .custom-text-info > p:nth-child(3),
-#doz_footer_wrap .custom-text-info .fr-element > p:nth-child(3) { margin-top: 8px !important; }
+#doz_footer_wrap .custom-text-info .fr-element > p:nth-child(3) {
+  margin-top: 8px !important;
+}
+
+#doz_footer_wrap .itsme-footer-meta {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 8px;
+  color: #7b7b7b;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+#doz_footer_wrap .itsme-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  align-items: center;
+}
+
+#doz_footer_wrap .itsme-footer-links a,
+#doz_footer_wrap .itsme-footer-links span {
+  color: #7b7b7b !important;
+  text-decoration: none;
+}
+
+#doz_footer_wrap .itsme-footer-links a:hover,
+#doz_footer_wrap .itsme-footer-links a:focus {
+  color: #fff !important;
+}
+
+#doz_footer_wrap .itsme-footer-social {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 22px;
+  align-items: center;
+}
+
+#doz_footer_wrap .itsme-footer-social a {
+  color: #7b7b7b !important;
+  font-size: 22px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+#doz_footer_wrap .itsme-footer-social a:hover,
+#doz_footer_wrap .itsme-footer-social a:focus {
+  color: #fff !important;
+}
 
 #doz_footer_wrap .custom-text-info > ul,
 #doz_footer_wrap .custom-text-info .fr-element > ul {
@@ -8261,13 +8317,13 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   min-height: 55px;
   border-bottom: 1px solid #2b2b2b;
   color: #fff;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.55;
 }
 
 #doz_footer_wrap .foot-foot-nav {
-  display: flex !important;
+  display: none !important;
   flex-wrap: wrap;
   gap: 8px 25px;
   margin: 18px 0 0 !important;
@@ -8275,7 +8331,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 #doz_footer_wrap .foot-foot-nav .footer_menu > li {
-  display: list-item !important;
+  display: none !important;
 }
 
 #doz_footer_wrap .foot-foot-nav .footer_menu > li:has(a[data-url="branch"]) {
@@ -8349,6 +8405,14 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #doz_footer_wrap .foot-sociallink {
     position: static;
     margin-top: 22px;
+  }
+
+  #doz_footer_wrap .itsme-footer-meta {
+    display: block;
+  }
+
+  #doz_footer_wrap .itsme-footer-social {
+    margin-top: 20px;
   }
 
   #doz_footer_wrap .custom-text-info > ul,
@@ -8514,8 +8578,21 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 /* Shared board controls: auxiliary actions remain neutral. */
-.itsme-native-db-content .widget.board .comment_num.btn { background: transparent !important; border-color: transparent !important; color: #555 !important; box-shadow: none !important; }
-.itsme-native-db-content .widget.board .comment_num.btn:hover { background: #f5f5f5 !important; color: #222 !important; }
+.itsme-native-db-content .widget.board .comment_num.btn,
+.itsme-native-db-content .widget.board .comment_section .tools button.comment_num,
+.itsme-native-db-content .widget.board .btn-group-comment .comment_num {
+  background: #fff !important;
+  border: 1px solid #e6e6e6 !important;
+  color: #555 !important;
+  box-shadow: none !important;
+}
+.itsme-native-db-content .widget.board .comment_num.btn:hover,
+.itsme-native-db-content .widget.board .comment_section .tools button.comment_num:hover,
+.itsme-native-db-content .widget.board .btn-group-comment .comment_num:hover {
+  background: #fafafa !important;
+  border-color: #d8d8d8 !important;
+  color: #222 !important;
+}
 .itsme-native-db-content .widget.board .board-head { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; padding: 0 0 26px; }
 .itsme-native-db-content .widget.board #reviewSearch { margin: 0; }
 .itsme-native-db-content .widget.board .card-summary,

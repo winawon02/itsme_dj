@@ -15421,6 +15421,40 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const updateHeader = () => document.body.classList.toggle('itsme-header-scrolled', scrollY > 30);
   addEventListener('scroll', updateHeader, {passive: true});
   updateHeader();
+
+  const enhanceFooter = () => {
+    const info = document.querySelector('#doz_footer_wrap .custom-text-info');
+    if (!info || info.querySelector('.itsme-footer-meta')) return false;
+
+    const firstParagraph = info.querySelector(':scope > p:first-child');
+    const meta = document.createElement('div');
+    meta.className = 'itsme-footer-meta';
+    meta.innerHTML = `
+      <nav class="itsme-footer-links" aria-label="푸터 메뉴">
+        <a href="/?mode=policy">사이트 이용약관</a>
+        <a href="/?mode=privacy">개인정보처리방침</a>
+        <a href="/branch">지점 찾기</a>
+        <a href="/email-policy">이메일무단수집거부</a>
+        <span>제휴문의 : content.itsme.clinic@gmail.com</span>
+      </nav>
+      <div class="itsme-footer-social" aria-label="소셜 미디어">
+        <a href="https://www.instagram.com/itsme_clinic_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span aria-hidden="true">◎</span></a>
+        <a href="https://www.youtube.com/channel/UCmP907OimDzU6yJZdIuL4Kg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span aria-hidden="true">▶</span></a>
+      </div>`;
+    firstParagraph?.after(meta);
+
+    info.querySelectorAll(':scope > ul > li').forEach(item => {
+      item.textContent = item.textContent.replace(/^([^·]+?)\s*·\s*/, '[$1] ');
+    });
+    return true;
+  };
+
+  if (!enhanceFooter()) {
+    const observer = new MutationObserver(() => {
+      if (enhanceFooter()) observer.disconnect();
+    });
+    observer.observe(document.documentElement, {childList: true, subtree: true});
+  }
 })();
 
 /* Local handoff utility; bundled into the shared script.js, never a production section. */
