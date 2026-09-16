@@ -15201,7 +15201,54 @@ const itsmeMainEquipmentDetails = Object.freeze({
     message.textContent='정적 미리보기입니다. 접수·로그인·검색 기능은 아임웹에서 연결합니다.';
   }));
   root.querySelectorAll('a[href^="javascript:"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
-  root.querySelectorAll('.btn_share').forEach(button=>button.addEventListener('click',()=>navigator.clipboard?.writeText(location.href)));
+})();
+
+/* The original SHARE control copies the current page URL and confirms it. */
+(() => {
+  const root = document.getElementById('itsme-content');
+  if (!root) return;
+
+  function copyWithSelection(url) {
+    const field = document.createElement('textarea');
+    field.value = url;
+    field.setAttribute('aria-hidden', 'true');
+    field.style.position = 'fixed';
+    field.style.top = '-9999px';
+    document.body.append(field);
+    field.select();
+    try {
+      return document.execCommand('copy');
+    } finally {
+      field.remove();
+    }
+  }
+
+  async function share(event) {
+    event.preventDefault();
+    const url = location.href;
+    let copied = false;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(url);
+        copied = true;
+      } catch { /* Older browser permissions may require selection copying. */ }
+    }
+    if (!copied) {
+      try { copied = copyWithSelection(url); } catch { copied = false; }
+    }
+    alert(copied
+      ? 'URL이 복사되었습니다.\nCtrl+V로 주소를 공유해주세요!'
+      : 'URL을 복사하지 못했습니다. 주소창에서 주소를 직접 복사해주세요.');
+  }
+
+  for (const button of root.querySelectorAll('.btn_share')) {
+    button.setAttribute('role', 'button');
+    button.tabIndex = 0;
+    button.addEventListener('click', share);
+    button.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') share(event);
+    });
+  }
 })();
 
 (() => {
