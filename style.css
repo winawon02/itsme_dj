@@ -8800,6 +8800,8 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #itsme-content.page-signature .welcome_photo03,
   #itsme-content.page-signature .works_left,
   #itsme-content.page-signature .works_right { max-width: 100%; min-width: 0 !important; }
+  #itsme-content.page-signature .welcome_photo02 img,
+  #itsme-content.page-signature .welcome_photo03 img { display: block; max-width: 100%; height: auto; }
   #itsme-content.page-signature .works_right p,
   #itsme-content.page-signature .works_right p span { overflow-wrap: anywhere; }
   #itsme-content.page-signature :is(#our, #journey, #Portfolio01, #Portfolio02, #Portfolio03, #PortfolioLast, #EquipmentTitle, #PersonalTitle) {
