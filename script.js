@@ -15491,7 +15491,16 @@ const itsmeMainEquipmentDetails = Object.freeze({
     firstParagraph?.after(meta);
 
     info.querySelectorAll(':scope > ul > li').forEach(item => {
-      item.textContent = item.textContent.replace(/^([^·]+?)\s*·\s*/, '[$1] ');
+      const text = item.textContent.replace(/^([^·]+?)\s*·\s*/, '[$1] ');
+      const parts = text.match(/^(.*?)\s*·\s*(대표자\s*:\s*.*?)\s*·\s*(사업자등록번호\s*:\s*.*)$/);
+      if (!parts) { item.textContent = text; return; }
+      item.replaceChildren();
+      for (const [className, value] of [['branch', parts[1]], ['representative', parts[2]], ['registration', parts[3]]]) {
+        const span = document.createElement('span');
+        span.className = `itsme-footer-${className}`;
+        span.textContent = value;
+        item.append(span);
+      }
     });
     return true;
   };

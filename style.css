@@ -8416,9 +8416,10 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 
 #doz_footer_wrap .custom-text-info > ul > li,
 #doz_footer_wrap .custom-text-info .fr-element > ul > li {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   min-width: 0;
-  gap: 24px;
+  gap: 4px 24px;
   align-items: center;
   min-height: 55px;
   border-bottom: 1px solid #2b2b2b;
@@ -8426,6 +8427,22 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   font-size: 16px;
   font-weight: 300;
   line-height: 1.55;
+}
+
+#doz_footer_wrap .itsme-footer-branch { min-width: 0; }
+#doz_footer_wrap .itsme-footer-representative,
+#doz_footer_wrap .itsme-footer-registration { white-space: nowrap; }
+
+@media (max-width: 1599px) {
+  #doz_footer_wrap .custom-text-info > ul > li,
+  #doz_footer_wrap .custom-text-info .fr-element > ul > li {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 3px 18px;
+    padding: 10px 0;
+  }
+  #doz_footer_wrap .itsme-footer-branch { grid-column: 1 / -1; }
+  #doz_footer_wrap .itsme-footer-representative,
+  #doz_footer_wrap .itsme-footer-registration { color: #aaa; font-size: 13px; }
 }
 
 #doz_footer_wrap .foot-foot-nav {
@@ -8500,6 +8517,22 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 @media (max-width: 1023px) {
+  #doz_header_wrap, #doz_header, #inline_header_mobile {
+    height: 49px !important;
+    min-height: 49px !important;
+  }
+  #mobile_carousel_menu { display: none !important; }
+  #inline_header_mobile .logo_title a {
+    display: block !important;
+    width: 174px;
+    height: 26px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: url(assets/a7a8e8c1-b_logo.png) center / contain no-repeat;
+    filter: brightness(0);
+    font-size: 0 !important;
+    text-indent: -9999px;
+  }
   #doz_footer_wrap .footer-section {
     padding: 60px 0 80px !important;
   }
@@ -8542,9 +8575,13 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #doz_footer_wrap .custom-text-info > ul > li,
   #doz_footer_wrap .custom-text-info .fr-element > ul > li {
     display: grid;
-    gap: 4px;
-    padding: 13px 0;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 3px 12px;
+    padding: 12px 0;
   }
+  #doz_footer_wrap .itsme-footer-branch { font-size: 14px; line-height: 1.5; }
+  #doz_footer_wrap .itsme-footer-representative,
+  #doz_footer_wrap .itsme-footer-registration { font-size: 12px; }
 }
 
 /* Laser equipment list: retain the original design while keeping closed layers inert. */
@@ -8725,4 +8762,80 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
  .itsme-native-db-content .itsme-event-detail h2 { font-size: 25px; }
  .itsme-native-db-content .itsme-event-detail .itsme-event-price { font-size: 30px; }
  .itsme-native-db-content .itsme-event-detail .itsme-event-offer { font-size: 16px; }
+}
+
+/* The source site used a 1400px desktop canvas. Let Imweb's actual viewport
+   size the migrated bodies, then stack the recurring article sections. */
+@media (max-width: 1399px) {
+  #itsme-content {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: clip;
+  }
+  #itsme-content #main,
+  #itsme-content #sub_contents,
+  #itsme-content .prod_detail { min-width: 0 !important; max-width: 100% !important; }
+  #itsme-content .inwrap,
+  #itsme-content .sub_branch .inbox {
+    box-sizing: border-box;
+    max-width: calc(100% - 40px) !important;
+  }
+  #itsme-content .prod { max-width: calc(100% - 40px) !important; }
+  #itsme-content #sub_contents img,
+  #itsme-content .prod_detail img,
+  #itsme-content .sub_branch img { max-width: 100%; height: auto; }
+  #itsme-content iframe { max-width: 100%; }
+  #itsme-content .sub_branch .branch_search,
+  #itsme-content .sub_branch .map_box { max-width: 100%; }
+}
+
+@media (max-width: 767px) {
+  #itsme-content .inwrap,
+  #itsme-content .sub_branch .inbox { max-width: calc(100% - 30px) !important; }
+  #itsme-content .top_search,
+  #itsme-content #main_search {
+    height: 190px !important;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+  #itsme-content .top_search .inwrap,
+  #itsme-content #main_search .inwrap {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    padding: 0 20px !important;
+  }
+  #itsme-content .migration-brand-slogan {
+    font-size: clamp(22px, 6vw, 30px);
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+  #itsme-content .prod {
+    width: calc(100% - 30px) !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+  }
+  #itsme-content .prod .prod_detail { flex-basis: 100% !important; width: 100% !important; padding: 55px 0 70px !important; }
+  #itsme-content .prod_detail .header .tit { font-size: 30px; line-height: 1.35; }
+  #itsme-content .prod_detail .header .stit { font-size: 16px; line-height: 1.6; }
+  #itsme-content .prod_detail .header .btn_share { position: static; display: inline-block; margin-top: 18px; }
+  #itsme-content .prod_detail .img_cont { margin: 34px 0 !important; }
+  #itsme-content .prod_top { margin-top: 60px; }
+  #itsme-content .prod_top strong { font-size: 21px; }
+  #itsme-content .num_list p,
+  #itsme-content .information li,
+  #itsme-content .qna .q_cont,
+  #itsme-content .qna .a_cont { font-size: 15px; line-height: 1.65; }
+  #itsme-content .information li { float: none; width: 100%; padding-left: 120px; }
+  #itsme-content .qna .q_cont,
+  #itsme-content .qna .a_cont { padding-left: 55px; background-size: 38px auto; }
+  #itsme-content .sub_branch { padding: 55px 0; }
+  #itsme-content .sub_branch .title h3 { font-size: 28px; }
+  #itsme-content .sub_branch .branch_search,
+  #itsme-content .sub_branch .map_box { float: none; width: 100%; }
+  #itsme-content .sub_branch .map_box { height: 360px; margin-top: 25px; }
+  #itsme-content .sub_branch .map_box iframe { width: 100%; height: 100%; }
 }
