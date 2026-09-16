@@ -2654,9 +2654,14 @@
       "sha256": "10d7852f4f52f99f3070bb7b80d1faebf3d08800e0d447f2b6dcdc29a5bf7408"
     },
     {
+      "file": "assets/careguide-banner.png",
+      "bytes": 425845,
+      "sha256": "afe84e6c48ce7012364650aba359ee36a1f4ffd8757cdd3cbcf64384a3bc7a35"
+    },
+    {
       "file": "style.css",
-      "bytes": 541998,
-      "sha256": "ff2f649b5fb98ab835be9a3aeb977048e9a7dc74586fad22f17154e196c8e948"
+      "bytes": 544559,
+      "sha256": "225d1ebb64012a1f980d6143150ce90005bf8feb148d33dfb8904b20c0da21e1"
     },
     {
       "file": "script.js",
