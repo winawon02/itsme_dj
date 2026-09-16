@@ -8517,6 +8517,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 @media (max-width: 1023px) {
+  #pc_slide_menu .nav.navbar-nav { box-sizing: border-box; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
   #doz_header_wrap, #doz_header, #inline_header_mobile {
     height: 49px !important;
     min-height: 49px !important;
@@ -8807,7 +8808,46 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   }
   #itsme-content.page-careguide #sub_visual,
   #itsme-content.page-community-laser #sub_visual,
-  #itsme-content.page-community-laser-115dff #sub_visual { height: 240px !important; overflow: hidden; }
+  #itsme-content.page-community-laser-115dff #sub_visual {
+    position: relative;
+    height: 240px !important;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+  }
+  #itsme-content.page-careguide #sub_visual img,
+  #itsme-content.page-community-laser #sub_visual img,
+  #itsme-content.page-community-laser-115dff #sub_visual img { visibility: hidden; }
+  #itsme-content.page-careguide #sub_visual::before,
+  #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::before {
+    position: absolute;
+    top: 77px;
+    left: 15px;
+    right: 15px;
+    z-index: 1;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    line-height: 1.1;
+    text-align: center;
+    text-shadow: 0 2px 9px rgba(0,0,0,.65);
+  }
+  #itsme-content.page-careguide #sub_visual::before { content: 'After Care'; }
+  #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::before { content: '프리미엄 치료장비'; font-family: 'Noto Sans KR', sans-serif; font-size: 30px; font-weight: 500; }
+  #itsme-content.page-careguide #sub_visual::after,
+  #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::after {
+    position: absolute;
+    top: 139px;
+    left: 15px;
+    right: 15px;
+    z-index: 1;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    text-shadow: 0 1px 7px rgba(0,0,0,.8);
+  }
+  #itsme-content.page-careguide #sub_visual::after { content: '시술 후 주의사항'; }
+  #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::after { content: '잇츠미의원의 장비를 소개합니다'; }
   #itsme-content .inwrap,
   #itsme-content .sub_branch .inbox { max-width: calc(100% - 30px) !important; }
   #itsme-content .top_search,
@@ -8861,6 +8901,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #itsme-content.page-mirajet .top_swiper img,
   #itsme-content.page-mirajet .bot_swiper img { display: block; width: 100% !important; height: auto !important; }
   #itsme-content.page-mirajet .bot_swiper { height: auto !important; }
+  #itsme-content.page-density .prod_detail video { position: static !important; width: 100% !important; height: auto !important; }
 
   #itsme-content.page-signature .works_desc { min-width: 0 !important; width: 100% !important; }
   #itsme-content.page-signature .works_left,
@@ -8874,6 +8915,10 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   }
   #itsme-content.page-signature .works_right p,
   #itsme-content.page-signature .works_right p span { overflow-wrap: anywhere; }
+  #itsme-content.page-signature :is(#our, #journey, #Portfolio01, #Portfolio02, #Portfolio03, #PortfolioLast, #EquipmentTitle, #PersonalTitle) {
+    max-width: 100%;
+    transform: none !important;
+  }
 
   #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #board_content,
   #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #cate-list,
