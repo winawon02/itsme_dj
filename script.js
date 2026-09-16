@@ -15438,8 +15438,8 @@ const itsmeMainEquipmentDetails = Object.freeze({
         <span>제휴문의 : content.itsme.clinic@gmail.com</span>
       </nav>
       <div class="itsme-footer-social" aria-label="소셜 미디어">
-        <a href="https://www.instagram.com/itsme_clinic_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span aria-hidden="true">◎</span></a>
-        <a href="https://www.youtube.com/channel/UCmP907OimDzU6yJZdIuL4Kg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span aria-hidden="true">▶</span></a>
+        <a href="https://www.instagram.com/itsme_clinic_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle class="itsme-footer-social__dot" cx="17.4" cy="6.8" r="1"></circle></svg></a>
+        <a href="https://www.youtube.com/channel/UCmP907OimDzU6yJZdIuL4Kg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12c0 2.4-.3 4.3-.7 5.2-.3.8-1 1.5-1.8 1.8-1.1.4-3.4.7-6.5.7s-5.4-.3-6.5-.7c-.8-.3-1.5-1-1.8-1.8C3.3 16.3 3 14.4 3 12s.3-4.3.7-5.2c.3-.8 1-1.5 1.8-1.8 1.1-.4 3.4-.7 6.5-.7s5.4.3 6.5.7c.8.3 1.5 1 1.8 1.8.4.9.7 2.8.7 5.2Z"></path><path class="itsme-footer-social__play" d="m10 8.5 5.5 3.5-5.5 3.5Z"></path></svg></a>
       </div>`;
     firstParagraph?.after(meta);
 
