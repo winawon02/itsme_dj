@@ -15513,6 +15513,42 @@ const itsmeMainEquipmentDetails = Object.freeze({
   }
 })();
 
+(() => {
+  function mount() {
+    if (document.getElementById('itsme-floating-actions')) return;
+    const actions = document.createElement('aside');
+    actions.id = 'itsme-floating-actions';
+    actions.setAttribute('aria-label', '빠른 연결');
+    actions.innerHTML = `
+      <nav id="itsme-floating-links" aria-label="빠른 연결">
+        <a class="itsme-floating-link itsme-floating-tel" href="tel:042.486.6300" aria-label="전화상담"></a>
+        <a class="itsme-floating-link itsme-floating-kakao" href="https://pf.kakao.com/_xagUrT" target="_blank" rel="noopener noreferrer" aria-label="카카오톡 상담"></a>
+        <a class="itsme-floating-link itsme-floating-blog" href="https://blog.naver.com/joychoi89" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그"></a>
+        <a class="itsme-floating-link itsme-floating-youtube" href="https://www.youtube.com/@doctor_pin" target="_blank" rel="noopener noreferrer" aria-label="닥터핀 유튜브"></a>
+        <a class="itsme-floating-link itsme-floating-insta" href="https://www.instagram.com/itsme_clinic_dj" target="_blank" rel="noopener noreferrer" aria-label="잇츠미 대전 인스타그램"></a>
+      </nav>
+      <button class="itsme-floating-toggle" type="button" aria-controls="itsme-floating-links" aria-expanded="false" aria-label="빠른 연결 열기">+</button>
+      <button class="itsme-floating-top" type="button" aria-label="맨 위로"><span aria-hidden="true">↑</span></button>`;
+    document.body.append(actions);
+
+    const toggle = actions.querySelector('.itsme-floating-toggle');
+    const close = () => {
+      actions.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', '빠른 연결 열기');
+    };
+    toggle.addEventListener('click', () => {
+      const open = actions.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '빠른 연결 닫기' : '빠른 연결 열기');
+    });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
+    actions.querySelector('.itsme-floating-top').addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+  }
+  if (document.body) mount();
+  else document.addEventListener('DOMContentLoaded', mount, {once: true});
+})();
+
 /* Local handoff utility; bundled into the shared script.js, never a production section. */
 (function () {
   const tool = document.getElementById('migration-copy');
