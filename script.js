@@ -15514,6 +15514,32 @@ const itsmeMainEquipmentDetails = Object.freeze({
 })();
 
 (() => {
+  // Folder pages are empty Imweb placeholders. Send the label to its first
+  // real page; Imweb's separate caret keeps its native expand/collapse action.
+  const parentSelector = [
+    '#doz_header_wrap ._inline_menu_container > .viewport-nav > li > a',
+    '#pc_slide_menu .depth-01 > a',
+    '#mobile_slide_menu .depth-01 > a'
+  ].join(', ');
+
+  document.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!(event.target instanceof Element) || event.target.closest('._toggle_btn')) return;
+
+    const parent = event.target.closest(parentSelector);
+    const firstChild = parent?.parentElement?.querySelector(':scope > ul > li > a[href]');
+    if (!firstChild) return;
+
+    const destination = new URL(firstChild.href, location.href);
+    if (destination.origin !== location.origin || destination.href === parent.href) return;
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    location.assign(destination.href);
+  }, true);
+})();
+
+(() => {
   function mount() {
     if (document.getElementById('itsme-floating-actions')) return;
     const actions = document.createElement('aside');
