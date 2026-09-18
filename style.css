@@ -9312,6 +9312,8 @@ body.itsme-native-event #w2026091890c7ba170f50d .text_wrap .body {
   pointer-events: none;
 }
 #itsme-floating-actions > * { pointer-events: auto; }
+body:has(#pc_slide_menu_wrap.slide_open) #itsme-floating-actions { opacity: 0; pointer-events: none; }
+body:has(#pc_slide_menu_wrap.slide_open) #itsme-floating-actions > * { pointer-events: none; }
 #itsme-floating-links { display: flex; flex-direction: column; gap: 9px; margin-bottom: 9px; }
 #itsme-floating-actions .itsme-floating-link {
   display: block;
