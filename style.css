@@ -8908,8 +8908,8 @@ body.itsme-native-event #w2026091890c7ba170f50d .item_gallary {
   padding: 0 !important;
 }
 body.itsme-native-event #w2026091890c7ba170f50d ._dummy_item,
-body.itsme-native-event #w2026091890c7ba170f50d .item_gallary:has(#gal_item_33989624),
-body.itsme-native-event #w2026091890c7ba170f50d .item_gallary:has(#gal_item_33989661) { display: none !important; }
+body.itsme-native-event #w2026091890c7ba170f50d .item_gallary:has([id^="gal_item_33989624"]),
+body.itsme-native-event #w2026091890c7ba170f50d .item_gallary:has([id^="gal_item_33989661"]) { display: none !important; }
 body.itsme-native-event #w2026091890c7ba170f50d .item_container {
   overflow: hidden;
   border: 0 !important;
