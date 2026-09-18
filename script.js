@@ -15425,7 +15425,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const page = pages[path];
   if (!page || document.querySelector('.itsme-native-hero')) return;
 
-  const findWidget = () => document.querySelector('[data-widget-type="board"], [data-widget-name="입력폼"], [data-widget-type="form"], [id^="addForm"]');
+  const findWidget = () => (page.kind === 'event' && document.querySelector('#w2026091890c7ba170f50d')) || document.querySelector('[data-widget-type="board"], [data-widget-name="입력폼"], [data-widget-type="form"], [id^="addForm"]');
   const mount = () => {
     const widget = findWidget();
     if (!widget) return false;
