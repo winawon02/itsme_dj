@@ -15593,8 +15593,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
         <a class="itsme-floating-link itsme-floating-youtube" href="https://www.youtube.com/@doctor_pin" target="_blank" rel="noopener noreferrer" aria-label="닥터핀 유튜브"></a>
         <a class="itsme-floating-link itsme-floating-insta" href="https://www.instagram.com/itsme_clinic_dj" target="_blank" rel="noopener noreferrer" aria-label="잇츠미 대전 인스타그램"></a>
       </nav>
-      <button class="itsme-floating-toggle" type="button" aria-controls="itsme-floating-links" aria-expanded="false" aria-label="빠른 연결 열기">+</button>
-      <button class="itsme-floating-top" type="button" aria-label="맨 위로"><span aria-hidden="true">↑</span></button>`;
+      <button class="itsme-floating-toggle" type="button" aria-controls="itsme-floating-links" aria-expanded="false" aria-label="빠른 연결 열기">+</button>`;
     document.body.append(actions);
 
     const toggle = actions.querySelector('.itsme-floating-toggle');
@@ -15609,7 +15608,6 @@ const itsmeMainEquipmentDetails = Object.freeze({
       toggle.setAttribute('aria-label', open ? '빠른 연결 닫기' : '빠른 연결 열기');
     });
     document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
-    actions.querySelector('.itsme-floating-top').addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
   }
   if (document.body) mount();
   else document.addEventListener('DOMContentLoaded', mount, {once: true});
