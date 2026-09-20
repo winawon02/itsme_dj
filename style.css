@@ -7944,6 +7944,25 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   padding: 0 !important;
 }
 
+/* The source Promise artwork includes a Sejong-branch director label that is
+   unrelated to the Daejeon page. Hide the legacy published node until each
+   code widget is repasted, and remove Imweb's two spacer paddings before the
+   footer on the Juvederm page. */
+#itsme-content.page-juvederm #sub_ban .bg .s03 img {
+  display: none !important;
+}
+.doz_sys .section_wrap:has(#itsme-content.page-juvederm) {
+  min-height: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.doz_sys .section_wrap:has(#itsme-content.page-juvederm) + .section_wrap:has(#itsme-shared-style) {
+  min-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /* The source careguide page declares its page CSS before the document head,
    so it cannot be collected by the normal head-style packager. */
 :where(#itsme-content.page-careguide) { min-width: 0; scroll-behavior: smooth; }

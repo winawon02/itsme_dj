@@ -429,11 +429,6 @@
       "sha256": "f3fafc2c00d19f88202f4707f2164973e6a277c55360e72a8c5a97dd367c6b7d"
     },
     {
-      "file": "assets/c0f5475f-sub_ban_bg03_txt.png",
-      "bytes": 3327,
-      "sha256": "8a182ca9a904b1d25b30770d3a8deacc6a62b0493da0738a72bbcf1f17fc9339"
-    },
-    {
       "file": "assets/external-08a7ddd1c59b.jpg",
       "bytes": 2237339,
       "sha256": "192d67ed1e06f444a27d02e9b6250f511455edb1253151492cf85bfeff06180d"
@@ -2655,8 +2650,8 @@
     },
     {
       "file": "style.css",
-      "bytes": 570979,
-      "sha256": "060208e63f155faf88f88e95d4ad4d09741dac436d6341f53f0ccd2125f93f6d"
+      "bytes": 571685,
+      "sha256": "4038fbc11308b4519a21037e0764fd972e04331b69ebd38137b53ad435746c44"
     },
     {
       "file": "script.js",
