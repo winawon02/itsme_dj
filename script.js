@@ -1,36 +1,3 @@
-(() => {
-  const pages = {
-    '/event': ['event', '진행 중인 이벤트', '잇츠미 대전점의 새로운 소식과 혜택을 확인해 보세요.', 'https://winawon02.github.io/itsme_dj/assets/596165c2-community01_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/6a7aa200-community01_title.png', '#w2026091890c7ba170f50d'],
-    '/reviews': ['reviews', '시술 후기', '잇츠미 대전점을 경험한 고객의 이야기를 확인해 보세요.', 'https://winawon02.github.io/itsme_dj/assets/c61b620f-network06_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/f3d8f312-network06_title.png', '[data-widget-type="board"]'],
-    '/notices': ['notices', '공지 & 이슈', '진료와 이용에 필요한 소식을 빠르게 안내합니다.', 'https://winawon02.github.io/itsme_dj/assets/ff4391c7-network04_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/2f53a80b-network04_title.png', '[data-widget-type="board"]'],
-    '/voice': ['voice', '고객의 소리', '남겨주신 의견을 세심하게 확인하겠습니다.', 'https://winawon02.github.io/itsme_dj/assets/3e4dba0e-network05_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/32fd0149-network05_title.png', '[data-widget-type="board"]'],
-    '/consultation': ['consultation', '온라인 상담', '희망 시술과 상담 일정을 남겨주시면 순차적으로 안내합니다.', 'https://winawon02.github.io/itsme_dj/assets/cfc0b5fe-community03_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/1ebb5e96-community03_title.png', '[data-widget-name="입력폼"], [data-widget-type="form"], [id^="addForm"]']
-  };
-  const page = pages[location.pathname.replace(/\/$/, '') || '/'];
-  if (!page) return;
-  const [kind, title, description, background, titleImage, selector] = page;
-  const widget = document.querySelector(selector);
-  const section = widget?.closest('[doz_type="section"], .section_wrap');
-  if (!section) return;
-
-  document.body.classList.add('itsme-native-db-page', `itsme-native-${kind}`);
-  section.classList.add('itsme-native-db-content');
-  if (!document.querySelector('.itsme-native-hero')) {
-    const hero = document.createElement('section');
-    hero.className = 'itsme-native-hero';
-    hero.style.setProperty('--itsme-native-hero-bg', `url("${background}")`);
-    hero.innerHTML = `<div class="itsme-native-hero__inner"><img src="${titleImage}" alt="${title}"></div>`;
-    section.before(hero);
-  }
-  const main = section.querySelector('main') || section;
-  if (!main.querySelector('.itsme-native-intro')) {
-    const intro = document.createElement('div');
-    intro.className = 'itsme-native-intro';
-    intro.innerHTML = `<p class="itsme-native-intro__eyebrow">IT'S ME DAEJEON</p><h1>${title}</h1><p>${description}</p>`;
-    main.prepend(intro);
-  }
-})();
-
 
 /* Original js/jquery-1.12.4.min.js */
 /*! jQuery v1.12.4 | (c) jQuery Foundation | jquery.org/license */
@@ -15095,6 +15062,9 @@ const itsmeMainEquipmentDetails = Object.freeze({
     });
   }, {rootMargin:'0px 0px -50px 0px'});
   animated.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    // Content already painted in the viewport must not disappear at startup.
+    if (rect.top < innerHeight && rect.bottom > 0) return;
     el.style.visibility = 'hidden';
     el.style.animationDelay = el.dataset.wowDelay || '0s';
     el.style.animationName = 'none';
@@ -15121,7 +15091,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     updatePosition();
   }
   eventTabs.forEach(tab => tab.addEventListener('click', e => {e.preventDefault();showEvents(tab);}));
-  showEvents(eventTabs[0]);
+  // The first event list and selected tab are already present in the HTML.
   if (/^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get('scrollEvent') === 'bottom') {
     requestAnimationFrame(() => {
       scrollTo(0, eventRoot.offsetTop + eventRoot.offsetHeight - innerHeight + 120);
@@ -15138,8 +15108,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     select('#media .movie_box iframe').src = link.dataset.youtubeId;
     all('#media_swiper .swiper-slide').forEach(item => item.classList.toggle('on',item === link.closest('.swiper-slide')));
   }));
-  const firstMedia = select('#media_swiper a');
-  if (firstMedia) firstMedia.click();
+  // The initial video and selected thumbnail are emitted at build time.
 
   // Rebuild the exact HTML contract returned by the original laser AJAX endpoint.
   all('#laser_swiper a').forEach(link => link.addEventListener('click', e => {
@@ -15197,12 +15166,24 @@ const itsmeMainEquipmentDetails = Object.freeze({
     if(!root.classList.contains(className))continue;
     try{init(root);}catch(error){console.warn(`Slider initialization skipped for ${className}`,error);}
   }
+  const initiallyVisible=new WeakSet();
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
     const el=entry.target;
     if(el.classList.contains('inview'))el.classList.toggle('play',entry.isIntersecting);
-    if(entry.isIntersecting&&el.classList.contains('wow')){el.style.visibility='visible';el.style.animationName='';el.classList.add('animated');observer.unobserve(el);}
+    if(entry.isIntersecting&&el.classList.contains('wow')&&!initiallyVisible.has(el)){el.style.visibility='visible';el.style.animationName='';el.classList.add('animated');observer.unobserve(el);}
   }),{rootMargin:'0px 0px -50px 0px'});
-  root.querySelectorAll('.wow,.inview').forEach(el=>{if(el.classList.contains('wow')){el.style.visibility='hidden';el.style.animationName='none';el.style.animationDelay=el.dataset.wowDelay||'0s';}observer.observe(el);});
+  root.querySelectorAll('.wow,.inview').forEach(el=>{
+    if(el.classList.contains('wow')){
+      const rect=el.getBoundingClientRect();
+      if(rect.top<innerHeight&&rect.bottom>0){
+        initiallyVisible.add(el);
+        if(el.classList.contains('inview'))observer.observe(el);
+        return;
+      }
+      el.style.visibility='hidden';el.style.animationName='none';el.style.animationDelay=el.dataset.wowDelay||'0s';
+    }
+    observer.observe(el);
+  });
   root.querySelectorAll('img[data-src]').forEach(img=>{if(!img.getAttribute('src'))img.src=img.dataset.src;});
   root.querySelectorAll('.swiper-container,.swiper').forEach(el=>{
     if(el.swiper)return;
@@ -15298,22 +15279,6 @@ const itsmeMainEquipmentDetails = Object.freeze({
     button.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') share(event);
     });
-  }
-})();
-
-(() => {
-  const root = document.getElementById('itsme-content');
-  if (!root) return;
-  root.querySelector('#main_search')?.remove();
-  for (const banner of root.querySelectorAll('.top_search')) {
-    if (banner.dataset.sloganReady) continue;
-    const content = banner.querySelector('.inwrap') || banner;
-    const slogan = document.createElement('p');
-    slogan.className = 'migration-brand-slogan';
-    slogan.textContent = '아름다움도 나답게 잇츠미의원';
-    content.replaceChildren(slogan);
-    banner.dataset.sloganReady = 'true';
-    banner.setAttribute('aria-label', slogan.textContent);
   }
 })();
 
@@ -15441,36 +15406,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
 })();
 
 (() => {
-  const pages = {
-    '/event': {
-      kind: 'event', title: '진행 중인 이벤트',
-      description: '잇츠미 대전점의 새로운 소식과 혜택을 확인해 보세요.',
-      background: 'https://winawon02.github.io/itsme_dj/assets/596165c2-community01_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/6a7aa200-community01_title.png',
-      empty: '새로운 이벤트를 준비하고 있습니다.', emptyNote: '궁금한 시술은 상담 신청을 통해 먼저 안내받으실 수 있습니다.', action: '/consultation', actionText: '상담 신청'
-    },
-    '/reviews': {
-      kind: 'reviews', title: '시술 후기',
-      description: '잇츠미 대전점을 경험한 고객의 이야기를 확인해 보세요.',
-      background: 'https://winawon02.github.io/itsme_dj/assets/c61b620f-network06_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/f3d8f312-network06_title.png',
-      empty: '등록된 시술 후기가 없습니다.', emptyNote: '새로운 후기가 등록되면 이곳에서 확인할 수 있습니다.'
-    },
-    '/notices': {
-      kind: 'notices', title: '공지 & 이슈',
-      description: '진료와 이용에 필요한 소식을 빠르게 안내합니다.',
-      background: 'https://winawon02.github.io/itsme_dj/assets/ff4391c7-network04_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/2f53a80b-network04_title.png',
-      empty: '등록된 공지가 없습니다.', emptyNote: '새로운 소식은 이곳에서 안내해 드립니다.'
-    },
-    '/voice': {
-      kind: 'voice', title: '고객의 소리',
-      description: '남겨주신 의견을 세심하게 확인하겠습니다.',
-      background: 'https://winawon02.github.io/itsme_dj/assets/3e4dba0e-network05_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/32fd0149-network05_title.png'
-    },
-    '/consultation': {
-      kind: 'consultation', title: '온라인 상담',
-      description: '희망 시술과 상담 일정을 남겨주시면 순차적으로 안내합니다.',
-      background: 'https://winawon02.github.io/itsme_dj/assets/cfc0b5fe-community03_visual.jpg', titleImage: 'https://winawon02.github.io/itsme_dj/assets/1ebb5e96-community03_title.png'
-    }
-  };
+  const pages = {"/event":{"kind":"event","empty":"새로운 이벤트를 준비하고 있습니다.","emptyNote":"궁금한 시술은 상담 신청을 통해 먼저 안내받으실 수 있습니다.","action":"/consultation","actionText":"상담 신청"},"/reviews":{"kind":"reviews","empty":"등록된 시술 후기가 없습니다.","emptyNote":"새로운 후기가 등록되면 이곳에서 확인할 수 있습니다."},"/notices":{"kind":"notices","empty":"등록된 공지가 없습니다.","emptyNote":"새로운 소식은 이곳에서 안내해 드립니다."}};
   const previewKind = /^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get('page') : '';
   const path = previewKind && pages['/'+previewKind] ? '/'+previewKind : (location.pathname.replace(/\/$/, '') || '/');
   const page = pages[path];
@@ -15484,24 +15420,6 @@ const itsmeMainEquipmentDetails = Object.freeze({
     if (!widget) return false;
     const section = widget.closest('[doz_type="section"], .section_wrap');
     if (!section) return false;
-    document.body.classList.add('itsme-native-db-page', `itsme-native-${page.kind}`);
-    section.classList.add('itsme-native-db-content');
-
-    if (!document.querySelector('.itsme-native-hero')) {
-      const hero = document.createElement('section');
-      hero.className = 'itsme-native-hero';
-      hero.style.setProperty('--itsme-native-hero-bg', `url("${page.background}")`);
-      hero.innerHTML = `<div class="itsme-native-hero__inner"><img src="${page.titleImage}" alt="${page.title}"></div>`;
-      section.before(hero);
-    }
-
-    const main = section.querySelector('main') || section;
-    if (!main.querySelector('.itsme-native-intro')) {
-      const intro = document.createElement('div');
-      intro.className = 'itsme-native-intro';
-      intro.innerHTML = `<p class="itsme-native-intro__eyebrow">IT'S ME DAEJEON</p><h1>${page.title}</h1><p>${page.description}</p>`;
-      main.prepend(intro);
-    }
 
     const enhanceEmpty = scope => {
       if (!page.empty || scope.querySelector('.itsme-native-empty')) return;
@@ -15525,49 +15443,6 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const updateHeader = () => document.body.classList.toggle('itsme-header-scrolled', scrollY > 30);
   addEventListener('scroll', updateHeader, {passive: true});
   updateHeader();
-
-  const enhanceFooter = () => {
-    const info = document.querySelector('#doz_footer_wrap .custom-text-info');
-    if (!info || info.querySelector('.itsme-footer-meta')) return false;
-
-    const firstParagraph = info.querySelector(':scope > p:first-child');
-    const meta = document.createElement('div');
-    meta.className = 'itsme-footer-meta';
-    meta.innerHTML = `
-      <nav class="itsme-footer-links" aria-label="푸터 메뉴">
-        <a href="/?mode=policy">사이트 이용약관</a>
-        <a href="/?mode=privacy">개인정보처리방침</a>
-        <a href="/branch">지점 찾기</a>
-        <a href="/email-policy">이메일무단수집거부</a>
-        <span>제휴문의 : content.itsme.clinic@gmail.com</span>
-      </nav>
-      <div class="itsme-footer-social" aria-label="소셜 미디어">
-        <a href="https://www.instagram.com/itsme_clinic_official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle class="itsme-footer-social__dot" cx="17.4" cy="6.8" r="1"></circle></svg></a>
-        <a href="https://www.youtube.com/channel/UCmP907OimDzU6yJZdIuL4Kg" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 12c0 2.4-.3 4.3-.7 5.2-.3.8-1 1.5-1.8 1.8-1.1.4-3.4.7-6.5.7s-5.4-.3-6.5-.7c-.8-.3-1.5-1-1.8-1.8C3.3 16.3 3 14.4 3 12s.3-4.3.7-5.2c.3-.8 1-1.5 1.8-1.8 1.1-.4 3.4-.7 6.5-.7s5.4.3 6.5.7c.8.3 1.5 1 1.8 1.8.4.9.7 2.8.7 5.2Z"></path><path class="itsme-footer-social__play" d="m10 8.5 5.5 3.5-5.5 3.5Z"></path></svg></a>
-      </div>`;
-    firstParagraph?.after(meta);
-
-    info.querySelectorAll(':scope > ul > li').forEach(item => {
-      const text = item.textContent.replace(/^([^·]+?)\s*·\s*/, '[$1] ');
-      const parts = text.match(/^(.*?)\s*·\s*(대표자\s*:\s*.*?)\s*·\s*(사업자등록번호\s*:\s*.*)$/);
-      if (!parts) { item.textContent = text; return; }
-      item.replaceChildren();
-      for (const [className, value] of [['branch', parts[1]], ['representative', parts[2]], ['registration', parts[3]]]) {
-        const span = document.createElement('span');
-        span.className = `itsme-footer-${className}`;
-        span.textContent = value;
-        item.append(span);
-      }
-    });
-    return true;
-  };
-
-  if (!enhanceFooter()) {
-    const observer = new MutationObserver(() => {
-      if (enhanceFooter()) observer.disconnect();
-    });
-    observer.observe(document.documentElement, {childList: true, subtree: true});
-  }
 })();
 
 (() => {
@@ -15598,22 +15473,11 @@ const itsmeMainEquipmentDetails = Object.freeze({
 
 (() => {
   function mount() {
-    if (document.getElementById('itsme-floating-actions')) return;
-    const actions = document.createElement('aside');
-    actions.id = 'itsme-floating-actions';
-    actions.setAttribute('aria-label', '빠른 연결');
-    actions.innerHTML = `
-      <nav id="itsme-floating-links" aria-label="빠른 연결">
-        <a class="itsme-floating-link itsme-floating-tel" href="tel:042.486.6300" aria-label="전화상담"></a>
-        <a class="itsme-floating-link itsme-floating-kakao" href="https://pf.kakao.com/_xagUrT" target="_blank" rel="noopener noreferrer" aria-label="카카오톡 상담"></a>
-        <a class="itsme-floating-link itsme-floating-blog" href="https://blog.naver.com/joychoi89" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그"></a>
-        <a class="itsme-floating-link itsme-floating-youtube" href="https://www.youtube.com/@doctor_pin" target="_blank" rel="noopener noreferrer" aria-label="닥터핀 유튜브"></a>
-        <a class="itsme-floating-link itsme-floating-insta" href="https://www.instagram.com/itsme_clinic_dj" target="_blank" rel="noopener noreferrer" aria-label="잇츠미 대전 인스타그램"></a>
-      </nav>
-      <button class="itsme-floating-toggle" type="button" aria-controls="itsme-floating-links" aria-expanded="false" aria-label="빠른 연결 열기">+</button>`;
-    document.body.append(actions);
-
+    const actions = document.getElementById('itsme-floating-actions');
+    if (!actions || actions.dataset.initialized) return;
     const toggle = actions.querySelector('.itsme-floating-toggle');
+    if (!toggle) return;
+    actions.dataset.initialized = 'true';
     const close = () => {
       actions.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
@@ -15626,7 +15490,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     });
     document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
   }
-  if (document.body) mount();
+  if (document.readyState !== 'loading') mount();
   else document.addEventListener('DOMContentLoaded', mount, {once: true});
 })();
 
