@@ -15293,18 +15293,18 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const categories = ['skin', 'lifting', 'acne', 'body'];
   const equipment = [...list.children].filter(item => item.querySelector('.ls-btn'));
   const groups = {
+    skin: new Set(['skin-ls-60', 'skin-ls-48', 'skin-ls-47', 'skin-ls-46', 'skin-ls-45', 'skin-ls-44', 'skin-ls-43', 'skin-ls-9']),
     lifting: new Set(['ls-4', 'ls-65', 'ls-67', 'ls-62', 'ls-6', 'ls-63', 'ls-61']),
     acne: new Set(['ls-54', 'ls-53', 'ls-52', 'ls-51', 'ls-50', 'ls-48']),
     body: new Set(['ls-58', 'ls-66', 'ls-64', 'ls-57', 'ls-56', 'ls-55'])
   };
 
   const mainPath = location.hostname === 'joychoi890243962.imweb.me' ? '/laser-equipment' : 'community-laser.html';
-  const skinPath = location.hostname === 'joychoi890243962.imweb.me' ? '/skin-lasers' : 'community-laser-115dff.html';
   links.forEach((link, index) => {
     const category = categories[index];
     if (!category) return;
     link.dataset.equipmentCategory = category;
-    link.href = category === 'skin' ? skinPath : `${mainPath}?equipment=${category}`;
+    link.href = category === 'skin' ? mainPath : `${mainPath}?equipment=${category}`;
   });
 
   function showCategory(category) {
@@ -15322,7 +15322,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
   }
 
   const initial = new URLSearchParams(location.search).get('equipment');
-  showCategory(isSkinPage ? 'skin' : groups[initial] ? initial : 'all');
+  showCategory(isSkinPage ? 'skin' : groups[initial] ? initial : 'skin');
 
   let activeLayer = null;
   let openingButton = null;
@@ -15375,11 +15375,12 @@ const itsmeMainEquipmentDetails = Object.freeze({
     const link = event.target.closest('#cate-list .category a');
     if (!link || !root.contains(link)) return;
     const category = link.dataset.equipmentCategory;
-    if (isSkinPage || category === 'skin' || !groups[category]) return;
+    if (isSkinPage || !groups[category]) return;
     event.preventDefault();
     showCategory(category);
     const url = new URL(location.href);
-    url.searchParams.set('equipment', category);
+    if(category==='skin')url.searchParams.delete('equipment');
+    else url.searchParams.set('equipment', category);
     history.replaceState(history.state, '', url);
   });
 

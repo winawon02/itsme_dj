@@ -2649,15 +2649,35 @@
       "sha256": "afe84e6c48ce7012364650aba359ee36a1f4ffd8757cdd3cbcf64384a3bc7a35"
     },
     {
+      "file": "assets/doctor-lee-sungwoo.png",
+      "bytes": 311147,
+      "sha256": "81dcf7b7d5ece38b0f4798f2ffa1c32e496ba8cb33dbd380735a71eb5e9aa0bd"
+    },
+    {
+      "file": "assets/event-scar-2026.jpg",
+      "bytes": 42875,
+      "sha256": "f7480db7483d90b836ce419d7b7c3772243c7669be8bb04af0c9a9b4ea9f5750"
+    },
+    {
+      "file": "assets/event-booster-2026.jpg",
+      "bytes": 154558,
+      "sha256": "345306528b302bb0db5338925f118a3cfe04ba05eb32d9bf75ac68de391a4536"
+    },
+    {
+      "file": "assets/event-xinjector-2026.jpg",
+      "bytes": 20961,
+      "sha256": "4fc566bebdd43b742d448a0314b162f222db437d19e4085c285b16ea864ead39"
+    },
+    {
       "file": "style.css",
-      "bytes": 578918,
-      "sha256": "14a55718b76a67585e329e673f4d9283961b55791c21223f608afb0200dcf4ac"
+      "bytes": 591008,
+      "sha256": "dbcea33b77164521f210be166b8a110e03adb5d7576b4b85ff48f61b8b487911"
     },
     {
       "file": "script.js",
-      "bytes": 740335,
-      "sha256": "434401b16b5a65d574fddb1989326a8d68ac485f843f053aebffd56beb1bd094",
-      "sourceSha256": "65f18e4b1fb54400ebb16711b499762da6850f843d1770caf5111c51e4850574"
+      "bytes": 740394,
+      "sha256": "b4c2d04287c4353091b15645d4bc6526622d58c5a991f1c19acbcb93db5d73f4",
+      "sourceSha256": "cdd1766337796f0326330231e5d14848350873c480d5638bbe9be198e6a5f282"
     }
   ],
   "oversized": [
