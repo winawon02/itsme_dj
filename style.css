@@ -8022,6 +8022,10 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   :where(#itsme-content.page-careguide) .caution > h3 { font-size: 21px; }
   :where(#itsme-content.page-careguide) .caution > ul li > p { font-size: 15px; }
 }
+/* The published home code widget may briefly retain the retired search block
+   until its body is repasted. Keep it out of the first paint; the runtime then
+   removes the node, while newly packaged home markup omits it entirely. */
+:where(#itsme-content.page-index) #main_search { display: none !important; }
 
 #itsme-content.page-consultation{min-width:0;background:#fff;color:#151515;font-family:'Noto Sans KR',sans-serif;letter-spacing:-.03em}
 .page-consultation *{box-sizing:border-box}

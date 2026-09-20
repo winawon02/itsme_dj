@@ -15254,6 +15254,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
 (() => {
   const root = document.getElementById('itsme-content');
   if (!root) return;
+  root.querySelector('#main_search')?.remove();
   for (const banner of root.querySelectorAll('.top_search')) {
     if (banner.dataset.sloganReady) continue;
     const content = banner.querySelector('.inwrap') || banner;
