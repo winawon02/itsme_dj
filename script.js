@@ -15221,10 +15221,24 @@ const itsmeMainEquipmentDetails = Object.freeze({
     const activate=()=>{
       const banner=box.closest('#sub_ban');
       banner.dataset.num=String(index);
-      banner.querySelectorAll('.sbox').forEach(item=>item.classList.toggle('on',item===box));
+      banner.querySelectorAll('.sbox').forEach(item=>{
+        const active=item===box;
+        item.classList.toggle('on',active);
+        item.setAttribute('aria-pressed',String(active));
+      });
     };
+    box.tabIndex=0;
+    box.setAttribute('role','button');
+    box.setAttribute('aria-label',box.querySelector('strong')?.textContent?.trim()||`배너 ${index+1}`);
+    box.setAttribute('aria-pressed',String(box.classList.contains('on')));
     box.addEventListener('mouseenter',activate);
     box.addEventListener('focusin',activate);
+    box.addEventListener('click',activate);
+    box.addEventListener('keydown',event=>{
+      if(event.key!=='Enter'&&event.key!==' ')return;
+      event.preventDefault();
+      activate();
+    });
   });
   const price=root.querySelector('.price_wrap');
   if(price){const update=()=>price.classList.toggle('fixed_top',root.querySelector('.prod')?.getBoundingClientRect().top<0);window.addEventListener('scroll',update,{passive:true});update();}

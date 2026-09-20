@@ -7944,57 +7944,85 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   padding: 0 !important;
 }
 
-/* The source Promise artwork includes a Sejong-branch director label that is
-   unrelated to the Daejeon page. Hide the legacy published node until each
-   code widget is repasted, and remove Imweb's two spacer paddings before the
-   footer on the Juvederm page. */
-#itsme-content.page-juvederm #sub_ban .bg .s03 img {
+/* The shared Promise artwork includes a Sejong-branch director label that is
+   unrelated to the Daejeon site. Hide the legacy node on every treatment page
+   and collapse Imweb's content/loader spacers before the footer. */
+#itsme-content #sub_ban .bg .s03 img {
   display: none !important;
 }
-.doz_sys .section_wrap:has(#itsme-content.page-juvederm) {
+.doz_sys .section_wrap:has(#itsme-content #sub_ban) {
   min-height: 0 !important;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-.doz_sys .section_wrap:has(#itsme-content.page-juvederm) + .section_wrap:has(#itsme-shared-style) {
+.doz_sys .section_wrap:has(#itsme-content #sub_ban) + .section_wrap:has(#itsme-shared-style) {
   min-height: 0 !important;
   height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 @media (max-width: 767px) {
-  #itsme-content.page-juvederm #sub_ban .sbox {
-    float: none;
-    box-sizing: border-box;
-    width: 100%;
-    height: 430px;
-    border: 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  #itsme-content #sub_ban {
+    height: 520px;
   }
-  #itsme-content.page-juvederm #sub_ban .sbox.s01 { background-image: url(assets/0e35e353-sub_ban_bg01.jpg); }
-  #itsme-content.page-juvederm #sub_ban .sbox.s02 { background-image: url(assets/69d01fc4-sub_ban_bg02.jpg); }
-  #itsme-content.page-juvederm #sub_ban .sbox.s03 { background-image: url(assets/06d65ab8-sub_ban_bg03.jpg); }
-  #itsme-content.page-juvederm #sub_ban .bg { display: none; }
-  #itsme-content.page-juvederm #sub_ban .txt {
-    top: 50%;
+  #itsme-content #sub_ban .sbox {
+    float: left;
     box-sizing: border-box;
+    width: 33.333%;
+    height: 520px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  #itsme-content #sub_ban .sbox::after {
+    position: absolute;
+    right: 8px;
+    bottom: 18px;
+    left: 8px;
+    z-index: 3;
+    padding-bottom: 7px;
+    border-bottom: 2px solid transparent;
+    color: #fff;
+    content: "";
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    line-height: 1;
+    opacity: .55;
+    text-align: center;
+  }
+  #itsme-content #sub_ban .sbox.s01::after { content: "Forward"; }
+  #itsme-content #sub_ban .sbox.s02::after { content: "Value"; }
+  #itsme-content #sub_ban .sbox.s03::after { right: 58px; content: "Promise"; }
+  #itsme-content #sub_ban .sbox.on::after,
+  #itsme-content #sub_ban .sbox:focus-visible::after {
+    border-bottom-color: #fff;
+    opacity: 1;
+  }
+  #itsme-content #sub_ban .txt {
+    top: 50%;
+    right: auto;
+    left: 0;
+    box-sizing: border-box;
+    width: 100vw;
     margin-top: 0 !important;
-    padding: 0 24px;
-    opacity: 1 !important;
+    padding: 0 28px 36px;
+    opacity: 0 !important;
+    pointer-events: none;
     transform: translateY(-50%);
   }
-  #itsme-content.page-juvederm #sub_ban .txt strong {
+  #itsme-content #sub_ban .sbox:nth-child(2) .txt { left: -100%; }
+  #itsme-content #sub_ban .sbox:nth-child(3) .txt { left: -200%; }
+  #itsme-content #sub_ban .sbox.on .txt { opacity: 1 !important; }
+  #itsme-content #sub_ban .txt strong {
     font-size: 54px;
     opacity: 1;
   }
-  #itsme-content.page-juvederm #sub_ban .txt span {
+  #itsme-content #sub_ban .txt span {
     margin-top: 22px;
     font-size: 23px;
     opacity: 1;
   }
-  #itsme-content.page-juvederm #sub_ban .txt p {
+  #itsme-content #sub_ban .txt p {
     margin-top: 16px;
     font-size: 15px;
     line-height: 1.75;
