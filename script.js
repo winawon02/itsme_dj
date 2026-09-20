@@ -1,3 +1,36 @@
+(() => {
+  const pages = {
+    '/event': ['event', '진행 중인 이벤트', '잇츠미 대전점의 새로운 소식과 혜택을 확인해 보세요.', 'https://winawon02.github.io/itsme_dj/assets/596165c2-community01_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/6a7aa200-community01_title.png', '#w2026091890c7ba170f50d'],
+    '/reviews': ['reviews', '시술 후기', '잇츠미 대전점을 경험한 고객의 이야기를 확인해 보세요.', 'https://winawon02.github.io/itsme_dj/assets/c61b620f-network06_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/f3d8f312-network06_title.png', '[data-widget-type="board"]'],
+    '/notices': ['notices', '공지 & 이슈', '진료와 이용에 필요한 소식을 빠르게 안내합니다.', 'https://winawon02.github.io/itsme_dj/assets/ff4391c7-network04_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/2f53a80b-network04_title.png', '[data-widget-type="board"]'],
+    '/voice': ['voice', '고객의 소리', '남겨주신 의견을 세심하게 확인하겠습니다.', 'https://winawon02.github.io/itsme_dj/assets/3e4dba0e-network05_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/32fd0149-network05_title.png', '[data-widget-type="board"]'],
+    '/consultation': ['consultation', '온라인 상담', '희망 시술과 상담 일정을 남겨주시면 순차적으로 안내합니다.', 'https://winawon02.github.io/itsme_dj/assets/cfc0b5fe-community03_visual.jpg', 'https://winawon02.github.io/itsme_dj/assets/1ebb5e96-community03_title.png', '[data-widget-name="입력폼"], [data-widget-type="form"], [id^="addForm"]']
+  };
+  const page = pages[location.pathname.replace(/\/$/, '') || '/'];
+  if (!page) return;
+  const [kind, title, description, background, titleImage, selector] = page;
+  const widget = document.querySelector(selector);
+  const section = widget?.closest('[doz_type="section"], .section_wrap');
+  if (!section) return;
+
+  document.body.classList.add('itsme-native-db-page', `itsme-native-${kind}`);
+  section.classList.add('itsme-native-db-content');
+  if (!document.querySelector('.itsme-native-hero')) {
+    const hero = document.createElement('section');
+    hero.className = 'itsme-native-hero';
+    hero.style.setProperty('--itsme-native-hero-bg', `url("${background}")`);
+    hero.innerHTML = `<div class="itsme-native-hero__inner"><img src="${titleImage}" alt="${title}"></div>`;
+    section.before(hero);
+  }
+  const main = section.querySelector('main') || section;
+  if (!main.querySelector('.itsme-native-intro')) {
+    const intro = document.createElement('div');
+    intro.className = 'itsme-native-intro';
+    intro.innerHTML = `<p class="itsme-native-intro__eyebrow">IT'S ME DAEJEON</p><h1>${title}</h1><p>${description}</p>`;
+    main.prepend(intro);
+  }
+})();
+
 
 /* Original js/jquery-1.12.4.min.js */
 /*! jQuery v1.12.4 | (c) jQuery Foundation | jquery.org/license */
