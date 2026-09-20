@@ -15254,7 +15254,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
 (() => {
   const root = document.getElementById('itsme-content');
   if (!root) return;
-  for (const banner of root.querySelectorAll('.top_search, #main_search')) {
+  for (const banner of root.querySelectorAll('.top_search')) {
     if (banner.dataset.sloganReady) continue;
     const content = banner.querySelector('.inwrap') || banner;
     const slogan = document.createElement('p');
@@ -15423,7 +15423,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const previewKind = /^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get('page') : '';
   const path = previewKind && pages['/'+previewKind] ? '/'+previewKind : (location.pathname.replace(/\/$/, '') || '/');
   const page = pages[path];
-  if (!page || document.querySelector('.itsme-native-hero')) return;
+  if (!page) return;
 
   const findWidget = () => page.kind === 'event'
     ? document.querySelector('#w2026091890c7ba170f50d')
@@ -15436,17 +15436,21 @@ const itsmeMainEquipmentDetails = Object.freeze({
     document.body.classList.add('itsme-native-db-page', `itsme-native-${page.kind}`);
     section.classList.add('itsme-native-db-content');
 
-    const hero = document.createElement('section');
-    hero.className = 'itsme-native-hero';
-    hero.style.setProperty('--itsme-native-hero-bg', `url("${page.background}")`);
-    hero.innerHTML = `<div class="itsme-native-hero__inner"><img src="${page.titleImage}" alt="${page.title}"></div>`;
-    section.before(hero);
+    if (!document.querySelector('.itsme-native-hero')) {
+      const hero = document.createElement('section');
+      hero.className = 'itsme-native-hero';
+      hero.style.setProperty('--itsme-native-hero-bg', `url("${page.background}")`);
+      hero.innerHTML = `<div class="itsme-native-hero__inner"><img src="${page.titleImage}" alt="${page.title}"></div>`;
+      section.before(hero);
+    }
 
-    const intro = document.createElement('div');
-    intro.className = 'itsme-native-intro';
-    intro.innerHTML = `<p class="itsme-native-intro__eyebrow">IT'S ME DAEJEON</p><h1>${page.title}</h1><p>${page.description}</p>`;
     const main = section.querySelector('main') || section;
-    main.prepend(intro);
+    if (!main.querySelector('.itsme-native-intro')) {
+      const intro = document.createElement('div');
+      intro.className = 'itsme-native-intro';
+      intro.innerHTML = `<p class="itsme-native-intro__eyebrow">IT'S ME DAEJEON</p><h1>${page.title}</h1><p>${page.description}</p>`;
+      main.prepend(intro);
+    }
 
     const enhanceEmpty = scope => {
       if (!page.empty || scope.querySelector('.itsme-native-empty')) return;
