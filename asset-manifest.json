@@ -2655,9 +2655,9 @@
     },
     {
       "file": "script.js",
-      "bytes": 749517,
-      "sha256": "2cf8f8905ec51dc374e0a7b920b2caea34e478d10a7123591a9315c63a8bd53c",
-      "sourceSha256": "b21cc8741c2fa9668603d6301b2f0859c434f19430f52a77db758fe5db5500b2"
+      "bytes": 749628,
+      "sha256": "4dbb90ce383337ce18eefa3618da68119f6ff154ad865c6226a430e907d82179",
+      "sourceSha256": "10142d9b1f7bc3599bfe4be6b89ca400a7f1504eda00272b0031abc1a2293dc5"
     }
   ],
   "oversized": [

@@ -15193,7 +15193,10 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const root=document.getElementById('itsme-content');
   if(!root||root.querySelector('#main_visual'))return;
   const $=window.itsmeJQuery;
-  for(const [className,init] of Object.entries(itsmeOriginalSliders)){if(root.classList.contains(className))init(root);}
+  for(const [className,init] of Object.entries(itsmeOriginalSliders)){
+    if(!root.classList.contains(className))continue;
+    try{init(root);}catch(error){console.warn(`Slider initialization skipped for ${className}`,error);}
+  }
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
     const el=entry.target;
     if(el.classList.contains('inview'))el.classList.toggle('play',entry.isIntersecting);
