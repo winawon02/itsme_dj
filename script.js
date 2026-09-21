@@ -15092,7 +15092,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
   function syncEventDetailLinks() {
     const links = new Map(eventDetailFallbacks);
     document.querySelectorAll('#w20260921790ee84979217 a[href*="/event/"][href*="bmode=view"]').forEach(link => {
-      const title = (link.textContent || '').trim().split('\n')[0];
+      const title = link.querySelector('.third_fake')?.textContent.trim() || (link.textContent || '').trim().split('\n')[0];
       if (title) links.set(title, link.getAttribute('href'));
     });
     eventList.querySelectorAll('li > a').forEach(link => {
@@ -15104,7 +15104,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     const widget = document.getElementById('w20260921790ee84979217');
     if (!widget) return false;
     const records = [...widget.querySelectorAll('a[href*="/event/"][href*="bmode=view"]')].map(link => {
-      const title = (link.textContent || '').trim().split('\n')[0];
+      const title = link.querySelector('.third_fake')?.textContent.trim() || (link.textContent || '').trim().split('\n')[0];
       const row = link.closest('.list, .list-style, [class*="list-style"]');
       const category = row?.querySelector('.category, [class*="category"]')?.textContent.trim() || eventCategoryFallbacks.get(title) || '';
       return {title, category, href: link.getAttribute('href')};
