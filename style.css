@@ -9200,7 +9200,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 
 /* The main page's native latest-post widget supplies board URLs and ordering.
    Its old-site cards remain the visible presentation. */
-#88tI24T674:has(#w20260921790ee84979217) {
+#w20260921790ee84979217 {
   display: none !important;
 }
 
