@@ -15413,9 +15413,11 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const page = pages[path];
   if (!page) return;
 
-  const findWidget = () => page.kind === 'event'
-    ? document.querySelector('#w2026091890c7ba170f50d')
-    : document.querySelector('[data-widget-type="board"], [data-widget-name="입력폼"], [data-widget-type="form"], [id^="addForm"]');
+  const findWidget = () => document.querySelector(
+    page.kind === 'event'
+      ? '[data-widget-type="board"], #w2026091890c7ba170f50d'
+      : '[data-widget-type="board"], [data-widget-name="입력폼"], [data-widget-type="form"], [id^="addForm"]'
+  );
   const mount = () => {
     const widget = findWidget();
     if (!widget) return false;
