@@ -15075,6 +15075,15 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const eventTitle = select('#main_event .title');
   const eventList = select('#main_event .list_wrap ul');
   const eventTabs = all('#main_event .title a[data-code]');
+  const eventCardTemplates = new Map(all('#main_event .list_wrap li').map(item => [
+    item.querySelector('.top strong')?.textContent.trim(),
+    item.cloneNode(true)
+  ]));
+  const eventCategoryFallbacks = new Map([
+    ['통증 없이 스킨부스터 X-인젝터 런칭', '스킨부스터'],
+    ['첫방문 이벤트', '시즌이벤트'],
+    ['웨딩패키지', '시즌이벤트']
+  ]);
   const eventDetailFallbacks = new Map([
     ['통증 없이 스킨부스터 X-인젝터 런칭', '/event/?idx=174183472&bmode=view'],
     ['첫방문 이벤트', '/event/?idx=174183529&bmode=view'],
@@ -15091,6 +15100,34 @@ const itsmeMainEquipmentDetails = Object.freeze({
       link.href = links.get(title) || '/event';
     });
   }
+  function renderBoardEvents(tab = eventTabs[0]) {
+    const widget = document.getElementById('w20260921790ee84979217');
+    if (!widget) return false;
+    const records = [...widget.querySelectorAll('a[href*="/event/"][href*="bmode=view"]')].map(link => {
+      const title = (link.textContent || '').trim().split('\n')[0];
+      const row = link.closest('.list, .list-style, [class*="list-style"]');
+      const category = row?.querySelector('.category, [class*="category"]')?.textContent.trim() || eventCategoryFallbacks.get(title) || '';
+      return {title, category, href: link.getAttribute('href')};
+    }).filter((record, index, items) => record.title && items.findIndex(item => item.href === record.href) === index);
+    const category = tab?.textContent.trim() || '시즌이벤트';
+    const filtered = records.filter(record => record.category === category);
+    const fragment = document.createDocumentFragment();
+    filtered.forEach(record => {
+      const item = eventCardTemplates.get(record.title)?.cloneNode(true);
+      if (!item) return;
+      const link = item.querySelector(':scope > a');
+      if (link) link.href = record.href;
+      fragment.append(item);
+    });
+    if (!fragment.childNodes.length) {
+      const empty = document.createElement('li');
+      empty.className = 'm_nodata';
+      empty.textContent = '등록된 이벤트가 없습니다.';
+      fragment.append(empty);
+    }
+    eventList.replaceChildren(fragment);
+    return true;
+  }
   function updatePosition() {
     const rect = eventRoot.getBoundingClientRect();
     const pinned = rect.top < 0 && rect.bottom > innerHeight;
@@ -15102,13 +15139,15 @@ const itsmeMainEquipmentDetails = Object.freeze({
   window.addEventListener('scroll', updatePosition, {passive:true});
   updatePosition();
   function showEvents(tab) {
-    eventList.innerHTML = itsmeEvents[tab.dataset.code] || '';
-    syncEventDetailLinks();
+    if (!renderBoardEvents(tab)) {
+      eventList.innerHTML = itsmeEvents[tab.dataset.code] || '';
+      syncEventDetailLinks();
+    }
     eventTabs.forEach(item => item.classList.toggle('on',item === tab));
     updatePosition();
   }
   eventTabs.forEach(tab => tab.addEventListener('click', e => {e.preventDefault();showEvents(tab);}));
-  syncEventDetailLinks();
+  if (!renderBoardEvents()) syncEventDetailLinks();
   // The first event list and selected tab are already present in the HTML.
   if (/^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get('scrollEvent') === 'bottom') {
     requestAnimationFrame(() => {
