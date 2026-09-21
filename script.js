@@ -15075,6 +15075,22 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const eventTitle = select('#main_event .title');
   const eventList = select('#main_event .list_wrap ul');
   const eventTabs = all('#main_event .title a[data-code]');
+  const eventDetailFallbacks = new Map([
+    ['통증 없이 스킨부스터 X-인젝터 런칭', '/event/?idx=174183472&bmode=view'],
+    ['첫방문 이벤트', '/event/?idx=174183529&bmode=view'],
+    ['웨딩패키지', '/event/?idx=174183591&bmode=view']
+  ]);
+  function syncEventDetailLinks() {
+    const links = new Map(eventDetailFallbacks);
+    document.querySelectorAll('#w20260921790ee84979217 a[href*="/event/"][href*="bmode=view"]').forEach(link => {
+      const title = (link.textContent || '').trim().split('\n')[0];
+      if (title) links.set(title, link.getAttribute('href'));
+    });
+    eventList.querySelectorAll('li > a').forEach(link => {
+      const title = link.querySelector('.top strong')?.textContent.trim();
+      link.href = links.get(title) || '/event';
+    });
+  }
   function updatePosition() {
     const rect = eventRoot.getBoundingClientRect();
     const pinned = rect.top < 0 && rect.bottom > innerHeight;
@@ -15087,10 +15103,12 @@ const itsmeMainEquipmentDetails = Object.freeze({
   updatePosition();
   function showEvents(tab) {
     eventList.innerHTML = itsmeEvents[tab.dataset.code] || '';
+    syncEventDetailLinks();
     eventTabs.forEach(item => item.classList.toggle('on',item === tab));
     updatePosition();
   }
   eventTabs.forEach(tab => tab.addEventListener('click', e => {e.preventDefault();showEvents(tab);}));
+  syncEventDetailLinks();
   // The first event list and selected tab are already present in the HTML.
   if (/^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) && new URLSearchParams(location.search).get('scrollEvent') === 'bottom') {
     requestAnimationFrame(() => {

@@ -9066,6 +9066,9 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 }
 
 /* The event page uses an Imweb board as its single editable content source. */
+:is(body.itsme-native-event, body:has([data-native-page="event"])):has([data-widget-type="board"]) #w2026091890c7ba170f50d {
+  display: none !important;
+}
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .board-head {
   border: 0 !important;
   padding-bottom: 34px !important;
@@ -9194,6 +9197,12 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 .itsme-native-shell .itsme-native-hero { width: 100vw; margin-left: calc(50% - 50vw); }
 .itsme-native-shell .itsme-native-intro { padding-top: 72px; }
 @media(max-width:767px) { .itsme-native-shell .itsme-native-intro { padding-top: 45px; } }
+
+/* The main page's native latest-post widget supplies board URLs and ordering.
+   Its old-site cards remain the visible presentation. */
+#88tI24T674:has(#w20260921790ee84979217) {
+  display: none !important;
+}
 
 /* The source site used a 1400px desktop canvas. Let Imweb's actual viewport
    size the migrated bodies, then stack the recurring article sections. */
