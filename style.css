@@ -9217,6 +9217,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 #itsme-content.page-index #main_event .itsme-main-event-board .board-head .heading,
 #itsme-content.page-index #main_event .itsme-main-event-board .board-head .tools,
 #itsme-content.page-index #main_event .itsme-main-event-board .btn-write,
+#itsme-content.page-index #main_event .itsme-main-event-board a[href*="bmode=write"],
 #itsme-content.page-index #main_event .itsme-main-event-board .card-foot,
 #itsme-content.page-index #main_event .itsme-main-event-board .card-summary,
 #itsme-content.page-index #main_event .itsme-main-event-board :is(.pagination, .paging-block, ._paging) { display: none !important; }
@@ -9256,7 +9257,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 30px 22px;
 }
-#itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .list-style-card {
+#itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .post_row { display: contents !important; }
+#itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card {
   display: block !important;
   width: auto !important;
   min-width: 0;
