@@ -15078,6 +15078,11 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const eventBoardMount = select('#main_event .list_wrap .inwrap');
   if (eventBoard && eventBoardMount) {
     eventBoard.classList.add('itsme-main-event-board');
+    eventBoard.querySelectorAll('a[href*="bmode=view"]').forEach(link => {
+      const target = new URL(link.getAttribute('href'), location.origin);
+      target.pathname = '/event/';
+      link.href = target.pathname + target.search + target.hash;
+    });
     eventBoardMount.replaceChildren(eventBoard);
     eventRoot.classList.add('uses-native-board');
   }

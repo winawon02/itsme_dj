@@ -9218,7 +9218,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 #itsme-content.page-index #main_event .itsme-main-event-board .board-head .tools,
 #itsme-content.page-index #main_event .itsme-main-event-board .btn-write,
 #itsme-content.page-index #main_event .itsme-main-event-board .card-foot,
-#itsme-content.page-index #main_event .itsme-main-event-board .card-summary { display: none !important; }
+#itsme-content.page-index #main_event .itsme-main-event-board .card-summary,
+#itsme-content.page-index #main_event .itsme-main-event-board :is(.pagination, .paging-block, ._paging) { display: none !important; }
 #itsme-content.page-index #main_event .itsme-main-event-board .board-head {
   min-height: 0 !important;
   margin: 0 !important;
