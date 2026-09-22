@@ -9079,7 +9079,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .board-head .heading header em {
   display: none !important;
 }
-:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) {
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) {
   display: flex !important;
   flex-wrap: wrap;
   gap: 8px;
@@ -9087,7 +9087,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   padding: 0 !important;
   border: 0 !important;
 }
-:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) a {
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) a {
   display: inline-flex;
   min-height: 42px;
   padding: 0 18px !important;
@@ -9100,7 +9100,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   font-size: 14px !important;
   text-decoration: none !important;
 }
-:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) :is(a.active, a.on, li.active a, li.on a) {
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) :is(a.active, a.on, li.active a, li.on a) {
   border-color: #e5602d !important;
   background: #e5602d !important;
   color: #fff !important;
@@ -9180,8 +9180,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) #w2026091890c7ba170f50d .text_wrap .body { display: block; margin-top: 10px; color: #111 !important; font-size: 27px !important; font-weight: 750 !important; line-height: 1.3; letter-spacing: -.04em; }
 @media (max-width: 767px) {
   :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .board-head { padding-bottom: 24px !important; }
-  :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) { gap: 7px; margin-bottom: 24px !important; }
-  :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) a { min-height: 38px; padding: 0 14px !important; font-size: 13px !important; }
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) { gap: 7px; margin-bottom: 24px !important; }
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) a { min-height: 38px; padding: 0 14px !important; font-size: 13px !important; }
   :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .type_grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title { font-size: 19px !important; }
   :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail h2 { font-size: 25px; }
@@ -9227,7 +9227,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   padding: 0 !important;
   border: 0 !important;
 }
-#itsme-content.page-index #main_event .itsme-main-event-board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) {
+#itsme-content.page-index #main_event .itsme-main-event-board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) {
   display: flex !important;
   flex-wrap: wrap;
   gap: 8px;
@@ -9235,7 +9235,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   padding: 0 !important;
   border: 0 !important;
 }
-#itsme-content.page-index #main_event .itsme-main-event-board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) a {
+#itsme-content.page-index #main_event .itsme-main-event-board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) a {
   display: inline-flex;
   min-height: 40px;
   padding: 0 17px !important;
@@ -9247,7 +9247,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   color: #555 !important;
   font-size: 14px !important;
 }
-#itsme-content.page-index #main_event .itsme-main-event-board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category) :is(a.active, a.on, li.active a, li.on a) {
+#itsme-content.page-index #main_event .itsme-main-event-board :is(.category, .board-category, .category-wrap, .category_wrap, .board_category, .itsme-event-categories) :is(a.active, a.on, li.active a, li.on a) {
   border-color: #e5602d !important;
   background: #e5602d !important;
   color: #fff !important;

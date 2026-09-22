@@ -15022,6 +15022,40 @@ const itsmeMainEquipmentDetails = Object.freeze({
   }
 });
 
+/* Native event categories shared by the homepage and event board. */
+(() => {
+  const categories = [
+    ['시즌이벤트', 'V2036r5k52'],
+    ['리프팅/실리프팅', 'sxn3Nb4k8O'],
+    ['보톡스/필러', '5JO17U765t'],
+    ['색소/홍조/문신', 'Ae56l9m2D7'],
+    ['여드름/모공/흉터', '87h0q3gt58'],
+    ['스킨부스터', '86G1l034Kq'],
+    ['피부관리', '707355TC60'],
+    ['제모&다이어트', '021w101q33']
+  ];
+  window.itsmeMountEventCategories = board => {
+    if (!board || board.querySelector('.itsme-event-categories')) return;
+    const active = location.pathname.replace(/\/$/, '') === '/event' ? new URLSearchParams(location.search).get('category') || '' : '';
+    const nav = document.createElement('nav');
+    nav.className = 'itsme-event-categories';
+    nav.setAttribute('aria-label', '이벤트 카테고리');
+    const allLink = document.createElement('a');
+    allLink.href = '/event';
+    allLink.textContent = '전체';
+    if (!active) allLink.className = 'on';
+    nav.append(allLink);
+    categories.forEach(([name, code]) => {
+      const link = document.createElement('a');
+      link.href = `/event?category=${encodeURIComponent(code)}`;
+      link.textContent = name;
+      if (active === code) link.className = 'on';
+      nav.append(link);
+    });
+    (board.querySelector('.type_grid') || board.querySelector('.li_board') || board.firstElementChild)?.before(nav);
+  };
+})();
+
 /* Original main.js / inline Swiper settings, limited to the exported content. */
 (function () {
   'use strict';
@@ -15085,6 +15119,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     });
     eventBoardMount.replaceChildren(eventBoard);
     eventRoot.classList.add('uses-native-board');
+    window.itsmeMountEventCategories?.(eventBoard);
   }
   function updatePosition() {
     const rect = eventRoot.getBoundingClientRect();
@@ -15427,6 +15462,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     if (!widget) return false;
     const section = widget.closest('[doz_type="section"], .section_wrap');
     if (!section) return false;
+    if (page.kind === 'event') window.itsmeMountEventCategories?.(widget.querySelector('.widget.board') || widget);
 
     const enhanceEmpty = scope => {
       if (!page.empty || scope.querySelector('.itsme-native-empty')) return;
