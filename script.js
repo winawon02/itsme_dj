@@ -15462,6 +15462,88 @@ const itsmeMainEquipmentDetails = Object.freeze({
   }
 })();
 
+// Keep Imweb's board as the event data source while changing categories in place.
+(() => {
+  const main = document.querySelector('#itsme-content.page-index #main_event');
+  const eventPage = location.pathname.replace(/\/$/, '') === '/event';
+  const nav = main?.querySelector('.itsme-event-category-list')
+    || (eventPage && document.querySelector('.itsme-event-categories--static'));
+  const board = main?.querySelector('.itsme-main-event-board')
+    || (eventPage && document.querySelector('#w20260921b5ec962484e96 .widget.board'));
+  if (!nav || !board) return;
+
+  let controller;
+  const boardSelector = '#w20260921b5ec962484e96 .widget.board';
+  const selectedCode = url => new URL(url, location.origin).searchParams.get('category') || '';
+  function selectCategory(code) {
+    nav.querySelectorAll('a[href]').forEach(link => {
+      const active = selectedCode(link.href) === code;
+      link.classList.toggle('on', active);
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  function enhanceEmpty() {
+    const empty = [...board.querySelectorAll('p, div, td, li')]
+      .find(el => !el.children.length && /게시물이 없습니다\.?/.test(el.textContent.trim()));
+    if (!empty) return;
+    empty.classList.add('itsme-native-empty');
+    empty.replaceChildren();
+    const title = document.createElement('strong');
+    title.textContent = '이 카테고리에 등록된 이벤트가 없습니다.';
+    const all = document.createElement('a');
+    all.href = '/event';
+    all.textContent = '전체 이벤트 보기';
+    empty.append(title, all);
+  }
+  function rewriteMainLinks() {
+    if (!main) return;
+    board.querySelectorAll('a[href*="bmode=view"]').forEach(link => {
+      const url = new URL(link.href, location.origin);
+      url.pathname = '/event/';
+      link.href = url.pathname + url.search + url.hash;
+    });
+  }
+  async function showCategory(url, updateHistory = false) {
+    controller?.abort();
+    controller = new AbortController();
+    const signal = controller.signal;
+    board.setAttribute('aria-busy', 'true');
+    try {
+      const response = await fetch(url, {credentials: 'same-origin', signal});
+      if (!response.ok) throw new Error(`Event board returned ${response.status}`);
+      const documentCopy = new DOMParser().parseFromString(await response.text(), 'text/html');
+      if (signal.aborted) return;
+      const nextBoard = documentCopy.querySelector(boardSelector);
+      if (!nextBoard) throw new Error('Event board was absent from the response');
+      board.innerHTML = nextBoard.innerHTML;
+      rewriteMainLinks();
+      enhanceEmpty();
+      const code = selectedCode(url);
+      selectCategory(code);
+      if (eventPage && updateHistory) history.pushState({itsmeEventCategory: code}, '', url);
+    } catch (error) {
+      if (signal.aborted) return;
+      console.error('이벤트 카테고리를 불러오지 못했습니다.', error);
+      location.assign(url);
+    } finally {
+      if (!signal.aborted) board.removeAttribute('aria-busy');
+    }
+  }
+  nav.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link || !nav.contains(link) || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const url = new URL(link.href, location.origin);
+    if (url.origin !== location.origin || url.pathname.replace(/\/$/, '') !== '/event') return;
+    event.preventDefault();
+    showCategory(url.pathname + url.search, eventPage);
+  });
+  if (eventPage) {
+    addEventListener('popstate', () => showCategory(location.pathname + location.search));
+    selectCategory(selectedCode(location.href));
+  }
+})();
+
 (() => {
   const updateHeader = () => document.body.classList.toggle('itsme-header-scrolled', scrollY > 30);
   addEventListener('scroll', updateHeader, {passive: true});

@@ -9207,9 +9207,10 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 
 /* The homepage mounts the real Imweb board inside the legacy event section.
    JavaScript only relocates the server-rendered widget; all content stays DB-backed. */
-#itsme-content.page-index #main_event .title > .inbox > ul { display: flex !important; visibility: visible !important; animation: none !important; }
-#itsme-content.page-index #main_event .title > .inbox > ul a.on { color: inherit !important; }
-#itsme-content.page-index #main_event .title > .inbox > ul a.on::after { opacity: 0 !important; }
+#itsme-content.page-index #main_event .title > .inbox > ul { display: block !important; visibility: visible !important; animation: none !important; }
+#itsme-content.page-index #main_event .title > .inbox > ul li { display: block !important; }
+#itsme-content.page-index #main_event .title > .inbox > ul a.on { color: #51aa98 !important; }
+#itsme-content.page-index #main_event .title > .inbox > ul a.on::after { opacity: 1 !important; transform: scale(1) !important; }
 #itsme-content.page-index #main_event .itsme-main-event-board {
   display: block !important;
   padding: 0 !important;
@@ -9286,17 +9287,23 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 }
 #itsme-content.page-index #main_event .itsme-main-event-board .type_grid {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 30px 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 42px;
+  margin: 0 !important;
 }
 #itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .post_row { display: contents !important; }
+#itsme-content.page-index #main_event .itsme-main-event-board .type_grid .dummy_col { display: none !important; }
 #itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card {
+  position: relative;
   display: block !important;
   width: auto !important;
   min-width: 0;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 0 0 90px !important;
 }
+#itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .post_row:nth-child(2n + 1) .list-style-card:nth-child(2n),
+#itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .post_row:nth-child(2n) .list-style-card:nth-child(2n + 1) { top: 110px; }
+#itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card .ma-item { padding: 0 !important; }
 #itsme-content.page-index #main_event .itsme-main-event-board .card {
   height: 100%;
   border: 0 !important;
@@ -9349,7 +9356,12 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   -webkit-line-clamp: 3;
 }
 @media (max-width: 767px) {
+  #itsme-content.page-index #main_event .title > .inbox > ul { display: flex !important; }
+  #itsme-content.page-index #main_event .title > .inbox > ul li { display: inline-block !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .type_grid { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card,
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card:nth-child(2n),
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .post_row:nth-child(2n) .list-style-card:nth-child(2n + 1) { top: auto; padding: 0 !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title { font-size: 19px !important; }
 }
 
