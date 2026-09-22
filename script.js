@@ -15022,40 +15022,6 @@ const itsmeMainEquipmentDetails = Object.freeze({
   }
 });
 
-/* Native event categories shared by the homepage and event board. */
-(() => {
-  const categories = [
-    ['시즌이벤트', 'V2036r5k52'],
-    ['리프팅/실리프팅', 'sxn3Nb4k8O'],
-    ['보톡스/필러', '5JO17U765t'],
-    ['색소/홍조/문신', 'Ae56l9m2D7'],
-    ['여드름/모공/흉터', '87h0q3gt58'],
-    ['스킨부스터', '86G1l034Kq'],
-    ['피부관리', '707355TC60'],
-    ['제모&다이어트', '021w101q33']
-  ];
-  window.itsmeMountEventCategories = board => {
-    if (!board || board.querySelector('.itsme-event-categories')) return;
-    const active = location.pathname.replace(/\/$/, '') === '/event' ? new URLSearchParams(location.search).get('category') || '' : '';
-    const nav = document.createElement('nav');
-    nav.className = 'itsme-event-categories';
-    nav.setAttribute('aria-label', '이벤트 카테고리');
-    const allLink = document.createElement('a');
-    allLink.href = '/event';
-    allLink.textContent = '전체';
-    if (!active) allLink.className = 'on';
-    nav.append(allLink);
-    categories.forEach(([name, code]) => {
-      const link = document.createElement('a');
-      link.href = `/event?category=${encodeURIComponent(code)}`;
-      link.textContent = name;
-      if (active === code) link.className = 'on';
-      nav.append(link);
-    });
-    (board.querySelector('.type_grid') || board.querySelector('.li_board') || board.firstElementChild)?.before(nav);
-  };
-})();
-
 /* Original main.js / inline Swiper settings, limited to the exported content. */
 (function () {
   'use strict';
@@ -15107,6 +15073,11 @@ const itsmeMainEquipmentDetails = Object.freeze({
 
   const eventRoot = select('#main_event');
   const eventTitle = select('#main_event .title');
+  const eventCategoryCodes = ['V2036r5k52', 'sxn3Nb4k8O', '5JO17U765t', 'Ae56l9m2D7', '87h0q3gt58', '86G1l034Kq', '707355TC60', '021w101q33'];
+  all('#main_event .title a[data-code]').forEach(link => {
+    const code = eventCategoryCodes[Number(link.dataset.code) - 1];
+    if (code) link.href = `/event?category=${code}`;
+  });
   const eventBoardHost = document.getElementById('w20260921a0ece0b9def1b');
   const eventBoard = eventBoardHost?.querySelector('.widget.board');
   const eventBoardMount = select('#main_event .list_wrap .inwrap');
@@ -15119,7 +15090,6 @@ const itsmeMainEquipmentDetails = Object.freeze({
     });
     eventBoardMount.replaceChildren(eventBoard);
     eventRoot.classList.add('uses-native-board');
-    window.itsmeMountEventCategories?.(eventBoard);
   }
   function updatePosition() {
     const rect = eventRoot.getBoundingClientRect();
@@ -15446,7 +15416,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
 })();
 
 (() => {
-  const pages = {"/event":{"kind":"event","empty":"새로운 이벤트를 준비하고 있습니다.","emptyNote":"궁금한 시술은 상담 신청을 통해 먼저 안내받으실 수 있습니다.","action":"/consultation","actionText":"상담 신청"},"/reviews":{"kind":"reviews","empty":"등록된 시술 후기가 없습니다.","emptyNote":"새로운 후기가 등록되면 이곳에서 확인할 수 있습니다."},"/notices":{"kind":"notices","empty":"등록된 공지가 없습니다.","emptyNote":"새로운 소식은 이곳에서 안내해 드립니다."}};
+  const pages = {"/event":{"kind":"event","empty":"등록된 이벤트가 없습니다.","emptyNote":"다른 카테고리의 이벤트를 확인해 보세요.","action":"/event","actionText":"전체 이벤트 보기"},"/reviews":{"kind":"reviews","empty":"등록된 시술 후기가 없습니다.","emptyNote":"새로운 후기가 등록되면 이곳에서 확인할 수 있습니다."},"/notices":{"kind":"notices","empty":"등록된 공지가 없습니다.","emptyNote":"새로운 소식은 이곳에서 안내해 드립니다."}};
   const previewKind = /^(?:localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get('page') : '';
   const path = previewKind && pages['/'+previewKind] ? '/'+previewKind : (location.pathname.replace(/\/$/, '') || '/');
   const page = pages[path];
@@ -15462,7 +15432,15 @@ const itsmeMainEquipmentDetails = Object.freeze({
     if (!widget) return false;
     const section = widget.closest('[doz_type="section"], .section_wrap');
     if (!section) return false;
-    if (page.kind === 'event') window.itsmeMountEventCategories?.(widget.querySelector('.widget.board') || widget);
+    if (page.kind === 'event') {
+      const active = new URLSearchParams(location.search).get('category') || '';
+      section.querySelectorAll('.itsme-event-categories a').forEach(link => {
+        const selected = (new URL(link.href, location.origin)).searchParams.get('category') === active;
+        link.classList.toggle('on', selected);
+        if (selected) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+    }
 
     const enhanceEmpty = scope => {
       if (!page.empty || scope.querySelector('.itsme-native-empty')) return;
@@ -15470,7 +15448,9 @@ const itsmeMainEquipmentDetails = Object.freeze({
       const target = candidates.find(el => !el.children.length && /게시물이 없습니다\.?/.test(el.textContent.trim()));
       if (!target) return;
       target.classList.add('itsme-native-empty');
-      target.innerHTML = `<strong>${page.empty}</strong><span>${page.emptyNote}</span>${page.action ? `<a href="${page.action}">${page.actionText}</a>` : ''}`;
+      const filtered = page.kind === 'event' && new URLSearchParams(location.search).has('category');
+      const title = filtered ? '이 카테고리에 등록된 이벤트가 없습니다.' : page.empty;
+      target.innerHTML = `<strong>${title}</strong>${filtered ? `<a href="/event">전체 이벤트 보기</a>` : ''}`;
     };
     enhanceEmpty(section);
     new MutationObserver(() => enhanceEmpty(section)).observe(section, {childList: true, subtree: true});

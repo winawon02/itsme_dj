@@ -9207,7 +9207,9 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 
 /* The homepage mounts the real Imweb board inside the legacy event section.
    JavaScript only relocates the server-rendered widget; all content stays DB-backed. */
-#itsme-content.page-index #main_event.uses-native-board .title > .inbox > ul { display: none !important; }
+#itsme-content.page-index #main_event .title > .inbox > ul { display: flex !important; visibility: visible !important; animation: none !important; }
+#itsme-content.page-index #main_event .title > .inbox > ul a.on { color: inherit !important; }
+#itsme-content.page-index #main_event .title > .inbox > ul a.on::after { opacity: 0 !important; }
 #itsme-content.page-index #main_event .itsme-main-event-board {
   display: block !important;
   padding: 0 !important;
@@ -9221,6 +9223,36 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 #itsme-content.page-index #main_event .itsme-main-event-board .card-foot,
 #itsme-content.page-index #main_event .itsme-main-event-board .card-summary,
 #itsme-content.page-index #main_event .itsme-main-event-board :is(.pagination, .paging-block, ._paging) { display: none !important; }
+
+.itsme-native-shell .itsme-event-categories--static {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -12px 0 34px;
+  padding: 0;
+}
+.itsme-native-shell .itsme-event-categories--static a {
+  display: inline-flex;
+  min-height: 42px;
+  padding: 0 18px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: #fff;
+  color: #555;
+  font-size: 14px;
+  text-decoration: none;
+}
+.itsme-native-shell .itsme-event-categories--static a.on {
+  border-color: #e5602d;
+  background: #e5602d;
+  color: #fff;
+}
+@media (max-width: 767px) {
+  .itsme-native-shell .itsme-event-categories--static { gap: 7px; margin: -6px 0 24px; }
+  .itsme-native-shell .itsme-event-categories--static a { min-height: 38px; padding: 0 14px; font-size: 13px; }
+}
 #itsme-content.page-index #main_event .itsme-main-event-board .board-head {
   min-height: 0 !important;
   margin: 0 !important;
