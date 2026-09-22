@@ -9023,6 +9023,51 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 .itsme-native-empty strong, .itsme-native-empty span { max-width: 100%; white-space: normal !important; overflow-wrap: anywhere; }
 .itsme-native-empty span { font-size: 15px; font-weight: 300; }
 .itsme-native-empty a { display: inline-block; margin-top: 12px; padding: 13px 30px; background: #e5602d; color: #fff !important; text-decoration: none; }
+
+/* Imweb renders an empty board as one grid item. Make the message a full-width panel. */
+:is(#main_event, body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .type_grid:has(.empty_list) {
+  grid-template-columns: minmax(0, 1fr) !important;
+  margin: 0 !important;
+}
+:is(#main_event, body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .empty_list {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  width: 100% !important;
+  padding: 0 !important;
+}
+:is(#main_event, body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .permission_error_box {
+  width: 100% !important;
+}
+:is(#main_event, body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .empty_list :is(.symbol, .btn-block-center) {
+  display: none !important;
+}
+:is(#main_event, body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .empty_list .itsme-native-empty {
+  box-sizing: border-box;
+  display: flex !important;
+  width: 100% !important;
+  min-height: 300px;
+  margin: 0 !important;
+  padding: 48px 24px !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  background: #faf8f6;
+  color: #777;
+  text-align: center;
+  opacity: 1 !important;
+}
+:is(#main_event, body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .empty_list .itsme-native-empty strong {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  font-size: 22px;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+:is(#main_event, body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .empty_list .itsme-native-empty a {
+  margin: 0;
+}
 @media (max-width: 767px) {
   .itsme-native-hero { height: 240px; }
   .itsme-native-hero__inner img { width: 960px; height: 170px; margin: 35px 0 0 calc(50% - 480px); }
@@ -9211,6 +9256,24 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 #itsme-content.page-index #main_event .title > .inbox > ul li { display: block !important; }
 #itsme-content.page-index #main_event .title > .inbox > ul a.on { color: #51aa98 !important; }
 #itsme-content.page-index #main_event .title > .inbox > ul a.on::after { opacity: 1 !important; transform: scale(1) !important; }
+@media (min-width: 768px) {
+  #itsme-content.page-index #main_event:has(.empty_list) .list_wrap {
+    box-sizing: border-box;
+    display: flex;
+    min-height: 900px;
+    padding: 0 !important;
+    align-items: center;
+  }
+  #itsme-content.page-index #main_event:has(.empty_list) .list_wrap .inwrap { width: 90%; }
+  #itsme-content.page-index #main_event:has(.empty_list) > .title,
+  #itsme-content.page-index #main_event:has(.empty_list).fixed_top > .title,
+  #itsme-content.page-index #main_event:has(.empty_list).fixed_bottom > .title {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: auto !important;
+    height: 100% !important;
+  }
+}
 #itsme-content.page-index #main_event .itsme-main-event-board {
   display: block !important;
   padding: 0 !important;

@@ -15519,6 +15519,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
       board.innerHTML = nextBoard.innerHTML;
       rewriteMainLinks();
       enhanceEmpty();
+      if (main) dispatchEvent(new Event('scroll'));
       const code = selectedCode(url);
       selectCategory(code);
       if (eventPage && updateHistory) history.pushState({itsmeEventCategory: code}, '', url);
