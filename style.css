@@ -9318,12 +9318,12 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   text-decoration: none;
 }
 #itsme-content.page-index #main_event .itsme-main-event-board .card_wrapper {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1;
   min-height: 0 !important;
   background-color: #f4f4f4 !important;
   transition: filter .25s ease;
 }
-#itsme-content.page-index #main_event .itsme-main-event-board .card-head { height: auto !important; aspect-ratio: 4 / 3; }
+#itsme-content.page-index #main_event .itsme-main-event-board .card-head { height: auto !important; aspect-ratio: 1; }
 #itsme-content.page-index #main_event .itsme-main-event-board .list-style-card:hover .card_wrapper { filter: brightness(.95); }
 #itsme-content.page-index #main_event .itsme-main-event-board .card-body {
   padding: 18px 2px 4px !important;
@@ -9339,7 +9339,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   padding: 0 !important;
   background: transparent !important;
   color: #1c1c1c !important;
-  font-size: 20px !important;
+  font-size: 22px !important;
   font-weight: 650 !important;
   line-height: 1.4 !important;
   letter-spacing: -.035em;
@@ -9350,7 +9350,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   margin-top: 9px !important;
   overflow: hidden;
   color: #777 !important;
-  font-size: 14px !important;
+  font-size: 16px !important;
   line-height: 1.65 !important;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
