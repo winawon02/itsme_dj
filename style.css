@@ -8858,6 +8858,29 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #doz_footer_wrap .itsme-footer-registration { font-size: 12px; }
 }
 
+@media (max-width: 767px) {
+  #doz_footer_wrap .footer-section { padding: 25px 0 90px !important; }
+  #doz_footer_wrap .footer-section > .inside { width: calc(100% - 44px) !important; }
+  #doz_footer_wrap .custom-text-info .fr-element { display: flex !important; flex-direction: column; }
+  #doz_footer_wrap .itsme-footer-meta { display: contents !important; }
+  #doz_footer_wrap .itsme-footer-links { order: 0; display: flex !important; flex-direction: column; align-items: flex-start; gap: 3px; }
+  #doz_footer_wrap .itsme-footer-links :is(a, span) { font-size: 12px; line-height: 1.8; }
+  #doz_footer_wrap .custom-text-info .fr-element > p:first-child {
+    order: 1;
+    height: auto;
+    margin: 20px 0 0 !important;
+    padding: 15px 0 0 !important;
+    border-top: 1px solid #444;
+    border-bottom: 0;
+    background: none;
+    text-indent: 0;
+  }
+  #doz_footer_wrap .custom-text-info .fr-element > p:first-child::after { content: '잇츠미 클리닉'; color: #aaa; font-size: 12px; line-height: 1.8; }
+  #doz_footer_wrap .custom-text-info .fr-element > p:nth-of-type(3) { order: 2; margin-top: 2px !important; font-size: 12px !important; }
+  #doz_footer_wrap .itsme-footer-social { order: 3; margin-top: 20px; }
+  #doz_footer_wrap .custom-text-info .fr-element > ul { order: 4; margin-top: 25px; }
+}
+
 #doz_footer_wrap .itsme-footer-social img { display:block; width:22px; height:22px; object-fit:contain; opacity:.55; }
 #doz_footer_wrap .itsme-footer-social a:hover img { opacity:1; }
 
@@ -9597,6 +9620,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 
 /* The source site used a 1400px desktop canvas. Let Imweb's actual viewport
    size the migrated bodies, then stack the recurring article sections. */
+#itsme-content.page-index :is(.itsme-mobile-home-search, .itsme-main-event-more) { display: none; }
 @media (max-width: 1399px) {
   #itsme-content:is(.page-scar, .page-acne, .page-blem) #main,
   #itsme-content:is(.page-scar, .page-acne, .page-blem) #main .flex-row,
@@ -9700,6 +9724,18 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 }
 
 @media (max-width: 767px) {
+  #itsme-content.page-index .itsme-mobile-home-search { display: block; box-sizing: border-box; height: 131px; padding: 30px 20px 20px; background: #151515; }
+  #itsme-content.page-index .itsme-mobile-home-search__open { display: flex; width: 100%; padding: 0 0 9px; align-items: center; justify-content: space-between; border: 0; border-bottom: 1px solid #777; background: transparent; color: #51aa98; font-size: 15px; text-align: left; }
+  #itsme-content.page-index .itsme-mobile-home-search__open span { font-size: 24px; line-height: 1; }
+  #itsme-content.page-index .itsme-mobile-home-search nav { display: flex; gap: 14px; margin-top: 12px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  #itsme-content.page-index .itsme-mobile-home-search nav::-webkit-scrollbar { display: none; }
+  #itsme-content.page-index .itsme-mobile-home-search nav :is(a,span) { color: #777; font-size: 11px; text-decoration: none; }
+  #inline_header_mobile .inline-col-group-left { position: absolute !important; top: 0; right: 10px; left: auto !important; width: 48px !important; }
+  #inline_header_mobile .inline-col-group-right { position: absolute !important; top: 0; left: 10px; right: auto !important; width: 48px !important; }
+  #inline_header_mobile [data-widget-type="inline_search_btn"] { display: none !important; }
+  body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .section_bg_color { background: #111 !important; }
+  body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .logo_title a { filter: brightness(0) invert(1); }
+  body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .inline-col-group :is(a, i, .holder) { color: #fff !important; }
   #itsme-content.page-careguide #sub_visual img,
   #itsme-content.page-community-laser #sub_visual img,
   #itsme-content.page-community-laser-115dff #sub_visual img {
@@ -9906,6 +9942,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #main_visual,
   #itsme-content.page-index #main_visual .swiper-container,
   #itsme-content.page-index #main_visual .swiper-slide { height: auto !important; aspect-ratio: 720 / 1067; }
+  #itsme-content.page-index #main_visual { margin-top: -49px; }
   #itsme-content.page-index #main_visual .swiper-slide { background-position: center !important; background-size: 100% 100% !important; }
   #itsme-content.page-index #main_visual .slide01::after {
     background-image: url(assets/mobile-hero-copy-2.png), url(assets/mobile-hero-copy-1.png), url(assets/mobile-hero-doc.jpg) !important;
@@ -9924,42 +9961,38 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #main_visual .slide01 .txt > :is(.title, .stxt) { display: none !important; }
   #itsme-content.page-index #main_visual .slide01 .txt a { position: absolute !important; inset: 0; z-index: 10; display: block; width: 100%; height: 100%; margin: 0 !important; padding: 0 !important; background: none !important; font-size: 0 !important; opacity: 0; pointer-events: auto; }
   #itsme-content.page-index #main_visual .swiper-pagination { bottom: 65px !important; left: 20px !important; margin-left: 0 !important; }
-  #itsme-content.page-index #main_yt { padding: 55px 15px 65px; }
-  #itsme-content.page-index #main_yt .title { position: static; left: auto; width: 100%; margin-bottom: 25px; }
-  #itsme-content.page-index #main_yt .title img { display: none; }
-  #itsme-content.page-index #main_yt .title::before {
-    display: block;
-    color: #3eaa98;
-    content: "IT'S ME YouTube";
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 1.3;
-    text-align: center;
-  }
-  #itsme-content.page-index #main_yt .yt { display: block; width: 100%; }
-  #itsme-content.page-index #main_yt .yt .frame { width: 100%; height: auto; aspect-ratio: 16 / 9; }
-  #itsme-content.page-index #main_yt .yt .frame iframe { box-sizing: border-box; display: block; width: 100%; height: 100%; margin: 0; border-width: 5px; }
-  #itsme-content.page-index #main_yt .yt .list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+  #itsme-content.page-index #main_yt { padding: 0 0 12vw !important; }
+  #itsme-content.page-index #main_yt .title { position: static; width: 100%; height: auto; aspect-ratio: 720 / 160; margin: 0 !important; background: url(assets/mobile-yt-title.jpg) center / 100% 100% no-repeat; }
+  #itsme-content.page-index #main_yt .title img,
+  #itsme-content.page-index #main_yt .title::before { display: none !important; }
+  #itsme-content.page-index #main_yt .yt { display: flex; width: 100%; justify-content: center; }
+  #itsme-content.page-index #main_yt .yt .frame { width: 61vw; height: 35.5vw; aspect-ratio: auto; margin-right: 2vw; }
+  #itsme-content.page-index #main_yt .yt .frame iframe { box-sizing: border-box; display: block; width: 100%; height: 100%; margin: 0; border-width: 3px; }
+  #itsme-content.page-index #main_yt .yt .list { display: flex; flex-direction: column; justify-content: space-between; gap: 0; margin: 0; }
   #itsme-content.page-index #main_yt .yt .tv-btn,
-  #itsme-content.page-index #main_yt .yt .tv-btn img { display: block; width: 100%; }
-  #itsme-content.page-index #main_case { display: block; padding: 65px 15px; font-size: 28px; }
-  #itsme-content.page-index #main_case .title { width: 100%; }
+  #itsme-content.page-index #main_yt .yt .tv-btn img { display: block; width: 18.6vw; }
+  #itsme-content.page-index #main_case { position: relative; display: block; height: auto; aspect-ratio: 3000 / 2020; padding: 0 !important; font-size: 3.5vw; }
+  #itsme-content.page-index #main_case .title { position: absolute; top: 0; left: 4%; z-index: 2; display: flex; width: 11em; height: 100%; flex-direction: column; justify-content: center; }
   #itsme-content.page-index #main_case h2,
-  #itsme-content.page-index #main_case h3 { font-size: 28px; line-height: 1.45; }
-  #itsme-content.page-index #main_case .title i { margin: 0; }
-  #itsme-content.page-index #main_case .pic { display: block; width: 100%; margin-top: 30px; }
+  #itsme-content.page-index #main_case h3 { font-size: inherit; line-height: 1.5; }
+  #itsme-content.page-index #main_case h3 { font-size: 3vw; }
+  #itsme-content.page-index #main_case .title i { margin: -1em 0 0 3.5em; }
+  #itsme-content.page-index #main_case .pic { position: absolute; inset: 0; display: block; width: 100%; height: 100%; margin: 0 !important; background: url(assets/mobile-case.png) center / 100% 100% no-repeat; }
+  #itsme-content.page-index #main_case .pic img { display: none; }
   #itsme-content.page-index #main_blog {
-    box-sizing: border-box;
+    position: relative;
+    display: block;
     height: auto;
-    min-height: 380px;
-    padding: 55px 20px;
-    align-items: flex-start;
-    background-size: cover;
-    font-size: 16px;
+    min-height: 0;
+    aspect-ratio: 720 / 533;
+    padding: 0 !important;
+    background: url(assets/mobile-blog-bg.jpg) center / 100% 100% no-repeat;
   }
-  #itsme-content.page-index #main_blog .tit { font-size: 27px; }
-  #itsme-content.page-index #main_blog .stit { padding: 25px 0; font-size: 30px; text-align: left; }
-  #itsme-content.page-index #main_blog .stxt { align-items: flex-start; }
+  #itsme-content.page-index #main_blog .tit { position: absolute; top: 23%; right: 7%; margin: 0; font-size: 3.6vw; text-align: right; }
+  #itsme-content.page-index #main_blog .stit { position: absolute; top: 38%; right: 7%; padding: 0; font-size: 5vw; text-align: right; }
+  #itsme-content.page-index #main_blog .stxt { position: absolute; top: 67%; right: 7%; display: flex; flex-direction: column; align-items: flex-end; font-size: 2.7vw; text-align: right; }
+  #itsme-content.page-index #main_blog .stxt a { position: absolute; top: -42vw; right: 0; }
+  #itsme-content.page-index #main_blog .stxt a img { width: 10vw; }
   #itsme-content.page-index #main_event .title,
   #itsme-content.page-index #main_event.fixed_top .title,
   #itsme-content.page-index #main_event.fixed_bottom .title {
@@ -9968,14 +10001,16 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
     bottom: auto !important;
     width: 100% !important;
     height: auto !important;
-    padding: 55px 20px;
+    padding: 52px 22px 104px !important;
+    background: #000 !important;
   }
   #itsme-content.page-index #main_event .title .inbox { padding: 0; }
-  #itsme-content.page-index #main_event .title .tit { font-size: 54px; }
-  #itsme-content.page-index #main_event .title .stxt { margin-top: 10px; font-size: 17px; }
-  #itsme-content.page-index #main_event .title ul { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 22px; }
-  #itsme-content.page-index #main_event .title li a { font-size: 14px; line-height: 1.5; }
-  #itsme-content.page-index #main_event .list_wrap { margin: 0; padding: 35px 15px; }
+  #itsme-content.page-index #main_event .title .tit { font-size: 36px; }
+  #itsme-content.page-index #main_event .title .stxt { display: none !important; }
+  #itsme-content.page-index #main_event .title > .inbox > ul { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 !important; margin-top: 16px !important; }
+  #itsme-content.page-index #main_event .title > .inbox > ul > li { display: block !important; width: auto !important; text-align: center; }
+  #itsme-content.page-index #main_event .title li a { display: block; padding: 0 !important; font-size: 11px; line-height: 3; white-space: nowrap; }
+  #itsme-content.page-index #main_event .list_wrap { position: relative; z-index: 2; margin: -104px 0 0 !important; padding: 0 19px 35px; background: transparent !important; }
   #itsme-content.page-index #main_event .list_wrap .inwrap { width: 100%; max-width: 100% !important; }
   #itsme-content.page-index #main_event .list_wrap ul { margin: 0; }
   #itsme-content.page-index #main_event .list_wrap li,
@@ -9988,10 +10023,13 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
     max-width: 100% !important;
   }
   #itsme-content.page-index #main_event .itsme-main-event-board .type_grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 24px 12px; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .post_row:not(:first-child),
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid > .post_row:first-child .list-style-card:nth-child(n + 3) { display: none !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card { padding: 0 !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card-body { padding: 11px 0 0 !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title { padding-top: 23px !important; font-size: 16px !important; line-height: 1.35 !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title > span:not(.icons) { font-size: 11px !important; }
+  #itsme-content.page-index .itsme-main-event-more { display: block; box-sizing: border-box; width: min(200px, calc(100% - 44px)); margin: -12px auto 48px; padding: 7px 0; border: 1px solid #ddd; border-radius: 99px; background: #fff; color: #999; font-size: 12px; text-align: center; text-decoration: none; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card_wrapper::after,
   :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card_wrapper::after { width: 68px; height: 26px; font-size: 11px; }
   :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .type_grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 24px 12px !important; }
@@ -10002,14 +10040,15 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #main_board { padding: 60px 15px; }
   #itsme-content.page-index #main_board .inwrap { width: 100%; max-width: 100% !important; }
   #itsme-content.page-index #main_board .media { float: none; width: 100%; }
+  #itsme-content.page-index #main_board .top .tit { font-size: 36px; }
   #itsme-content.page-index #main_board .lounge { margin-top: 48px; }
   #itsme-content.page-index #main_board .lounge ul { margin: 0; padding: 0; }
-  #itsme-content.page-index #main_board .lounge li a { padding: 19px 0 !important; }
-  #itsme-content.page-index #main_board .lounge li .date { position: static !important; display: flex; width: auto !important; margin-bottom: 8px; align-items: baseline; gap: 6px; text-align: left; }
+  #itsme-content.page-index #main_board .lounge li a { display: grid; grid-template-columns: 65px minmax(0, 1fr); gap: 2px 10px; padding: 14px 0 !important; }
+  #itsme-content.page-index #main_board .lounge li .date { position: static !important; grid-row: 1 / 3; width: 65px !important; margin: 0; text-align: center; }
   #itsme-content.page-index #main_board .lounge li .date strong { font-size: 16px; }
-  #itsme-content.page-index #main_board .lounge li .date span { margin: 0; font-size: 12px; }
-  #itsme-content.page-index #main_board .lounge li .tit { font-size: 16px; line-height: 1.45; }
-  #itsme-content.page-index #main_board .lounge li .cont { font-size: 13px; line-height: 1.5; }
+  #itsme-content.page-index #main_board .lounge li .date span { margin-top: 4px; font-size: 11px; }
+  #itsme-content.page-index #main_board .lounge li .tit { grid-column: 2; font-size: 13px; line-height: 1.4; }
+  #itsme-content.page-index #main_board .lounge li .cont { grid-column: 2; font-size: 11px; line-height: 1.4; }
   #itsme-content.page-index #laser { padding: 34px 0 44px !important; }
   #itsme-content.page-index #laser .top { width: calc(100% - 30px) !important; margin-bottom: 18px !important; }
   #itsme-content.page-index #laser .tit { font-size: 44px !important; }

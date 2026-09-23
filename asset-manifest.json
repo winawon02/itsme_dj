@@ -2709,14 +2709,29 @@
       "sha256": "36ee8f99144f6175dcc0f3bda54536c894f7e1aead2a8c3c3ce1f766934543ca"
     },
     {
+      "file": "assets/mobile-yt-title.jpg",
+      "bytes": 10422,
+      "sha256": "11b7264e7db9d8b414f56dec5efd73c1a9be337c1b97f092c4f0362f3e6c4cc8"
+    },
+    {
+      "file": "assets/mobile-blog-bg.jpg",
+      "bytes": 54347,
+      "sha256": "0503c074b1e39b3535c173d9bea1ca3abde69b2a52e0fe9eeace191d33c1c0fd"
+    },
+    {
+      "file": "assets/mobile-case.png",
+      "bytes": 2239373,
+      "sha256": "69eac2a0396ae12de2d59cd7719eda41edbb32a301ddaa02bea700482d2da394"
+    },
+    {
       "file": "style.css",
-      "bytes": 622438,
-      "sha256": "995a264c74431b000853b9d9529c9dbd61e3b36db96cdca415c2e2c5d04f4f9f"
+      "bytes": 627670,
+      "sha256": "3c3626b8c6b60399f7fdff24dddc8c4de469f3b19a24654e318904bda36dcc2b"
     },
     {
       "file": "script.js",
-      "bytes": 746865,
-      "sha256": "c3b75a9fc1ed3951c6c81b0eb115fbcb05f43566ef866999cb5265dfdcb3a2bf",
+      "bytes": 746894,
+      "sha256": "00fe0ee16a3a8e81f16e6c194abc8ff51b06fe182ad1a72d285b2886050b0804",
       "sourceSha256": "9018a87fb82a2d81cad00118d087664e02520253749a970a06da1d599298eefc"
     }
   ],
