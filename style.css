@@ -9673,6 +9673,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #laser .tit { font-size: clamp(52px, 8vw, 76px) !important; line-height: 1.2 !important; }
   #itsme-content.page-index #laser .controls { top: 16px !important; right: 0 !important; }
   #itsme-content.page-index #laser_swiper .swiper-slide { width: min(40vw, 320px) !important; }
+  #itsme-content.page-index #main_board :is(.media, .lounge) { float: none !important; box-sizing: border-box; width: 100% !important; }
+  #itsme-content.page-index #main_board .lounge { margin-top: 58px; }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -9992,6 +9994,14 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #main_board { padding: 60px 15px; }
   #itsme-content.page-index #main_board .inwrap { width: 100%; max-width: 100% !important; }
   #itsme-content.page-index #main_board .media { float: none; width: 100%; }
+  #itsme-content.page-index #main_board .lounge { margin-top: 48px; }
+  #itsme-content.page-index #main_board .lounge ul { margin: 0; padding: 0; }
+  #itsme-content.page-index #main_board .lounge li a { padding: 19px 0 !important; }
+  #itsme-content.page-index #main_board .lounge li .date { position: static !important; display: flex; width: auto !important; margin-bottom: 8px; align-items: baseline; gap: 6px; text-align: left; }
+  #itsme-content.page-index #main_board .lounge li .date strong { font-size: 16px; }
+  #itsme-content.page-index #main_board .lounge li .date span { margin: 0; font-size: 12px; }
+  #itsme-content.page-index #main_board .lounge li .tit { font-size: 16px; line-height: 1.45; }
+  #itsme-content.page-index #main_board .lounge li .cont { font-size: 13px; line-height: 1.5; }
   #itsme-content.page-index #laser { padding: 34px 0 44px !important; }
   #itsme-content.page-index #laser .top { width: calc(100% - 30px) !important; margin-bottom: 18px !important; }
   #itsme-content.page-index #laser .tit { font-size: 44px !important; }
