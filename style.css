@@ -9531,13 +9531,13 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   text-align: left !important;
 }
 #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title {
-  position: static !important;
+  position: relative !important;
   top: auto !important;
   bottom: auto !important;
   width: auto !important;
   height: auto !important;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 30px 0 0 !important;
   background: transparent !important;
   color: #1c1c1c !important;
   font-size: 22px !important;
@@ -9545,6 +9545,22 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   line-height: 1.4 !important;
   letter-spacing: -.035em;
   word-break: keep-all;
+}
+#itsme-content.page-index #main_event .itsme-main-event-board .card-body .title > span.icons { display: none !important; }
+#itsme-content.page-index #main_event .itsme-main-event-board .card-body .title > span:not(.icons) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block !important;
+  color: #e5602d !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+#itsme-content.page-index #main_event .itsme-main-event-board .card-body .title > span:not(.icons) em {
+  padding: 0 !important;
+  color: inherit !important;
+  font: inherit !important;
 }
 #itsme-content.page-index #main_event .itsme-main-event-board .card-body .text {
   display: -webkit-box !important;
