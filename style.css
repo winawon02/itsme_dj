@@ -9155,13 +9155,16 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 34px 22px;
 }
-:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .type_grid > .list-style-card {
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .type_grid > .post_row { display: contents !important; }
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .type_grid .dummy_col { display: none !important; }
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .type_grid .list-style-card {
   display: block !important;
   width: auto !important;
   min-width: 0;
   margin: 0 !important;
   padding: 0 !important;
 }
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .ma-item { padding: 0 !important; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .ma-item,
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card {
   height: 100%;
@@ -9177,31 +9180,43 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   text-decoration: none;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card_wrapper {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1;
   min-height: 0 !important;
   border: 0 !important;
   background-color: #f5f5f5 !important;
   transition: filter .25s ease;
 }
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-head { height: auto !important; aspect-ratio: 1; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card:hover .card_wrapper { filter: brightness(.95); }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body {
   padding: 19px 2px 4px !important;
   text-align: left !important;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title {
+  display: -webkit-box !important;
+  min-height: 56px;
   margin: 0 !important;
+  overflow: hidden;
   color: #1c1c1c !important;
   font-size: 20px !important;
   font-weight: 650 !important;
   line-height: 1.4 !important;
   letter-spacing: -.035em;
   word-break: keep-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title > span { display: none !important; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .text {
+  display: -webkit-box !important;
+  min-height: 72px;
   margin-top: 9px !important;
+  overflow: hidden;
   color: #777 !important;
   font-size: 15px !important;
   line-height: 1.6 !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail { max-width: 640px; margin: 0 auto 36px; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail .itsme-event-image { display: block; width: 100%; max-width: 100%; height: auto; margin: 0 0 24px; }
