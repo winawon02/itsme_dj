@@ -9193,20 +9193,34 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   text-align: left !important;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title {
-  display: -webkit-box !important;
-  min-height: 0 !important;
+  position: relative;
+  display: block !important;
+  min-height: 86px !important;
   margin: 0 !important;
-  overflow: hidden;
+  padding-top: 30px;
   color: #1c1c1c !important;
   font-size: 20px !important;
   font-weight: 650 !important;
   line-height: 1.4 !important;
   letter-spacing: -.035em;
   word-break: keep-all;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title > span { display: none !important; }
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title > span:not(.icons) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block !important;
+  color: #e5602d;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title > span:not(.icons) em {
+  padding: 0 !important;
+  color: inherit !important;
+  font: inherit !important;
+}
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .text {
   display: none !important;
   min-height: 0 !important;
