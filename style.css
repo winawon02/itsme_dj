@@ -9499,6 +9499,31 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   background-color: #f4f4f4 !important;
   transition: filter .25s ease;
 }
+/* Keep the branch mark over every board thumbnail, including images with a baked-in label. */
+#itsme-content.page-index #main_event .itsme-main-event-board .card_wrapper,
+:is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card_wrapper {
+  position: relative !important;
+}
+#itsme-content.page-index #main_event .itsme-main-event-board .card_wrapper::after,
+:is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card_wrapper::after {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: flex;
+  box-sizing: border-box;
+  width: 110px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  background: #151515;
+  color: #fff;
+  content: "대전점";
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  pointer-events: none;
+}
 #itsme-content.page-index #main_event .itsme-main-event-board .card-head { height: auto !important; aspect-ratio: 1; }
 #itsme-content.page-index #main_event .itsme-main-event-board .list-style-card:hover .card_wrapper { filter: brightness(.95); }
 #itsme-content.page-index #main_event .itsme-main-event-board .card-body {
