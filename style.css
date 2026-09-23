@@ -9167,26 +9167,26 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .ma-item { padding: 0 !important; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .ma-item,
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card {
-  height: 100%;
+  height: auto !important;
   border: 0 !important;
   background: #fff !important;
   box-shadow: none !important;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .post_link_wrap {
   display: flex;
-  height: 100%;
+  height: auto !important;
   flex-direction: column;
   color: inherit;
   text-decoration: none;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card_wrapper {
-  aspect-ratio: 1;
+  aspect-ratio: 1 !important;
   min-height: 0 !important;
   border: 0 !important;
   background-color: #f5f5f5 !important;
   transition: filter .25s ease;
 }
-:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-head { height: auto !important; aspect-ratio: 1; }
+:is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-head { height: auto !important; aspect-ratio: 1 !important; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card:hover .card_wrapper { filter: brightness(.95); }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body {
   padding: 19px 2px 4px !important;
@@ -9194,7 +9194,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title {
   display: -webkit-box !important;
-  min-height: 56px;
+  min-height: 0 !important;
   margin: 0 !important;
   overflow: hidden;
   color: #1c1c1c !important;
@@ -9208,15 +9208,9 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .title > span { display: none !important; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .widget.board .list-style-card .card-body .text {
-  display: -webkit-box !important;
-  min-height: 72px;
-  margin-top: 9px !important;
-  overflow: hidden;
-  color: #777 !important;
-  font-size: 15px !important;
-  line-height: 1.6 !important;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  display: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
 }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail { max-width: 640px; margin: 0 auto 36px; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail .itsme-event-image { display: block; width: 100%; max-width: 100%; height: auto; margin: 0 0 24px; }
@@ -9227,6 +9221,96 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail .itsme-event-discount { color: #e5602d; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail .itsme-event-original { color: #aaa; font-size: 16px; font-weight: 600; letter-spacing: -.02em; text-decoration: line-through; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) .itsme-event-detail .itsme-event-note { margin-top: 24px; color: #999; font-size: 13px; line-height: 1.6; }
+
+/* Imported event articles use the board's saved HTML, styled from the first paint. */
+#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) {
+  width: min(100%, 840px);
+  margin: 0 auto 64px;
+  color: #222;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > p:first-child {
+  margin: 0 0 34px;
+  text-align: center;
+}
+#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > p:first-child img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > p:nth-of-type(2) {
+  margin: 0 0 30px;
+  padding-left: 18px;
+  border-left: 3px solid #e5602d;
+  color: #333;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #dedede;
+  list-style: none;
+}
+#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > ul > li {
+  display: block;
+  margin: 0;
+  padding: 24px 4px;
+  border-bottom: 1px solid #e6e6e6;
+  list-style: none;
+}
+#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > ul > li:not(:has(> strong)) {
+  margin-top: 18px;
+  padding: 18px 22px;
+  background: #faf8f6;
+  color: #555;
+  font-size: 17px;
+}
+#w20260921b5ec962484e96 .board_txt_area .itsme-event-article > ul > li > strong {
+  display: block;
+  color: #151515;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+#w20260921b5ec962484e96 .board_txt_area .itsme-event-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-top: 9px;
+  line-height: 1.35;
+}
+#w20260921b5ec962484e96 .board_txt_area .itsme-event-discount {
+  color: #e5602d;
+  font-family: 'Lato', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+#w20260921b5ec962484e96 .board_txt_area .itsme-event-sale {
+  color: #151515;
+  font-family: 'Lato', 'Noto Sans KR', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+#w20260921b5ec962484e96 .board_txt_area .itsme-event-price-row s {
+  color: #aaa;
+  font-size: 17px;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  #w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > p:nth-of-type(2) { font-size: 18px; }
+  #w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div:has(> p:first-child img):has(> ul) > ul > li { padding: 20px 2px; }
+  #w20260921b5ec962484e96 .board_txt_area .itsme-event-discount,
+  #w20260921b5ec962484e96 .board_txt_area .itsme-event-sale { font-size: 25px; }
+  #w20260921b5ec962484e96 .board_txt_area .itsme-event-price-row s { font-size: 15px; }
+}
 /* Keep the saved gallery readable while the design draft is switched to the board. */
 :is(body.itsme-native-event, body:has([data-native-page="event"])) #w2026091890c7ba170f50d .img_rendering { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 22px; height: auto !important; margin: 0 !important; }
 :is(body.itsme-native-event, body:has([data-native-page="event"])) #w2026091890c7ba170f50d .gallery_row { display: contents !important; }

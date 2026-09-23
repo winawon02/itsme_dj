@@ -15545,6 +15545,38 @@ const itsmeMainEquipmentDetails = Object.freeze({
   }
 })();
 
+// Format the price fields already saved in Imweb event posts without changing their data.
+(() => {
+  if (location.pathname.replace(/\/$/, '') !== '/event' || new URLSearchParams(location.search).get('bmode') !== 'view') return;
+  const article = [...document.querySelectorAll('#w20260921b5ec962484e96 .board_txt_area .margin-top-xxl > div')]
+    .find(item => item.querySelector(':scope > p:first-child img') && item.querySelector(':scope > ul'));
+  if (!article) return;
+  article.classList.add('itsme-event-article');
+  article.querySelectorAll(':scope > ul > li').forEach(item => {
+    const lineBreak = item.querySelector(':scope > br');
+    if (!item.querySelector(':scope > strong') || !lineBreak) return;
+    const textNode = [...item.childNodes].find(node => node.nodeType === Node.TEXT_NODE && /\d[\d,]*원/.test(node.textContent));
+    const price = textNode?.textContent.match(/^\s*(?:(\d+(?:\.\d+)?%)\s+)?([\d,]+원)\s*$/);
+    if (!price) return;
+    const row = document.createElement('div');
+    row.className = 'itsme-event-price-row';
+    if (price[1]) {
+      const discount = document.createElement('span');
+      discount.className = 'itsme-event-discount';
+      discount.textContent = price[1];
+      row.append(discount);
+    }
+    const sale = document.createElement('span');
+    sale.className = 'itsme-event-sale';
+    sale.textContent = price[2];
+    row.append(sale);
+    const original = item.querySelector(':scope > s');
+    if (original) row.append(original);
+    lineBreak.replaceWith(row);
+    textNode.remove();
+  });
+})();
+
 (() => {
   const updateHeader = () => document.body.classList.toggle('itsme-header-scrolled', scrollY > 30);
   addEventListener('scroll', updateHeader, {passive: true});
