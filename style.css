@@ -9670,6 +9670,28 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-signature .welcome .wrapper > .welcome_photo02 { width: 100%; }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  #itsme-content.page-index #main_event > .title,
+  #itsme-content.page-index #main_event.fixed_top > .title,
+  #itsme-content.page-index #main_event.fixed_bottom > .title {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    box-sizing: border-box;
+    width: 100% !important;
+    height: auto !important;
+    padding: 48px 40px !important;
+  }
+  #itsme-content.page-index #main_event .title .inbox { padding: 0 !important; }
+  #itsme-content.page-index #main_event .title ul { display: flex !important; flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; }
+  #itsme-content.page-index #main_event .title li { display: block !important; }
+  #itsme-content.page-index #main_event .title li a { font-size: 16px; }
+  #itsme-content.page-index #main_event .list_wrap { box-sizing: border-box; width: 100% !important; margin: 0 !important; padding: 45px 40px 65px !important; }
+  #itsme-content.page-index #main_event .list_wrap .inwrap { width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid { gap: 30px !important; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card { top: 0 !important; padding: 0 !important; }
+}
+
 @media (max-width: 767px) {
   #itsme-content.page-careguide #sub_visual img,
   #itsme-content.page-community-laser #sub_visual img,
