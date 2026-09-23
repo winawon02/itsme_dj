@@ -9905,7 +9905,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #main_visual .swiper-container,
   #itsme-content.page-index #main_visual .swiper-slide { height: clamp(220px, 60vw, 320px) !important; }
   #itsme-content.page-index #main_visual .swiper-slide > img,
-  #itsme-content.page-index #main_visual .swiper-slide a.go-to img { width: 100%; height: 100%; object-fit: cover; }
+  #itsme-content.page-index #main_visual .swiper-slide a.go-to img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
   #itsme-content.page-index #main_visual .txt { box-sizing: border-box; width: 100%; max-width: 100%; padding: 0 20px; }
   #itsme-content.page-index #main_visual .slide01 .txt { top: 18px !important; left: 15px !important; width: 55% !important; margin-left: 0 !important; padding: 0 !important; }
   #itsme-content.page-index #main_visual .slide01 .title { font-size: 16px !important; line-height: 1.35 !important; letter-spacing: -.04em; }
@@ -9982,6 +9982,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card-body { padding: 11px 0 0 !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title { padding-top: 23px !important; font-size: 16px !important; line-height: 1.35 !important; }
   #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title > span:not(.icons) { font-size: 11px !important; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .card_wrapper::after,
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card_wrapper::after { width: 68px; height: 26px; font-size: 11px; }
   :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .type_grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 24px 12px !important; }
   :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card :is(.ma-item, .card, .holder, .post_link_wrap, .card_wrapper) { box-sizing: border-box; width: 100% !important; max-width: 100% !important; }
   :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card-body { padding: 11px 0 0 !important; }
