@@ -9905,17 +9905,25 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 
   #itsme-content.page-index #main_visual,
   #itsme-content.page-index #main_visual .swiper-container,
-  #itsme-content.page-index #main_visual .swiper-slide { height: clamp(220px, 60vw, 320px) !important; }
+  #itsme-content.page-index #main_visual .swiper-slide { height: auto !important; aspect-ratio: 720 / 1067; }
+  #itsme-content.page-index #main_visual .swiper-slide { background-position: center !important; background-size: 100% 100% !important; }
+  #itsme-content.page-index #main_visual .slide01::after {
+    background-image: url(assets/mobile-hero-copy-2.png), url(assets/mobile-hero-copy-1.png), url(assets/mobile-hero-doc.jpg) !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+  }
+  #itsme-content.page-index #main_visual .slide02 { background-image: url(assets/mobile-hero-laser.jpg) !important; }
+  #itsme-content.page-index #main_visual .slide03 { background-image: url(assets/mobile-hero-premium.jpg) !important; }
+  #itsme-content.page-index #main_visual .slide04 { background-image: url(assets/mobile-hero-ulthera.jpg) !important; }
+  #itsme-content.page-index #main_visual .slide05 { background-image: url(assets/mobile-hero-diet.jpg) !important; }
+  #itsme-content.page-index #main_visual .slide06 { background-image: url(assets/mobile-hero-man.jpg) !important; }
   #itsme-content.page-index #main_visual .swiper-slide > img,
-  #itsme-content.page-index #main_visual .swiper-slide a.go-to img { width: 100%; height: 100%; object-fit: cover; object-position: left center; }
-  #itsme-content.page-index #main_visual .txt { box-sizing: border-box; width: 100%; max-width: 100%; padding: 0 20px; }
-  #itsme-content.page-index #main_visual .slide01 .txt { top: 18px !important; left: 15px !important; width: 55% !important; margin-left: 0 !important; padding: 0 !important; }
-  #itsme-content.page-index #main_visual .slide01 .title { font-size: 16px !important; line-height: 1.35 !important; letter-spacing: -.04em; }
-  #itsme-content.page-index #main_visual .slide01 .title::before,
-  #itsme-content.page-index #main_visual .slide01 .title span::after { display: none !important; }
-  #itsme-content.page-index #main_visual .slide01 .stxt { margin-top: 8px !important; font-size: 11px !important; line-height: 1.45 !important; }
-  #itsme-content.page-index #main_visual .slide01 a:not(.go-to) { margin-top: 7px !important; padding-right: 20px !important; font-size: 11px !important; line-height: 22px !important; background-size: 14px auto !important; }
-  #itsme-content.page-index #main_visual .swiper-pagination { bottom: 8px !important; left: 15px !important; margin-left: 0 !important; }
+  #itsme-content.page-index #main_visual .swiper-slide a img { visibility: hidden !important; width: 100%; height: 100%; }
+  #itsme-content.page-index #main_visual .swiper-slide > a { position: absolute !important; inset: 0; display: block !important; width: 100%; height: 100%; margin: 0 !important; padding: 0 !important; background: none !important; }
+  #itsme-content.page-index #main_visual .slide01 .txt { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; margin: 0 !important; padding: 0 !important; pointer-events: none; }
+  #itsme-content.page-index #main_visual .slide01 .txt > :is(.title, .stxt) { display: none !important; }
+  #itsme-content.page-index #main_visual .slide01 .txt a { position: absolute !important; inset: 0; z-index: 10; display: block; width: 100%; height: 100%; margin: 0 !important; padding: 0 !important; background: none !important; font-size: 0 !important; opacity: 0; pointer-events: auto; }
+  #itsme-content.page-index #main_visual .swiper-pagination { bottom: 65px !important; left: 20px !important; margin-left: 0 !important; }
   #itsme-content.page-index #main_yt { padding: 55px 15px 65px; }
   #itsme-content.page-index #main_yt .title { position: static; left: auto; width: 100%; margin-bottom: 25px; }
   #itsme-content.page-index #main_yt .title img { display: none; }

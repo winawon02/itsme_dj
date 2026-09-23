@@ -2669,9 +2669,49 @@
       "sha256": "4fc566bebdd43b742d448a0314b162f222db437d19e4085c285b16ea864ead39"
     },
     {
+      "file": "assets/mobile-hero-doc.jpg",
+      "bytes": 92937,
+      "sha256": "81ccef6e9a19ed7d3a9e1eda612a2616fec5410baaa75cf307d99050bc760ef4"
+    },
+    {
+      "file": "assets/mobile-hero-copy-1.png",
+      "bytes": 13158,
+      "sha256": "b311f7b7f7070383a3e35b43c8ca4fd345cbbb72133d681e8267f1b238a8fddd"
+    },
+    {
+      "file": "assets/mobile-hero-copy-2.png",
+      "bytes": 11064,
+      "sha256": "55289d8c05588d4c144f20cdf3be7f4789a211c4e299860cb13f46b0e25c1092"
+    },
+    {
+      "file": "assets/mobile-hero-laser.jpg",
+      "bytes": 171508,
+      "sha256": "36cb7953a55d4d0e38720b629e7c03c1fbdedfd93a342f45c1d52f35b2c472c5"
+    },
+    {
+      "file": "assets/mobile-hero-premium.jpg",
+      "bytes": 106313,
+      "sha256": "b8baee2bcd9fa299291db332650682ec1df3b31f1e93dd5056184864e7efbc8e"
+    },
+    {
+      "file": "assets/mobile-hero-ulthera.jpg",
+      "bytes": 295003,
+      "sha256": "9198f21abd75c69b368bfcbb73ec8076b7e7afd0a43193bbe95ac436fe15883c"
+    },
+    {
+      "file": "assets/mobile-hero-diet.jpg",
+      "bytes": 109927,
+      "sha256": "e8a406fb336ea01c1fd541fa7b84d048e6f2289b5a4be0acb5bab82d5f310347"
+    },
+    {
+      "file": "assets/mobile-hero-man.jpg",
+      "bytes": 215212,
+      "sha256": "36ee8f99144f6175dcc0f3bda54536c894f7e1aead2a8c3c3ce1f766934543ca"
+    },
+    {
       "file": "style.css",
-      "bytes": 621571,
-      "sha256": "bed9dc9e24503ba97eab9a2da75605c3d7a82aebd2ba7930661d3a2e94f99ff7"
+      "bytes": 622438,
+      "sha256": "995a264c74431b000853b9d9529c9dbd61e3b36db96cdca415c2e2c5d04f4f9f"
     },
     {
       "file": "script.js",
