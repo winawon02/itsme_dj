@@ -8861,10 +8861,12 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 @media (max-width: 767px) {
   #doz_footer_wrap .footer-section { padding: 25px 0 90px !important; }
   #doz_footer_wrap .footer-section > .inside { width: calc(100% - 44px) !important; }
+  #doz_footer_wrap .custom-text-info,
   #doz_footer_wrap .custom-text-info .fr-element { display: flex !important; flex-direction: column; }
   #doz_footer_wrap .itsme-footer-meta { display: contents !important; }
   #doz_footer_wrap .itsme-footer-links { order: 0; display: flex !important; flex-direction: column; align-items: flex-start; gap: 3px; }
   #doz_footer_wrap .itsme-footer-links :is(a, span) { font-size: 12px; line-height: 1.8; }
+  #doz_footer_wrap .custom-text-info > p:first-child,
   #doz_footer_wrap .custom-text-info .fr-element > p:first-child {
     order: 1;
     height: auto;
@@ -8875,9 +8877,12 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
     background: none;
     text-indent: 0;
   }
+  #doz_footer_wrap .custom-text-info > p:first-child::after,
   #doz_footer_wrap .custom-text-info .fr-element > p:first-child::after { content: '잇츠미 클리닉'; color: #aaa; font-size: 12px; line-height: 1.8; }
+  #doz_footer_wrap .custom-text-info > p:nth-of-type(3),
   #doz_footer_wrap .custom-text-info .fr-element > p:nth-of-type(3) { order: 2; margin-top: 2px !important; font-size: 12px !important; }
   #doz_footer_wrap .itsme-footer-social { order: 3; margin-top: 20px; }
+  #doz_footer_wrap .custom-text-info > ul,
   #doz_footer_wrap .custom-text-info .fr-element > ul { order: 4; margin-top: 25px; }
 }
 
