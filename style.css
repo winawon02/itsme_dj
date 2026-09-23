@@ -9688,8 +9688,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
     padding: 48px 40px !important;
   }
   #itsme-content.page-index #main_event .title .inbox { padding: 0 !important; }
-  #itsme-content.page-index #main_event .title ul { display: flex !important; flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; }
-  #itsme-content.page-index #main_event .title li { display: block !important; }
+  #itsme-content.page-index #main_event .title > .inbox > ul { display: flex !important; flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; }
+  #itsme-content.page-index #main_event .title > .inbox > ul > li { display: block !important; width: auto !important; flex: 0 0 auto !important; }
   #itsme-content.page-index #main_event .title li a { font-size: 16px; }
   #itsme-content.page-index #main_event .list_wrap { box-sizing: border-box; width: 100% !important; margin: 0 !important; padding: 45px 40px 65px !important; }
   #itsme-content.page-index #main_event .list_wrap .inwrap { width: 100% !important; max-width: 100% !important; margin: 0 !important; }
