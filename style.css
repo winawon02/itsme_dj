@@ -8510,7 +8510,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 #doz_footer_wrap .footer-section {
-  padding: 90px 0 120px !important;
+  padding: 90px 0 200px !important;
   background: #151515 !important;
   color: #fff !important;
   font-family: 'Noto Sans KR', sans-serif !important;
@@ -9668,6 +9668,11 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-signature .welcome .wrapper { display: block; }
   #itsme-content.page-signature .welcome .wrapper > .welcome_photo01,
   #itsme-content.page-signature .welcome .wrapper > .welcome_photo02 { width: 100%; }
+  #itsme-content.page-index #laser { height: auto !important; min-height: 0 !important; padding: 64px 0 60px !important; background-attachment: scroll; }
+  #itsme-content.page-index #laser .top { box-sizing: border-box; width: calc(100% - 60px) !important; margin: 0 auto 22px !important; }
+  #itsme-content.page-index #laser .tit { font-size: clamp(52px, 8vw, 76px) !important; line-height: 1.2 !important; }
+  #itsme-content.page-index #laser .controls { top: 16px !important; right: 0 !important; }
+  #itsme-content.page-index #laser_swiper .swiper-slide { width: min(40vw, 320px) !important; }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -9898,13 +9903,17 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 
   #itsme-content.page-index #main_visual,
   #itsme-content.page-index #main_visual .swiper-container,
-  #itsme-content.page-index #main_visual .swiper-slide { height: min(680px, calc(100svh - 49px)) !important; }
+  #itsme-content.page-index #main_visual .swiper-slide { height: clamp(220px, 60vw, 320px) !important; }
   #itsme-content.page-index #main_visual .swiper-slide > img,
   #itsme-content.page-index #main_visual .swiper-slide a.go-to img { width: 100%; height: 100%; object-fit: cover; }
   #itsme-content.page-index #main_visual .txt { box-sizing: border-box; width: 100%; max-width: 100%; padding: 0 20px; }
-  #itsme-content.page-index #main_visual .slide01 .txt { left: 0 !important; }
-  #itsme-content.page-index #main_visual .title { font-size: 30px; line-height: 1.4; }
-  #itsme-content.page-index #main_visual .stxt { font-size: 16px; line-height: 1.6; }
+  #itsme-content.page-index #main_visual .slide01 .txt { top: 18px !important; left: 15px !important; width: 55% !important; margin-left: 0 !important; padding: 0 !important; }
+  #itsme-content.page-index #main_visual .slide01 .title { font-size: 16px !important; line-height: 1.35 !important; letter-spacing: -.04em; }
+  #itsme-content.page-index #main_visual .slide01 .title::before,
+  #itsme-content.page-index #main_visual .slide01 .title span::after { display: none !important; }
+  #itsme-content.page-index #main_visual .slide01 .stxt { margin-top: 8px !important; font-size: 11px !important; line-height: 1.45 !important; }
+  #itsme-content.page-index #main_visual .slide01 a:not(.go-to) { margin-top: 7px !important; padding-right: 20px !important; font-size: 11px !important; line-height: 22px !important; background-size: 14px auto !important; }
+  #itsme-content.page-index #main_visual .swiper-pagination { bottom: 8px !important; left: 15px !important; margin-left: 0 !important; }
   #itsme-content.page-index #main_yt { padding: 55px 15px 65px; }
   #itsme-content.page-index #main_yt .title { position: static; left: auto; width: 100%; margin-bottom: 25px; }
   #itsme-content.page-index #main_yt .title img { display: none; }
@@ -9968,10 +9977,26 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
     width: 100% !important;
     max-width: 100% !important;
   }
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 24px 12px; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card { padding: 0 !important; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .card-body { padding: 11px 0 0 !important; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title { padding-top: 23px !important; font-size: 16px !important; line-height: 1.35 !important; }
+  #itsme-content.page-index #main_event .itsme-main-event-board .card-body .title > span:not(.icons) { font-size: 11px !important; }
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .type_grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 24px 12px !important; }
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card :is(.ma-item, .card, .holder, .post_link_wrap, .card_wrapper) { box-sizing: border-box; width: 100% !important; max-width: 100% !important; }
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card-body { padding: 11px 0 0 !important; }
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card-body .title { min-height: 0 !important; padding-top: 23px !important; font-size: 16px !important; line-height: 1.35 !important; }
+  :is(body.itsme-native-event, body:has([data-native-page="event"])) #w20260921b5ec962484e96 .widget.board .list-style-card .card-body .title > span:not(.icons) { font-size: 11px !important; }
   #itsme-content.page-index #main_board { padding: 60px 15px; }
   #itsme-content.page-index #main_board .inwrap { width: 100%; max-width: 100% !important; }
   #itsme-content.page-index #main_board .media { float: none; width: 100%; }
-  #itsme-content.page-index #laser { height: auto; min-height: 450px; background-attachment: scroll; }
+  #itsme-content.page-index #laser { padding: 34px 0 44px !important; }
+  #itsme-content.page-index #laser .top { width: calc(100% - 30px) !important; margin-bottom: 18px !important; }
+  #itsme-content.page-index #laser .tit { font-size: 44px !important; }
+  #itsme-content.page-index #laser .controls { top: 5px !important; width: 82px !important; height: 40px !important; }
+  #itsme-content.page-index #laser :is(.swiper-button-prev, .swiper-button-next) { width: 40px !important; height: 40px !important; margin-top: -20px !important; background-size: 40px auto !important; }
+  #itsme-content.page-index #laser_swiper { padding-bottom: 34px !important; }
+  #itsme-content.page-index #laser_swiper .swiper-slide { width: 52vw !important; }
 }
 
 #itsme-floating-actions {
