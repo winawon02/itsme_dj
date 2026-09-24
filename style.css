@@ -9738,7 +9738,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #inline_header_mobile .inline-col-group-left { position: absolute !important; top: 0; right: 10px; left: auto !important; width: 48px !important; }
   #inline_header_mobile .inline-col-group-right { position: absolute !important; top: 0; left: 10px; right: auto !important; width: 48px !important; }
   #inline_header_mobile [data-widget-type="inline_search_btn"] { display: none !important; }
-  body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .section_bg_color { background: #111 !important; }
+  body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .section_bg_color { background: transparent !important; }
   body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .logo_title a { filter: brightness(0) invert(1); }
   body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .inline-col-group :is(a, i, .holder) { color: #fff !important; }
   #itsme-content.page-careguide #sub_visual img,
