@@ -9944,6 +9944,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-network-network01 .network_c01 .sbox p { font-size: 15px; line-height: 1.7; }
   #itsme-content.page-network-network01 .network_c01 .sbox p br { display: none; }
 
+  #itsme-content.page-index #main { overflow: visible; }
   #itsme-content.page-index #main_visual,
   #itsme-content.page-index #main_visual .swiper-container,
   #itsme-content.page-index #main_visual .swiper-slide { height: auto !important; aspect-ratio: 720 / 1067; }
