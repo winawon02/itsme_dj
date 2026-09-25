@@ -15091,6 +15091,44 @@ const itsmeMainEquipmentDetails = Object.freeze({
     eventBoardMount.replaceChildren(eventBoard);
     eventRoot.classList.add('uses-native-board');
   }
+
+  const lounge = select('#main_board .lounge');
+  if (lounge) {
+    const more = lounge.querySelector('.top a');
+    if (more) more.href = '/notices';
+    const list = lounge.querySelector('ul');
+    fetch('/notices', {credentials: 'same-origin'}).then(response => {
+      if (!response.ok) throw new Error('Notice board unavailable');
+      return response.text();
+    }).then(html => {
+      const page = new DOMParser().parseFromString(html, 'text/html');
+      const rows = [...page.querySelectorAll('[data-widget-type="board"] ul.li_body')].slice(0, 4);
+      const entries = rows.map(row => {
+        const sourceLink = row.querySelector('a.list_text_title[href*="bmode=view"]');
+        const date = row.querySelector('li.time')?.textContent.trim();
+        if (!sourceLink || !date) return null;
+        const destination = new URL(sourceLink.getAttribute('href'), location.origin);
+        if (destination.pathname !== '/notices/') return null;
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = destination.pathname + destination.search;
+        const stamp = document.createElement('p');
+        stamp.className = 'date';
+        const day = document.createElement('strong');
+        day.textContent = date.slice(5).replace('-', '.');
+        const year = document.createElement('span');
+        year.textContent = date.slice(0, 4);
+        stamp.append(day, year);
+        const title = document.createElement('p');
+        title.className = 'tit';
+        title.textContent = sourceLink.textContent.trim();
+        link.append(stamp, title);
+        item.append(link);
+        return item;
+      }).filter(Boolean);
+      if (entries.length) list.replaceChildren(...entries);
+    }).catch(() => {});
+  }
   function updatePosition() {
     const rect = eventRoot.getBoundingClientRect();
     const pinned = rect.top < 0 && rect.bottom > innerHeight;
@@ -15581,6 +15619,78 @@ const itsmeMainEquipmentDetails = Object.freeze({
   const updateHeader = () => document.body.classList.toggle('itsme-header-scrolled', scrollY > 30);
   addEventListener('scroll', updateHeader, {passive: true});
   updateHeader();
+
+  const trigger = document.querySelector('#inline_header_mobile [data-widget-type="inline_menu_btn"] a');
+  const source = document.querySelector('#mobile_slide_menu');
+  if (!trigger || !source) return;
+
+  const drawer = document.createElement('div');
+  drawer.id = 'itsme-mobile-nav';
+  drawer.hidden = true;
+  drawer.innerHTML = '<div class="itsme-mobile-nav__backdrop"></div><nav class="itsme-mobile-nav__panel" aria-label="전체 메뉴"><div class="itsme-mobile-nav__head"><strong>전체 메뉴</strong><button type="button" class="itsme-mobile-nav__close" aria-label="메뉴 닫기">×</button></div><ul class="itsme-mobile-nav__list"></ul></nav>';
+  const list = drawer.querySelector('.itsme-mobile-nav__list');
+  source.querySelectorAll('li.depth-01').forEach(item => {
+    const originalLink = item.querySelector(':scope > a');
+    if (!originalLink) return;
+    const href = originalLink.getAttribute('href');
+    if (!href?.startsWith('/')) return;
+    const entry = document.createElement('li');
+    const row = document.createElement('div');
+    row.className = 'itsme-mobile-nav__row';
+    const link = document.createElement('a');
+    link.href = href;
+    link.textContent = originalLink.querySelector('.plain_name')?.textContent.trim() || originalLink.textContent.trim();
+    row.append(link);
+    const children = [...item.querySelectorAll(':scope > ul > li.depth-02 > a')].filter(child => child.getAttribute('href')?.startsWith('/'));
+    if (children.length) {
+      const sublist = document.createElement('ul');
+      sublist.className = 'itsme-mobile-nav__sublist';
+      sublist.hidden = true;
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'itsme-mobile-nav__toggle';
+      toggle.textContent = '+';
+      toggle.setAttribute('aria-label', link.textContent + ' 하위 메뉴');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.addEventListener('click', () => {
+        sublist.hidden = !sublist.hidden;
+        toggle.textContent = sublist.hidden ? '+' : '−';
+        toggle.setAttribute('aria-expanded', String(!sublist.hidden));
+      });
+      children.forEach(child => {
+        const subitem = document.createElement('li');
+        const sublink = document.createElement('a');
+        sublink.href = child.getAttribute('href');
+        sublink.textContent = child.querySelector('.plain_name')?.textContent.trim() || child.textContent.trim();
+        subitem.append(sublink);
+        sublist.append(subitem);
+      });
+      row.append(toggle);
+      entry.append(row, sublist);
+    } else entry.append(row);
+    list.append(entry);
+  });
+  document.body.append(drawer);
+
+  const close = () => {
+    drawer.hidden = true;
+    document.body.classList.remove('itsme-mobile-nav-open');
+    trigger.setAttribute('aria-expanded', 'false');
+  };
+  trigger.removeAttribute('onclick');
+  trigger.setAttribute('aria-controls', drawer.id);
+  trigger.setAttribute('aria-expanded', 'false');
+  trigger.setAttribute('aria-label', '전체 메뉴 열기');
+  trigger.addEventListener('click', event => {
+    event.preventDefault();
+    drawer.hidden = false;
+    document.body.classList.add('itsme-mobile-nav-open');
+    trigger.setAttribute('aria-expanded', 'true');
+    drawer.querySelector('.itsme-mobile-nav__close').focus();
+  });
+  drawer.querySelector('.itsme-mobile-nav__close').addEventListener('click', close);
+  drawer.querySelector('.itsme-mobile-nav__backdrop').addEventListener('click', close);
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && !drawer.hidden) close(); });
 })();
 
 (() => {

@@ -7920,7 +7920,8 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 @media (max-width: 767px) {
   :where(#itsme-content.page-index) #laser_pop { width: calc(100vw - 30px); max-height: 86vh; overflow-y: auto; }
   :where(#itsme-content.page-index) #laser_pop .cbox > div { float: none; width: 100%; height: auto; }
-  :where(#itsme-content.page-index) #laser_pop .img { height: 42vh; padding: 0; }
+  #itsme-content.page-index #laser_pop .cbox > .img { height: 42vh !important; padding: 0 !important; }
+  #itsme-content.page-index #laser_pop .img img { object-fit: cover; }
   :where(#itsme-content.page-index) #laser_pop .tcont { padding: 28px 24px 36px; }
   :where(#itsme-content.page-index) #laser_pop .tcont h2 { line-height: 58px; font-size: 28px; }
   :where(#itsme-content.page-index) #laser_pop .equipment-description { margin-top: 18px; font-size: 15px; line-height: 1.8; }
@@ -9625,7 +9626,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 
 /* The source site used a 1400px desktop canvas. Let Imweb's actual viewport
    size the migrated bodies, then stack the recurring article sections. */
-#itsme-content.page-index :is(.itsme-mobile-home-search, .itsme-main-event-more) { display: none; }
+#itsme-content.page-index .itsme-main-event-more { display: none; }
 @media (max-width: 1399px) {
   #itsme-content:is(.page-scar, .page-acne, .page-blem) #main,
   #itsme-content:is(.page-scar, .page-acne, .page-blem) #main .flex-row,
@@ -9729,12 +9730,21 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 }
 
 @media (max-width: 767px) {
-  #itsme-content.page-index .itsme-mobile-home-search { display: block; box-sizing: border-box; height: 131px; padding: 30px 20px 20px; background: #151515; }
-  #itsme-content.page-index .itsme-mobile-home-search__open { display: flex; width: 100%; padding: 0 0 9px; align-items: center; justify-content: space-between; border: 0; border-bottom: 1px solid #777; background: transparent; color: #51aa98; font-size: 15px; text-align: left; }
-  #itsme-content.page-index .itsme-mobile-home-search__open span { font-size: 24px; line-height: 1; }
-  #itsme-content.page-index .itsme-mobile-home-search nav { display: flex; gap: 14px; margin-top: 12px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
-  #itsme-content.page-index .itsme-mobile-home-search nav::-webkit-scrollbar { display: none; }
-  #itsme-content.page-index .itsme-mobile-home-search nav :is(a,span) { color: #777; font-size: 11px; text-decoration: none; }
+  #inline_header_mobile [data-widget-type="inline_login_btn"]:has(a[href="/shop_cart"]) { display: none !important; }
+  #itsme-mobile-nav[hidden], #itsme-mobile-nav [hidden] { display: none !important; }
+  body.itsme-mobile-nav-open { overflow: hidden !important; }
+  #itsme-mobile-nav { position: fixed; inset: 0; z-index: 2147483640; }
+  #itsme-mobile-nav .itsme-mobile-nav__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.58); }
+  #itsme-mobile-nav .itsme-mobile-nav__panel { position: absolute; top: 0; right: 0; bottom: 0; box-sizing: border-box; width: min(340px, 88vw); overflow-y: auto; background: #fff; color: #151515; }
+  #itsme-mobile-nav .itsme-mobile-nav__head { display: flex; min-height: 64px; padding: 0 18px 0 24px; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; font-size: 18px; }
+  #itsme-mobile-nav .itsme-mobile-nav__close, #itsme-mobile-nav .itsme-mobile-nav__toggle { border: 0; background: transparent; color: #151515; cursor: pointer; }
+  #itsme-mobile-nav .itsme-mobile-nav__close { padding: 8px; font-size: 30px; line-height: 1; }
+  #itsme-mobile-nav .itsme-mobile-nav__list, #itsme-mobile-nav .itsme-mobile-nav__sublist { margin: 0; padding: 0; list-style: none; }
+  #itsme-mobile-nav .itsme-mobile-nav__row { display: flex; min-height: 52px; padding: 0 18px 0 24px; align-items: center; border-bottom: 1px solid #eee; }
+  #itsme-mobile-nav .itsme-mobile-nav__row a { flex: 1; padding: 14px 0; color: inherit; font-size: 15px; font-weight: 600; text-decoration: none; }
+  #itsme-mobile-nav .itsme-mobile-nav__toggle { width: 40px; height: 40px; font-size: 23px; }
+  #itsme-mobile-nav .itsme-mobile-nav__sublist { padding: 6px 24px 14px 36px; background: #fafafa; }
+  #itsme-mobile-nav .itsme-mobile-nav__sublist a { display: block; padding: 10px 0; color: #555; font-size: 14px; text-decoration: none; }
   #inline_header_mobile .inline-col-group-left { position: absolute !important; top: 0; right: 10px; left: auto !important; width: 48px !important; }
   #inline_header_mobile .inline-col-group-right { position: absolute !important; top: 0; left: 10px; right: auto !important; width: 48px !important; }
   #inline_header_mobile [data-widget-type="inline_search_btn"] { display: none !important; }
@@ -10007,7 +10017,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
     bottom: auto !important;
     width: 100% !important;
     height: auto !important;
-    padding: 52px 22px 104px !important;
+    padding: 52px 22px 128px !important;
     background: #000 !important;
   }
   #itsme-content.page-index #main_event .title .inbox { padding: 0; }
