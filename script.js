@@ -15479,6 +15479,15 @@ const itsmeMainEquipmentDetails = Object.freeze({
         else link.removeAttribute('aria-current');
       });
     }
+    if (page.kind === 'reviews') {
+      const active = new URLSearchParams(location.search).get('category') || '';
+      section.querySelectorAll('.itsme-review-categories a').forEach(link => {
+        const selected = new URL(link.href, location.origin).searchParams.get('category') === active;
+        link.classList.toggle('on', selected);
+        if (selected) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+    }
 
     const enhanceEmpty = scope => {
       if (!page.empty || scope.querySelector('.itsme-native-empty')) return;
