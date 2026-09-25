@@ -15473,7 +15473,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     if (page.kind === 'event') {
       const active = new URLSearchParams(location.search).get('category') || '';
       section.querySelectorAll('.itsme-event-categories a').forEach(link => {
-        const selected = (new URL(link.href, location.origin)).searchParams.get('category') === active;
+        const selected = ((new URL(link.href, location.origin)).searchParams.get('category') || '') === active;
         link.classList.toggle('on', selected);
         if (selected) link.setAttribute('aria-current', 'page');
         else link.removeAttribute('aria-current');
@@ -15482,7 +15482,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     if (page.kind === 'reviews') {
       const active = new URLSearchParams(location.search).get('category') || '';
       section.querySelectorAll('.itsme-review-categories a').forEach(link => {
-        const selected = new URL(link.href, location.origin).searchParams.get('category') === active;
+        const selected = (new URL(link.href, location.origin).searchParams.get('category') || '') === active;
         link.classList.toggle('on', selected);
         if (selected) link.setAttribute('aria-current', 'page');
         else link.removeAttribute('aria-current');
