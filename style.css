@@ -9627,6 +9627,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 /* The source site used a 1400px desktop canvas. Let Imweb's actual viewport
    size the migrated bodies, then stack the recurring article sections. */
 #itsme-content.page-index .itsme-main-event-more { display: none; }
+#itsme-content.page-index .itsme-mobile-home-search { display: none !important; }
 @media (max-width: 1399px) {
   #itsme-content:is(.page-scar, .page-acne, .page-blem) #main,
   #itsme-content:is(.page-scar, .page-acne, .page-blem) #main .flex-row,

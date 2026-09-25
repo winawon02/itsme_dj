@@ -15683,11 +15683,12 @@ const itsmeMainEquipmentDetails = Object.freeze({
   trigger.setAttribute('aria-label', '전체 메뉴 열기');
   trigger.addEventListener('click', event => {
     event.preventDefault();
+    event.stopImmediatePropagation();
     drawer.hidden = false;
     document.body.classList.add('itsme-mobile-nav-open');
     trigger.setAttribute('aria-expanded', 'true');
     drawer.querySelector('.itsme-mobile-nav__close').focus();
-  });
+  }, true);
   drawer.querySelector('.itsme-mobile-nav__close').addEventListener('click', close);
   drawer.querySelector('.itsme-mobile-nav__backdrop').addEventListener('click', close);
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !drawer.hidden) close(); });
