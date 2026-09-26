@@ -15096,6 +15096,15 @@ const itsmeMainEquipmentDetails = Object.freeze({
     const more = lounge.querySelector('.top a');
     if (more) more.href = '/notices';
     const list = lounge.querySelector('ul');
+    const showNoticeStatus = message => {
+      const item = document.createElement('li');
+      item.className = 'itsme-lounge-status';
+      const link = document.createElement('a');
+      link.href = '/notices';
+      link.textContent = message;
+      item.append(link);
+      list.replaceChildren(item);
+    };
     fetch('/notices', {credentials: 'same-origin'}).then(response => {
       if (!response.ok) throw new Error('Notice board unavailable');
       return response.text();
@@ -15126,7 +15135,8 @@ const itsmeMainEquipmentDetails = Object.freeze({
         return item;
       }).filter(Boolean);
       if (entries.length) list.replaceChildren(...entries);
-    }).catch(() => {});
+      else showNoticeStatus('등록된 공지사항이 없습니다.');
+    }).catch(() => showNoticeStatus('공지사항을 불러오지 못했습니다. 게시판에서 확인해 주세요.'));
   }
   function updatePosition() {
     const rect = eventRoot.getBoundingClientRect();
