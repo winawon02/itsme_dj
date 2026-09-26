@@ -7988,6 +7988,12 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 #itsme-content #sub_ban .bg .s03 img {
   display: none !important;
 }
+#itsme-content .num_list .num {
+  width: auto !important;
+  height: auto !important;
+  background: transparent !important;
+  color: #939393 !important;
+}
 .doz_sys .section_wrap:has(#itsme-content #sub_ban) {
   min-height: 0 !important;
   margin-bottom: 0 !important;
@@ -8073,10 +8079,6 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #itsme-content .num_list li { margin-top: 10px !important; padding-left: 29px !important; }
   #itsme-content .num_list li:first-child { margin-top: 0 !important; }
   #itsme-content .num_list .num {
-    width: auto !important;
-    height: auto !important;
-    background: transparent !important;
-    color: #939393 !important;
     font-size: 13px !important;
     line-height: 1.2 !important;
   }
