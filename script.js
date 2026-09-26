@@ -15647,10 +15647,10 @@ const itsmeMainEquipmentDetails = Object.freeze({
     const row = document.createElement('div');
     row.className = 'itsme-mobile-nav__row';
     const link = document.createElement('a');
-    link.href = href;
     link.textContent = originalLink.querySelector('.plain_name')?.textContent.trim() || originalLink.textContent.trim();
     row.append(link);
     const children = [...item.querySelectorAll(':scope > ul > li.depth-02 > a')].filter(child => child.getAttribute('href')?.startsWith('/'));
+    link.href = children[0]?.getAttribute('href') || href;
     if (children.length) {
       const sublist = document.createElement('ul');
       sublist.className = 'itsme-mobile-nav__sublist';
@@ -15707,7 +15707,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
   // Folder pages are empty Imweb placeholders. Send the label to its first
   // real page; Imweb's separate caret keeps its native expand/collapse action.
   const parentSelector = [
-    '#doz_header_wrap ._inline_menu_container > .viewport-nav > li > a',
+    '#doz_header_wrap ._inline_menu_container .viewport-nav li > a[href]',
     '#pc_slide_menu .depth-01 > a',
     '#mobile_slide_menu .depth-01 > a'
   ].join(', ');
