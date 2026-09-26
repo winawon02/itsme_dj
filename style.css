@@ -9013,28 +9013,38 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 :where(#itsme-content.page-branch-native) .branch-native-info .branch-native-note{margin:19px 0 0;color:#e5602d;font-size:13px}
 :where(#itsme-content.page-branch-native) .branch-native-info nav{display:flex;flex-wrap:wrap;gap:9px}
 :where(#itsme-content.page-branch-native) .branch-native-info nav a{padding:9px 13px;border:1px solid #ccc;color:#333;font-size:12px;text-decoration:none}
+:where(#itsme-content.page-branch-native) .branch-native-intro{box-sizing:border-box;width:min(1180px,calc(100% - 48px));margin:48px auto 0;color:#555;font-size:17px;line-height:1.9;word-break:keep-all}
 :where(#itsme-content.page-branch-native) .branch-native-doctors,:where(#itsme-content.page-branch-native) .branch-native-events{width:min(1180px,calc(100% - 48px));margin:105px auto 0}
 :where(#itsme-content.page-branch-native) .branch-native-section-title{position:relative;margin-bottom:34px}
 :where(#itsme-content.page-branch-native) .branch-native-section-title h2{margin:0;font-size:36px;font-weight:500;letter-spacing:-.05em}
 :where(#itsme-content.page-branch-native) .branch-native-section-title a{position:absolute;right:0;bottom:5px;padding-bottom:5px;border-bottom:1px solid #555;color:#444;font-size:13px;text-decoration:none}
 :where(#itsme-content.page-branch-native) .branch-native-doctor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-:where(#itsme-content.page-branch-native) .branch-native-doctor-grid article{display:grid;grid-template-columns:46% 54%;min-height:430px;background:#f2efea;overflow:hidden}
+:where(#itsme-content.page-branch-native) .branch-native-doctor-grid article{display:grid;grid-template-columns:46% 54%;min-height:480px;background:#fff;border:1px solid #ececec;overflow:hidden}
 :where(#itsme-content.page-branch-native) .branch-native-doctor-grid img{align-self:end;width:100%;height:420px;object-fit:contain;object-position:center bottom}
 :where(#itsme-content.page-branch-native) .branch-native-doctor-grid article>div{display:flex;box-sizing:border-box;flex-direction:column;justify-content:center;padding:35px 28px}
 :where(#itsme-content.page-branch-native) .branch-native-doctor-grid h3{margin:0 0 19px;font-size:28px;font-weight:500;letter-spacing:-.05em}
 :where(#itsme-content.page-branch-native) .branch-native-doctor-grid h3 span{font-size:15px;font-weight:400}
 :where(#itsme-content.page-branch-native) .branch-native-doctor-grid p{margin:0;color:#666;font-size:14px;line-height:1.8;word-break:keep-all}
+:where(#itsme-content.page-branch-native) .branch-native-doctor-grid ul{margin:20px 0 0;padding:0;list-style:none;color:#666;font-size:12px;line-height:1.75;word-break:keep-all}
 :where(#itsme-content.page-branch-native) .branch-native-event-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 :where(#itsme-content.page-branch-native) .branch-native-event-grid a{display:flex;min-width:0;flex-direction:column;color:#222;text-decoration:none}
 :where(#itsme-content.page-branch-native) .branch-native-event-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#eee}
 :where(#itsme-content.page-branch-native) .branch-native-event-grid strong{margin-top:19px;font-size:18px;font-weight:600;letter-spacing:-.04em}
 :where(#itsme-content.page-branch-native) .branch-native-event-grid span{margin-top:8px;color:#777;font-size:13px;line-height:1.6}
+:where(#itsme-content.page-branch-native) .branch-native-event-grid .branch-native-event-category{color:#e5602d;font-size:13px;font-weight:600}
+:where(#itsme-content.page-branch-native) .branch-native-event-grid .branch-native-event-category+strong{margin-top:5px}
+:where(#itsme-content.page-branch-native) .branch-native-event-status{grid-column:1/-1;width:100%;min-height:180px;display:flex;align-items:center;justify-content:center;margin:0;border:1px solid #e8e8e8;color:#777;text-align:center}
+:where(#itsme-content.page-branch-native) .branch-native-event-status a{display:inline;color:#e5602d;text-decoration:underline}
 @media(max-width:900px){:where(#itsme-content.page-branch-native) .branch-native-info{grid-template-columns:1fr}:where(#itsme-content.page-branch-native) .branch-native-info article,:where(#itsme-content.page-branch-native) .branch-native-info article:last-child{min-height:0;padding:32px 28px;border-right:1px solid #ddd;border-bottom:1px solid #ddd}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid{grid-template-columns:1fr}}
 @media(max-width:640px){:where(#itsme-content.page-branch-native) .branch-native-hero{position:relative;height:260px}:where(#itsme-content.page-branch-native) .branch-native-hero img{visibility:hidden;width:100%;height:260px;margin:0}:where(#itsme-content.page-branch-native) .branch-native-hero::before{content:"IT'S ME Medical Group";position:absolute;top:72px;left:16px;right:16px;color:#fff;font:400 38px/1.15 'Cormorant Garamond',serif;text-align:center}:where(#itsme-content.page-branch-native) .branch-native-hero::after{content:'지금, 당신과 가장 가까운 잇츠미클리닉을 찾아보세요.';position:absolute;top:137px;left:16px;right:16px;color:#fff;font-size:13px;text-align:center}:where(#itsme-content.page-branch-native) .branch-native-heading{width:calc(100% - 32px);padding:50px 0 34px}:where(#itsme-content.page-branch-native) .branch-native-heading h1{font-size:32px}:where(#itsme-content.page-branch-native) .branch-native-map{height:320px}:where(#itsme-content.page-branch-native) .branch-native-info,:where(#itsme-content.page-branch-native) .branch-native-doctors,:where(#itsme-content.page-branch-native) .branch-native-events{width:calc(100% - 32px)}:where(#itsme-content.page-branch-native) .branch-native-doctors,:where(#itsme-content.page-branch-native) .branch-native-events{margin-top:72px}:where(#itsme-content.page-branch-native) .branch-native-section-title h2{font-size:30px}:where(#itsme-content.page-branch-native) .branch-native-section-title a{position:static;display:inline-block;margin-top:15px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid article{grid-template-columns:43% 57%;min-height:330px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid img{height:320px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid article>div{padding:25px 18px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid h3{font-size:23px}:where(#itsme-content.page-branch-native) .branch-native-event-grid{grid-template-columns:1fr}:where(#itsme-content.page-branch-native) .branch-native-event-grid a+a{margin-top:22px}}
 @media(max-width:640px){
   :where(#itsme-content.page-branch-native) .branch-native-hero,:where(#itsme-content.page-branch-native) .branch-native-hero img{height:125px}
   :where(#itsme-content.page-branch-native) .branch-native-hero::before{top:38px;font-size:28px;white-space:normal}
   :where(#itsme-content.page-branch-native) .branch-native-hero::after{top:73px;font-size:11px;white-space:normal}
+  :where(#itsme-content.page-branch-native) .branch-native-intro{width:calc(100% - 32px);margin-top:32px;font-size:15px}
+  :where(#itsme-content.page-branch-native) .branch-native-doctor-grid article{grid-template-columns:1fr}
+  :where(#itsme-content.page-branch-native) .branch-native-doctor-grid img{height:320px}
+  :where(#itsme-content.page-branch-native) .branch-native-doctor-grid article>div{padding:24px}
 }
 
 #itsme-content.page-network-network03{min-width:0;width:100%;overflow:hidden;background:#fff;color:#252525}
