@@ -9744,6 +9744,19 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 }
 
 @media (max-width: 767px) {
+  /* Full artwork pages share this structure; size the image canvas to the phone instead of clipping it. */
+  #itsme-content:not(.page-index) #main .flex-col:has(> img) {
+    box-sizing: border-box;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  #itsme-content:not(.page-index) #main .flex-col > img {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
   #inline_header_mobile [data-widget-type="inline_login_btn"]:has(a[href="/shop_cart"]) { display: none !important; }
   #itsme-mobile-nav[hidden], #itsme-mobile-nav [hidden] { display: none !important; }
   body.itsme-mobile-nav-open { overflow: hidden !important; }
