@@ -7941,7 +7941,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 @media (max-width: 767px) {
   #itsme-content.page-doctor #main { display: none !important; }
   #itsme-content.page-doctor .doctor-mobile-profile { display: block; }
-  #itsme-content.page-doctor .doctor-mobile-photo { aspect-ratio: 1920 / 1041; overflow: hidden; background: #e9e9e9; }
+  #itsme-content.page-doctor .doctor-mobile-photo { height: auto !important; aspect-ratio: 1920 / 1041; overflow: hidden; background: #e9e9e9; }
   #itsme-content.page-doctor .doctor-mobile-photo img { width: 100% !important; max-width: none !important; margin: 0 !important; }
   #itsme-content.page-doctor .doctor-mobile-bio { padding: 42px 24px 64px; }
   #itsme-content.page-doctor .doctor-mobile-label { margin: 0 0 10px; color: #e5602d; font-size: 12px; letter-spacing: .14em; }
@@ -9820,7 +9820,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-careguide #sub_visual::after { content: '시술 후 주의사항'; }
   #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::after { content: '잇츠미의원의 장비를 소개합니다'; }
   #itsme-content.page-member-email #sub_visual { display: none !important; }
-  #itsme-content.page-network-network01 #index_visual.network01 { height: 118vw !important; background-attachment: scroll !important; }
+  #itsme-content.page-network-network01 #index_visual.network01 { height: auto !important; aspect-ratio: 100 / 118; background-attachment: scroll !important; }
   #itsme-content.page-network-network01 #index_visual .t01 { padding-top: 110px !important; font-size: 32px !important; }
   #itsme-content.page-network-network01 #index_visual .t01::after { margin: 18px auto 20px !important; }
   #itsme-content.page-network-network01 #index_visual .t02 { font-size: 19px !important; }
