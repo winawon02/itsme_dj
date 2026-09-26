@@ -9760,6 +9760,13 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-index #main_event .itsme-main-event-board .type_grid .list-style-card { top: 0 !important; padding: 0 !important; }
 }
 
+@media (min-width: 768px) {
+  #itsme-content.page-index #main_board .lounge li .date {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 @media (max-width: 767px) {
   /* Full artwork pages share this structure; size the image canvas to the phone instead of clipping it. */
   #itsme-content:not(.page-index) #main .flex-col:has(> img) {
