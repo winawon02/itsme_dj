@@ -9754,7 +9754,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-mobile-nav .itsme-mobile-nav__toggle { width: 40px; height: 40px; font-size: 23px; }
   #itsme-mobile-nav .itsme-mobile-nav__sublist { padding: 6px 24px 14px 36px; background: #fafafa; }
   #itsme-mobile-nav .itsme-mobile-nav__sublist a { display: block; padding: 10px 0; color: #555; font-size: 14px; text-decoration: none; }
-  #inline_header_mobile .inline-col-group-left { position: absolute !important; z-index: 5; top: 0; right: 10px; left: auto !important; width: 48px !important; }
+  #inline_header_mobile .inline-col-group-left { position: absolute !important; z-index: 5; top: 0; right: -10px; left: auto !important; width: 48px !important; }
   #inline_header_mobile .inline-col-group-right { position: absolute !important; top: 0; left: 10px; right: auto !important; width: 48px !important; }
   #inline_header_mobile [data-widget-type="inline_search_btn"] { display: none !important; }
   body:has(#itsme-content.page-index):not(.itsme-header-scrolled) #inline_header_mobile .section_bg_color { background: transparent !important; }
