@@ -15648,7 +15648,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
         return {
           href: url.pathname + url.search,
           title: [...title.childNodes].filter(node => node.nodeType === Node.TEXT_NODE).map(node => node.textContent).join(' ').trim(),
-          category: title.querySelector('span em')?.textContent.trim() || '',
+          category: title.querySelector('em:not(.notice-block)')?.textContent.trim() || '',
           image: image?.style.backgroundImage.match(/^url\(["']?(.*?)["']?\)$/)?.[1] || '',
           date,
           order
