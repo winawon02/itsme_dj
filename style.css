@@ -8909,7 +8909,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   #doz_footer_wrap .custom-text-info .fr-element > ul { order: 4; margin-top: 25px; }
 }
 
-#doz_footer_wrap .itsme-footer-social img { display:block; width:22px; height:22px; object-fit:contain; opacity:.55; }
+#doz_footer_wrap .itsme-footer-social img { display:block; width:20px; max-width:none !important; height:auto; object-fit:contain; opacity:.5; }
 #doz_footer_wrap .itsme-footer-social a:hover img { opacity:1; }
 
 /* Laser equipment list: retain the original design while keeping closed layers inert. */
