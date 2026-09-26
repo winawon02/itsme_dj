@@ -7941,8 +7941,8 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 @media (max-width: 767px) {
   #itsme-content.page-doctor #main { display: none !important; }
   #itsme-content.page-doctor .doctor-mobile-profile { display: block; }
-  #itsme-content.page-doctor .doctor-mobile-photo { height: min(105vw, 420px); overflow: hidden; background: #e9e9e9; }
-  #itsme-content.page-doctor .doctor-mobile-photo img { width: 200% !important; max-width: none !important; margin: 0 !important; }
+  #itsme-content.page-doctor .doctor-mobile-photo { aspect-ratio: 1920 / 1041; overflow: hidden; background: #e9e9e9; }
+  #itsme-content.page-doctor .doctor-mobile-photo img { width: 100% !important; max-width: none !important; margin: 0 !important; }
   #itsme-content.page-doctor .doctor-mobile-bio { padding: 42px 24px 64px; }
   #itsme-content.page-doctor .doctor-mobile-label { margin: 0 0 10px; color: #e5602d; font-size: 12px; letter-spacing: .14em; }
   #itsme-content.page-doctor .doctor-mobile-bio h1 { margin: 0 0 28px; color: #252525; font-size: 34px; font-weight: 600; }
@@ -9015,8 +9015,9 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 @media(max-width:900px){:where(#itsme-content.page-branch-native) .branch-native-info{grid-template-columns:1fr}:where(#itsme-content.page-branch-native) .branch-native-info article,:where(#itsme-content.page-branch-native) .branch-native-info article:last-child{min-height:0;padding:32px 28px;border-right:1px solid #ddd;border-bottom:1px solid #ddd}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid{grid-template-columns:1fr}}
 @media(max-width:640px){:where(#itsme-content.page-branch-native) .branch-native-hero{position:relative;height:260px}:where(#itsme-content.page-branch-native) .branch-native-hero img{visibility:hidden;width:100%;height:260px;margin:0}:where(#itsme-content.page-branch-native) .branch-native-hero::before{content:"IT'S ME Medical Group";position:absolute;top:72px;left:16px;right:16px;color:#fff;font:400 38px/1.15 'Cormorant Garamond',serif;text-align:center}:where(#itsme-content.page-branch-native) .branch-native-hero::after{content:'지금, 당신과 가장 가까운 잇츠미클리닉을 찾아보세요.';position:absolute;top:137px;left:16px;right:16px;color:#fff;font-size:13px;text-align:center}:where(#itsme-content.page-branch-native) .branch-native-heading{width:calc(100% - 32px);padding:50px 0 34px}:where(#itsme-content.page-branch-native) .branch-native-heading h1{font-size:32px}:where(#itsme-content.page-branch-native) .branch-native-map{height:320px}:where(#itsme-content.page-branch-native) .branch-native-info,:where(#itsme-content.page-branch-native) .branch-native-doctors,:where(#itsme-content.page-branch-native) .branch-native-events{width:calc(100% - 32px)}:where(#itsme-content.page-branch-native) .branch-native-doctors,:where(#itsme-content.page-branch-native) .branch-native-events{margin-top:72px}:where(#itsme-content.page-branch-native) .branch-native-section-title h2{font-size:30px}:where(#itsme-content.page-branch-native) .branch-native-section-title a{position:static;display:inline-block;margin-top:15px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid article{grid-template-columns:43% 57%;min-height:330px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid img{height:320px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid article>div{padding:25px 18px}:where(#itsme-content.page-branch-native) .branch-native-doctor-grid h3{font-size:23px}:where(#itsme-content.page-branch-native) .branch-native-event-grid{grid-template-columns:1fr}:where(#itsme-content.page-branch-native) .branch-native-event-grid a+a{margin-top:22px}}
 @media(max-width:640px){
-  :where(#itsme-content.page-branch-native) .branch-native-hero::before{top:76px;font-size:30px;white-space:normal}
-  :where(#itsme-content.page-branch-native) .branch-native-hero::after{top:132px;white-space:normal}
+  :where(#itsme-content.page-branch-native) .branch-native-hero,:where(#itsme-content.page-branch-native) .branch-native-hero img{height:125px}
+  :where(#itsme-content.page-branch-native) .branch-native-hero::before{top:38px;font-size:28px;white-space:normal}
+  :where(#itsme-content.page-branch-native) .branch-native-hero::after{top:73px;font-size:11px;white-space:normal}
 }
 
 #itsme-content.page-network-network03{min-width:0;width:100%;overflow:hidden;background:#fff;color:#252525}
@@ -9044,6 +9045,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 :where(#itsme-content.page-network-network03) .doctor-card--reverse li{color:#666}
 @media(max-width:900px){:where(#itsme-content.page-network-network03) .doctor-card{grid-template-columns:1fr}:where(#itsme-content.page-network-network03) .doctor-card__photo img{height:min(640px,92vw)}:where(#itsme-content.page-network-network03) .doctor-card__body{padding:55px 40px 68px}}
 @media(max-width:640px){:where(#itsme-content.page-network-network03) .doctors-hero{height:260px}:where(#itsme-content.page-network-network03) .doctors-hero img{visibility:hidden;width:100%;height:260px;margin:0}:where(#itsme-content.page-network-network03) .doctors-hero::before{content:'The Expert';position:absolute;top:72px;left:16px;right:16px;color:#fff;font:400 48px/1.1 'Cormorant Garamond',serif;text-align:center}:where(#itsme-content.page-network-network03) .doctors-hero::after{content:'잇츠미클리닉의 전문의료진을 소개합니다';position:absolute;top:140px;left:16px;right:16px;color:#fff;font-size:14px;text-align:center}:where(#itsme-content.page-network-network03) .doctors-heading{width:calc(100% - 32px);padding:50px 0 38px}:where(#itsme-content.page-network-network03) .doctors-heading h1{font-size:32px}:where(#itsme-content.page-network-network03) .doctors-heading span{font-size:14px}:where(#itsme-content.page-network-network03) .doctor-card__body{padding:43px 24px 56px}:where(#itsme-content.page-network-network03) .doctor-card h2{font-size:33px}:where(#itsme-content.page-network-network03) .doctor-card__message{font-size:17px}}
+@media(max-width:640px){:where(#itsme-content.page-network-network03) .doctors-hero,:where(#itsme-content.page-network-network03) .doctors-hero img{height:125px}:where(#itsme-content.page-network-network03) .doctors-hero::before{top:32px;font-size:32px}:where(#itsme-content.page-network-network03) .doctors-hero::after{top:72px;font-size:11px}}
 
 .itsme-native-hero { width: 100%; height: 340px; overflow: hidden; background: #222 var(--itsme-native-hero-bg) center / cover no-repeat; }
 body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
@@ -9120,8 +9122,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
 @media (max-width: 767px) {
   /* Imweb adds 5px above the first mobile section, exposing a white seam below the header. */
   .doz_sys .section_wrap.mobile_section_first:has(.itsme-native-shell) { padding-top: 0 !important; }
-  .itsme-native-hero { height: 240px; }
-  .itsme-native-hero__inner img { width: 960px; height: 170px; margin: 35px 0 0 calc(50% - 480px); }
+  .itsme-native-hero { height: 125px; }
+  .itsme-native-hero__inner img { width: 706px; height: 125px; margin: 0 0 0 calc(50% - 353px); }
   :is(.itsme-native-db-content, .section_wrap:has(.itsme-native-shell), [doz_type="section"]:has(.itsme-native-shell)) > main { width: calc(100% - 30px) !important; padding: 45px 0 70px !important; }
   .itsme-native-intro { margin-bottom: 30px; }
   .itsme-native-intro h1 { font-size: 30px; }
@@ -9770,7 +9772,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
     display: block;
     width: 100% !important;
     max-width: 100% !important;
-    height: 240px !important;
+    height: 125px !important;
     margin: 0 !important;
     object-fit: cover;
     object-position: center;
@@ -9779,7 +9781,7 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-community-laser #sub_visual,
   #itsme-content.page-community-laser-115dff #sub_visual {
     position: relative;
-    height: 240px !important;
+    height: 125px !important;
     overflow: hidden;
     background-position: center;
     background-size: cover;
@@ -9790,33 +9792,40 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content.page-careguide #sub_visual::before,
   #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::before {
     position: absolute;
-    top: 77px;
+    top: 35px;
     left: 15px;
     right: 15px;
     z-index: 1;
     color: #fff;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
+    font-size: 30px;
     line-height: 1.1;
     text-align: center;
     text-shadow: 0 2px 9px rgba(0,0,0,.65);
   }
   #itsme-content.page-careguide #sub_visual::before { content: 'After Care'; }
-  #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::before { content: '프리미엄 치료장비'; font-family: 'Noto Sans KR', sans-serif; font-size: 30px; font-weight: 500; }
+  #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::before { content: '프리미엄 치료장비'; font-family: 'Noto Sans KR', sans-serif; font-size: 21px; font-weight: 500; }
   #itsme-content.page-careguide #sub_visual::after,
   #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::after {
     position: absolute;
-    top: 139px;
+    top: 73px;
     left: 15px;
     right: 15px;
     z-index: 1;
     color: #fff;
-    font-size: 14px;
+    font-size: 11px;
     text-align: center;
     text-shadow: 0 1px 7px rgba(0,0,0,.8);
   }
   #itsme-content.page-careguide #sub_visual::after { content: '시술 후 주의사항'; }
   #itsme-content:is(.page-community-laser, .page-community-laser-115dff) #sub_visual::after { content: '잇츠미의원의 장비를 소개합니다'; }
+  #itsme-content.page-member-email #sub_visual { display: none !important; }
+  #itsme-content.page-network-network01 #index_visual.network01 { height: 118vw !important; background-attachment: scroll !important; }
+  #itsme-content.page-network-network01 #index_visual .t01 { padding-top: 110px !important; font-size: 32px !important; }
+  #itsme-content.page-network-network01 #index_visual .t01::after { margin: 18px auto 20px !important; }
+  #itsme-content.page-network-network01 #index_visual .t02 { font-size: 19px !important; }
+  #itsme-content.page-network-network01 #index_visual .t03 { margin-top: 12px !important; font-size: 32px !important; line-height: 1.3 !important; }
+  #itsme-content.page-network-network01 #index_visual .scroll { display: none; }
   #itsme-content .inwrap,
   #itsme-content .sub_branch .inbox { max-width: calc(100% - 30px) !important; }
   #itsme-content .top_search,
