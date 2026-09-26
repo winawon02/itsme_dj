@@ -8002,7 +8002,11 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 @media (max-width: 767px) {
   #itsme-content #sub_ban {
     height: 520px;
+    background: #393330;
   }
+  #itsme-content #sub_ban .bg .s01 { background-image: url(assets/mobile-sub_ban_bg01.jpg) !important; }
+  #itsme-content #sub_ban .bg .s02 { background-image: url(assets/mobile-sub_ban_bg02.jpg) !important; }
+  #itsme-content #sub_ban .bg .s03 { background-image: url(assets/mobile-sub_ban_bg03.jpg) !important; }
   #itsme-content #sub_ban .sbox {
     float: left;
     box-sizing: border-box;
@@ -8065,6 +8069,16 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
     font-size: 15px;
     line-height: 1.75;
     word-break: keep-all;
+  }
+  #itsme-content .num_list li { margin-top: 10px !important; padding-left: 29px !important; }
+  #itsme-content .num_list li:first-child { margin-top: 0 !important; }
+  #itsme-content .num_list .num {
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    color: #939393 !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
   }
 }
 

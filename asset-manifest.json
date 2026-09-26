@@ -2724,9 +2724,24 @@
       "sha256": "69eac2a0396ae12de2d59cd7719eda41edbb32a301ddaa02bea700482d2da394"
     },
     {
+      "file": "assets/mobile-sub_ban_bg01.jpg",
+      "bytes": 104051,
+      "sha256": "e9b02280addeedf8807d54511c498c4236c6511906bbec4d8a82f758d7bd5484"
+    },
+    {
+      "file": "assets/mobile-sub_ban_bg02.jpg",
+      "bytes": 146100,
+      "sha256": "d2ae7882f5d6b6515baf79ed9454569a4199ae1866c079b5fd5a6bf90c750c48"
+    },
+    {
+      "file": "assets/mobile-sub_ban_bg03.jpg",
+      "bytes": 171691,
+      "sha256": "ff30a430baa09a60b5eaedffde67fbbe14458d6f5b9f3f66dc42cc45dc19923b"
+    },
+    {
       "file": "style.css",
-      "bytes": 631978,
-      "sha256": "c2d3d8711386ce443956747f223a073b1f84ea4518a87dcb2ca5b5233d73cc62"
+      "bytes": 632715,
+      "sha256": "74b285d4b91c76097aab5a76a7b2a82547448b10abe642474700bb346392ee6c"
     },
     {
       "file": "script.js",
