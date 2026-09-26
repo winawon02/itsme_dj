@@ -7957,7 +7957,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-.doz_sys .section_wrap:has(#itsme-content.page-doctor) + .section_wrap:has(#itsme-shared-style) {
+.doz_sys .section_wrap:has(#itsme-content.page-doctor) + .section_wrap:has(:is(#itsme-shared-style, #itsme-shared-style-section)) {
   min-height: 0 !important;
   height: 0 !important;
   padding: 0 !important;
@@ -7993,7 +7993,7 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-.doz_sys .section_wrap:has(#itsme-content #sub_ban) + .section_wrap:has(#itsme-shared-style) {
+.doz_sys .section_wrap:has(#itsme-content #sub_ban) + .section_wrap:has(:is(#itsme-shared-style, #itsme-shared-style-section)) {
   min-height: 0 !important;
   height: 0 !important;
   margin: 0 !important;
