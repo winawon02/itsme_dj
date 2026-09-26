@@ -9115,6 +9115,8 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   margin: 0;
 }
 @media (max-width: 767px) {
+  /* Imweb adds 5px above the first mobile section, exposing a white seam below the header. */
+  .doz_sys .section_wrap.mobile_section_first:has(.itsme-native-shell) { padding-top: 0 !important; }
   .itsme-native-hero { height: 240px; }
   .itsme-native-hero__inner img { width: 960px; height: 170px; margin: 35px 0 0 calc(50% - 480px); }
   :is(.itsme-native-db-content, .section_wrap:has(.itsme-native-shell), [doz_type="section"]:has(.itsme-native-shell)) > main { width: calc(100% - 30px) !important; padding: 45px 0 70px !important; }
