@@ -7828,6 +7828,16 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 }
 
 /* Preserve each original search banner background as a brand statement. */
+#itsme-content .top_search {
+  height: 340px;
+  background-position: center;
+  background-size: cover;
+}
+#itsme-content .top_search .inwrap {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 0;
+}
 :where(#itsme-content) .top_search .inwrap,
 :where(#itsme-content) #main_search .inwrap {
   display: flex;
@@ -9909,10 +9919,11 @@ body:has(.itsme-native-shell), .itsme-native-db-page { overflow-x: hidden; }
   #itsme-content .sub_branch .inbox { max-width: calc(100% - 30px) !important; }
   #itsme-content .top_search,
   #itsme-content #main_search {
-    height: 190px !important;
     background-position: center !important;
     background-size: cover !important;
   }
+  #itsme-content .top_search { height: 125px !important; }
+  #itsme-content #main_search { height: 190px !important; }
   #itsme-content .top_search .inwrap,
   #itsme-content #main_search .inwrap {
     width: 100% !important;
