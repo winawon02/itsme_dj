@@ -15242,6 +15242,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
   });
   root.querySelectorAll('img[data-src]').forEach(img=>{if(!img.getAttribute('src'))img.src=img.dataset.src;});
   root.querySelectorAll('.swiper-container,.swiper').forEach(el=>{
+    if(el.matches('.branch-native-doctor-slider'))return;
     if(el.swiper)return;
     const parent=el.parentElement;
     const review=el.closest('#sub_review_swiper');
@@ -15696,6 +15697,58 @@ const itsmeMainEquipmentDetails = Object.freeze({
       console.error('지점 안내 이벤트를 불러오지 못했습니다.', error);
       grid.innerHTML = '<p class="branch-native-event-status">이벤트 목록을 불러오지 못했습니다. <a href="/event">게시판에서 확인해 주세요.</a></p>';
     });
+})();
+
+(() => {
+  const slider = document.querySelector('#itsme-content.page-branch-native .branch-native-doctor-slider');
+  if (!slider || !window.Swiper || slider.swiper) return;
+  const count = slider.querySelectorAll('.swiper-wrapper > .swiper-slide').length;
+  new window.Swiper(slider, {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: count > 1,
+    speed: 700,
+    autoplay: count > 1 ? {delay: 3000, disableOnInteraction: false} : false
+  });
+})();
+
+(() => {
+  const section = document.querySelector('#itsme-content.page-branch-native .branch-native-map');
+  const canvas = section?.querySelector('.branch-native-map-canvas');
+  const message = section?.querySelector('.branch-native-map-status strong');
+  const key = section?.dataset.kakaoAppKey;
+  if (!section || !canvas || !message || !key) return;
+
+  let complete = false;
+  const timeout = setTimeout(() => fail(), 15000);
+  function fail() {
+    if (complete) return;
+    complete = true;
+    clearTimeout(timeout);
+    message.textContent = '지도를 표시하지 못했습니다.';
+  }
+  function showMap() {
+    if (complete) return;
+    const maps = window.kakao?.maps;
+    if (!maps?.services?.Geocoder) return fail();
+    const geocoder = new maps.services.Geocoder();
+    geocoder.addressSearch(section.dataset.address, (results, status) => {
+      if (complete) return;
+      if (status !== maps.services.Status.OK || !results.length) return fail();
+      const center = new maps.LatLng(Number(results[0].y), Number(results[0].x));
+      const map = new maps.Map(canvas, {center, level: 3});
+      new maps.Marker({map, position: center});
+      complete = true;
+      clearTimeout(timeout);
+      section.classList.add('is-ready');
+    });
+  }
+
+  const sdk = document.createElement('script');
+  sdk.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${encodeURIComponent(key)}&autoload=false&libraries=services`;
+  sdk.onload = () => window.kakao?.maps?.load ? window.kakao.maps.load(showMap) : fail();
+  sdk.onerror = fail;
+  document.head.append(sdk);
 })();
 
 (() => {
