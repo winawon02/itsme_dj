@@ -9017,8 +9017,15 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
 :where(#itsme-content.page-branch-native) .branch-native-info dl div{display:flex;justify-content:space-between;margin:8px 0;color:#555;font-size:14px}
 :where(#itsme-content.page-branch-native) .branch-native-info dd{margin:0;font-family:'Lato',sans-serif}
 :where(#itsme-content.page-branch-native) .branch-native-info .branch-native-note{margin:19px 0 0;color:#e5602d;font-size:13px}
-:where(#itsme-content.page-branch-native) .branch-native-info nav{display:flex;flex-wrap:wrap;gap:9px}
-:where(#itsme-content.page-branch-native) .branch-native-info nav a{padding:9px 13px;border:1px solid #ccc;color:#333;font-size:12px;text-decoration:none}
+:where(#itsme-content.page-branch-native) .branch-native-info nav{display:flex;flex-wrap:wrap;gap:6px}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a{display:inline-flex;min-height:40px;box-sizing:border-box;align-items:center;padding:0 9px 0 40px;border:1px solid #ddd;border-radius:21px;color:#575757;font-size:12px;white-space:nowrap;text-decoration:none;background-color:#fff;background-repeat:no-repeat;background-position:10px center;transition:background-color .2s,color .2s}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a[href*="pf.kakao.com"]{background-image:url(assets/33688b5b-icon_kakao.png)}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a[href*="instagram.com"]{background-image:url(assets/90fb8499-icon_insta.png)}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a[href*="blog.naver.com"]{background-image:url(assets/58654bc9-icon_blog.png)}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a:hover{color:#fff;background-color:#111}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a[href*="pf.kakao.com"]:hover{background-image:url(assets/4bf66443-icon_kakao_on.png)}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a[href*="instagram.com"]:hover{background-image:url(assets/f5e6c144-icon_insta_on.png)}
+:where(#itsme-content.page-branch-native) .branch-native-info nav a[href*="blog.naver.com"]:hover{background-image:url(assets/96d646bd-icon_blog_on.png)}
 :where(#itsme-content.page-branch-native) .branch-native-intro{box-sizing:border-box;width:min(1180px,calc(100% - 48px));margin:48px auto 0;color:#555;font-size:17px;line-height:1.9;word-break:keep-all}
 :where(#itsme-content.page-branch-native) .branch-native-doctors{width:min(1280px,100%);margin:130px auto 0}
 :where(#itsme-content.page-branch-native) .branch-native-doctors>h2{margin:0 0 60px;padding:0 0 22px;border-bottom:1px solid #cdcccc;color:#000;font:500 50px/1 'Cormorant Garamond',serif}
@@ -9052,6 +9059,8 @@ body.migration-catalog{font-family:system-ui;max-width:1100px;margin:40px auto;p
   :where(#itsme-content.page-branch-native) .branch-native-hero::before{top:38px;font-size:28px;white-space:normal}
   :where(#itsme-content.page-branch-native) .branch-native-hero::after{top:73px;font-size:11px;white-space:normal}
   :where(#itsme-content.page-branch-native) .branch-native-map{width:calc(100% - 32px)}
+  :where(#itsme-content.page-branch-native) .branch-native-info nav{flex-direction:column;align-items:flex-start;gap:12px}
+  :where(#itsme-content.page-branch-native) .branch-native-info nav a{width:160px;min-height:30px;padding-right:8px}
   :where(#itsme-content.page-branch-native) .branch-native-intro{width:calc(100% - 32px);margin-top:32px;font-size:15px}
 }
 @media(max-width:767px){
