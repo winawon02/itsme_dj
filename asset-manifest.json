@@ -2739,6 +2739,11 @@
       "sha256": "ff30a430baa09a60b5eaedffde67fbbe14458d6f5b9f3f66dc42cc45dc19923b"
     },
     {
+      "file": "assets/itsme-logo.png",
+      "bytes": 3897,
+      "sha256": "ad47efdd03960c6837fac1d50223298c5dbd2ec561edaa780658e55256714fe2"
+    },
+    {
       "file": "style.css",
       "bytes": 638483,
       "sha256": "5444641faa3e8b104aa4cbc7e1d449d5a90920b751bce16a42df8993f1b2411d"
