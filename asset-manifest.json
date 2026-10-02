@@ -2750,9 +2750,9 @@
     },
     {
       "file": "script.js",
-      "bytes": 734814,
-      "sha256": "ba4137ca8194069d7d027ff1085d78445bc37b94db365f6e0b1fcb846f05e46b",
-      "sourceSha256": "6d8c723a07611c582b7863cacc6ee7ede2419f2385e8ad61b9fe3b07fe375526"
+      "bytes": 735146,
+      "sha256": "6bc106c6486c2ef1392c1b994a85a1a77902554d6a0787091282488aed513e32",
+      "sourceSha256": "dcb3d37fa2f1e6ff40cb78fcdc47a8602a1587e70b4cde06b9c7edc43dcc0c87"
     }
   ],
   "oversized": [

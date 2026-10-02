@@ -15531,7 +15531,14 @@ const itsmeMainEquipmentDetails = Object.freeze({
 
   let controller;
   const boardSelector = '#w20260921b5ec962484e96 .widget.board';
+  const lentigoPostId = '174945615';
   const selectedCode = url => new URL(url, location.origin).searchParams.get('category') || '';
+  function linkLentigoPost() {
+    board.querySelectorAll('a[href*="bmode=view"]').forEach(link => {
+      const url = new URL(link.href, location.origin);
+      if (url.searchParams.get('idx') === lentigoPostId) link.href = '/lentigo';
+    });
+  }
   function selectCategory(code) {
     nav.querySelectorAll('a[href]').forEach(link => {
       const active = selectedCode(link.href) === code;
@@ -15575,6 +15582,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
       if (!nextBoard) throw new Error('Event board was absent from the response');
       board.innerHTML = nextBoard.innerHTML;
       rewriteMainLinks();
+      linkLentigoPost();
       enhanceEmpty();
       if (main) dispatchEvent(new Event('scroll'));
       const code = selectedCode(url);
@@ -15600,6 +15608,7 @@ const itsmeMainEquipmentDetails = Object.freeze({
     addEventListener('popstate', () => showCategory(location.pathname + location.search));
     selectCategory(selectedCode(location.href));
   }
+  linkLentigoPost();
 })();
 
 // Format the price fields already saved in Imweb event posts without changing their data.
